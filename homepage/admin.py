@@ -6,9 +6,9 @@ from .models import FunFact, Quotes
 
 @admin.register(FunFact)
 class FunFactAdmin(admin.ModelAdmin):
-    list_display = ['fact']
+    list_display = ['fact',]
 
 
 @admin.register(Quotes)
 class QuotesAdmin(admin.ModelAdmin):
-    list_display = ['quote']
+    list_display = ['quote',]
