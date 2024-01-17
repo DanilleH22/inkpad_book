@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<div>
+    <header>
+        <h1>Congrats, your book is completed!</h1>
+    </header>
+
+    <div>
+        <img src="{{ book.upload_images.url }}" alt="" />
+        <h3>{{ book.title }}</h3>
+        <p>{{ book.excerpt }}</p>
+        <p>{{ book.biography }}</p>
+    </div>
+</div>
+
+{% endblock content %}
