@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<div>
+    <header>
+        <h1>Create Your Book</h1>
+    </header>
+
+    <!-- Form for Book details -->
+    <div>
+        <form method="post" enctype="multipart/form-data" id="bookCreationForm">
+            {% csrf_token %} {{ form.as_p }}
+
+            <button type="submit" id="submitAndNext" formaction="{% url 'book_chapter' %}">
+                Next
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
