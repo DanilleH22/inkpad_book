@@ -14,4 +14,4 @@ class Quotes(models.Model):
     quote = models.TextField(max_length=300, blank=False)
 
     def __str__(self):
-        return self.quote
+        return self.quotes
