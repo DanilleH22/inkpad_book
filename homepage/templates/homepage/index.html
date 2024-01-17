@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="container">
+  <h2>Who are we ?</h2>
+  <p>
+    We are Inkpad, an online website for upcoming authors. We give unpublished
+    and even published authors the oppurtunity to show the world whats in their
+    mind.
+  </p>
+  <br />
+  <p>
+    We allow people to express themself with no limits (shout out to the ones
+    who write freaky books). But it's not just for those who wants to write,
+    Inkpad is for those who love to read.
+  </p>
+</div>
+<div class="row">
+  <h2>Why did we make this website?</h2>
+  <p>
+    Wattpad is no longer free, and since it's not I'm making my own version!
+  </p>
+  <br />
+  <p>One a more serious note...</p>
+  <p>
+    When I was younger I used to read Wattpad until 3/4am because I could never
+    afford to actually buy books (perks of being 13 with no job). So to see that
+    they are charging, upsets me because my love for books started with Wattpad.
+    So to charge for it stops the next generation having that same love.
+  </p>
+  <div class="row">
+    <h2>Fun Facts</h2>
+    <ul>
+      {% for f in fun_facts %}
+      <li>{{ f.facts }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="row">
+    <h2>Fun Quotes</h2>
+    <ul>
+      {% for q in quotes %}
+      <li>{{ q.quote }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endblock %}
