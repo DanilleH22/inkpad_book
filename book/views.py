@@ -11,7 +11,7 @@ from django.forms import forms
 
 # Create your views here.
 class BookCreation(LoginRequiredMixin, CreateView):
-    template_name = 'book/book_outline.html'
+    template_name = 'book/book_details.html'
     model = CreateBook
     form_class = BookForm
     success_url = reverse_lazy('book_chapter')
