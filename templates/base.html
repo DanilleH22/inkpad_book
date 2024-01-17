@@ -1,9 +1,11 @@
-{% load static %}
+{% load static %} {% url 'home' as home_url %} {% url 'about' as about_url %} {%
+url 'account_login' as login_url %} {% url 'account_signup' as signup_url %} {%
+url 'account_logout' as logout_url %}
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
   <head>
-    <title>CodeStar Blog</title>
+    <title>Inkpad</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Google Fonts CSS -->
@@ -49,13 +51,6 @@
                 >Home</a
               >
             </li>
-            <li class="nav-item">
-              <a
-                class="nav-link {% if request.path == about_url %}active"
-                aria-current="page{% endif %}"
-                href="#"
-                >About</a
-              >
             </li>
             <li class="nav-item">
               <a
