@@ -18,7 +18,8 @@ from django.urls import path, include
 from django.shortcuts import render
 
 urlpatterns = [
+    path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
     path('book/', include('book.urls')),
-    path('home/', include('homepage.urls')),
+    path('', include('homepage.urls')),
 ]
