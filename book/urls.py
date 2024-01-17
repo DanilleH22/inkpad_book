@@ -7,9 +7,9 @@ from .views import BookCreation, BookChapter, CompletedBook
 urlpatterns = [
     path('book_details/', BookCreation.as_view(), name='book_details'),
     path('book_chapter/', BookChapter.as_view(), name='book_chapter'),
-    path('completed_book/<slug:slug>',
-         BookChapter.as_view(), CompletedBook.as_view(),
-         name='completed_book/'),
+    # path('completed_book/<slug:slug>',
+    #      CompletedBook.as_view(),
+    #      name='completed_book/'),
 ]
 
 if settings.DEBUG:
