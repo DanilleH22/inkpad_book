@@ -1,7 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
 from django.views.generic import DetailView
+from django.views.generic import ListView
 from django.shortcuts import render
+from django.shortcuts import redirect
 from django.views import generic
 from django.urls import reverse_lazy
 from .forms import BookForm, ChapterForm
@@ -20,14 +22,6 @@ class BookCreation(LoginRequiredMixin, CreateView):
         form.save()
         return redirect('book_chapter')
 
-    def form_invalid(self, form):
-        return super().form_invalid(form)
-
-    def get(self, request, *args, **kwargs):
-        # Custom logic when the form is invalid (this method is called by CreateView)
-        form = self.form_class()
-        return render(request, self.template_name, {'form': form})
-
     # def get_success_url(self):
     #     # Get the primary key of the newly created book
     #     book_id = self.object.id
@@ -40,7 +34,7 @@ class BookChapter(LoginRequiredMixin, CreateView):
     template_name = 'book/book_chapter.html'
     model = CreateChapter
     form_class = ChapterForm
-    success_url = '/completed_book/'
+    success_url = reverse_lazy('completed_book')
 
     def form_valid(self, form):
         if 'save_draft' in self.request.POST:
@@ -50,18 +44,16 @@ class BookChapter(LoginRequiredMixin, CreateView):
             # Handle publish (or other logic) when 'Publish' is clicked
             form.instance.status = 'Published'
         form.save()
-        return redirect(self.success_url)
+        return redirect('completed_book')
 
-    def form_invalid(self, form):
-        return self.render_to_response(self.get_context_data(form=form))
+
+class CompletedBook(LoginRequiredMixin, ListView):
+    template_name = 'book/completed_book.html'
+    # model = CreateBook
+    # queryset = CreateBook.objects.all()
+    # context_object_name = 'book'
 
     def get(self, request, *args, **kwargs):
-        form = self.form_class()
-        return render(request, self.template_name, {'form': form})
-
-
-class CompletedBook(LoginRequiredMixin, DetailView):
-    template_name = 'book/completed_book.html'
-    queryset = CreateBook.objects.filter()
-    slug = 'slug'
-    context_object_name = 'book'
+        title = kwargs.get('title')
+        book = get_object_or_404(CreateBook, title=title)
+        return render(request, self.template_name, {'book': book})
