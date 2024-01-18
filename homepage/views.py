@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import FunFact, Quotes
+from .models import FunFact, BookQuote
 from django.views import View
 
 # Create your views here.
@@ -10,7 +10,7 @@ def home(request):
     fun_facts = FunFact.objects.order_by('?')[:3]
 
     # Retrieve two random quotes from the database
-    quotations = Quotes.objects.order_by('?')[:2]
+    quotations = BookQuote.objects.order_by('?')[:2]
 
     return render(
         request,
