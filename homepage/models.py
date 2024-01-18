@@ -4,14 +4,14 @@ from django.db import models
 
 
 class FunFact(models.Model):
-    fact = models.CharField(max_length=150, blank=False)
+    fact = models.TextField(max_length=300, blank=False)
 
     def __str__(self):
         return self.fact
 
 
-class Quotes(models.Model):
-    quote = models.TextField(max_length=300, blank=False)
+class BookQuote(models.Model):
+    quote = models.CharField(max_length=200, blank=False)
 
     def __str__(self):
-        return self.quotes
+        return self.quote
