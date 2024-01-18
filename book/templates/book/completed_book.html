@@ -5,12 +5,15 @@
         <h1>Congrats, your book is completed!</h1>
     </header>
 
+    {% for book in book_list %}
     <div>
-        <img src="{{ book.upload_images.url }}" alt="" />
+        <img src="{{ book.images.url }}" alt="" />
         <h3>{{ book.title }}</h3>
         <p>{{ book.excerpt }}</p>
         <p>{{ book.biography }}</p>
     </div>
 </div>
+
+{% endfor %}
 
 {% endblock content %}

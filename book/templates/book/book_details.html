@@ -10,7 +10,7 @@
         <form method="post" enctype="multipart/form-data" id="bookCreationForm">
             {% csrf_token %} {{ form.as_p }}
 
-            <button type="submit" id="submitAndNext" formaction="{% url 'book_chapter' %}">
+            <button type="submit" id="submitAndNext">
                 Next
             </button>
         </form>
