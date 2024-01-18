@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-danilleh22-inkpad-book-kpti4fmcc6.us2.codeanyapp.com', '.herokuapp.com']
+    '8000-danilleh22-inkpadbook-tdxhkgcyxg4.ws-eu107.gitpod.io', '.herokuapp.com']
 
 
 # Application definition
