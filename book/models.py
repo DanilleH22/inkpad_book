@@ -40,6 +40,7 @@ class CreateBook(models.Model):
 
 
 class CreateChapter(models.Model):
+    book = models.ForeignKey(CreateBook, on_delete=models.CASCADE, null=True, blank=True)
     chapter_id = models.AutoField(primary_key=True)
     chapter = models.CharField(max_length=200)
     content = models.TextField()
