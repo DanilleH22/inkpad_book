@@ -17,18 +17,8 @@ class BookCreation(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('book_chapter')
 
     def form_valid(self, form):
-        if 'save_draft' in self.request.POST:
-            # Handle save draft logic
-            form.instance.status = 'Draft'
-            form.save()
-            return self.render_to_response(self.get_context_data(form=form))
-        elif 'next' in self.request.POST:
-            # Handle publish (or other logic) when 'Next' is clicked
-            form.instance.status = 'Published'
-            form.save()
-            return redirect('book_chapter')
-        else:
-            return super().form_valid(form)
+        form.save()
+        return redirect('book_chapter')
 
     def form_invalid(self, form):
         return super().form_invalid(form)
@@ -50,22 +40,28 @@ class BookChapter(LoginRequiredMixin, CreateView):
     template_name = 'book/book_chapter.html'
     model = CreateChapter
     form_class = ChapterForm
-    success_url = reverse_lazy('completed_book')
+    success_url = '/completed_book/'
 
     def form_valid(self, form):
-        return redirect('completed_book')
+        if 'save_draft' in self.request.POST:
+            # Handle save draft logic
+            form.instance.status = 'Draft'
+        elif 'publish' in self.request.POST:
+            # Handle publish (or other logic) when 'Publish' is clicked
+            form.instance.status = 'Published'
+        form.save()
+        return redirect(self.success_url)
+
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form))
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
         return render(request, self.template_name, {'form': form})
 
-    def form_invalid(self, form):
-        # If form is invalid
-        return super().form_invalid(form)
-
 
 class CompletedBook(LoginRequiredMixin, DetailView):
     template_name = 'book/completed_book.html'
-    model = CreateBook
+    queryset = CreateBook.objects.filter()
     slug = 'slug'
     context_object_name = 'book'
