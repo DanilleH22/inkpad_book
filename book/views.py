@@ -1,9 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
-from django.views.generic import DetailView
-from django.views.generic import ListView
-from django.shortcuts import render, get_object_or_404
-from django.shortcuts import redirect
+from django.contrib.auth.models import User
+from django.views.generic import DetailView, ListView
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.urls import reverse_lazy
 from .forms import BookForm, ChapterForm
@@ -50,8 +49,11 @@ class BookChapter(LoginRequiredMixin, CreateView):
 class CompletedBook(LoginRequiredMixin, ListView):
     template_name = 'book/completed_book.html'
     model = CreateBook
-    queryset = CreateBook.objects.filter()
     context_object_name = 'book_list'
+
+    def get_queryset(self):
+        # Accessing self.request.user within a method
+        return CreateBook.objects.filter(user=self.request.user)
 
     # def get(self, request, *args, **kwargs):
     #     title = kwargs.get('title')
