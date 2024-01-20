@@ -22,8 +22,8 @@ class CreateBook(models.Model):
     title = models.CharField(max_length=300, unique=True)
     slug = models.SlugField(max_length=300, unique=True,
                             default='', blank=True)
-    excerpt = models.TextField(max_length=200)
-    biography = models.TextField(max_length=500, default='')
+    excerpt = models.TextField(max_length=300)
+    biography = models.TextField(max_length=1500, default='')
     image = models.ImageField(upload_to='images/')
     genre = models.ForeignKey(
         Categories, related_name='category', on_delete=models.SET_NULL,
