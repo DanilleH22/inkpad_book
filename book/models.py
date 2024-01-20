@@ -22,7 +22,9 @@ class CreateBook(models.Model):
     title = models.CharField(max_length=300, unique=True)
     slug = models.SlugField(max_length=300, unique=True,
                             default='', blank=True)
-    excerpt = models.TextField(max_length=300)
+    status = models.IntegerField(
+        choices=((0, "Draft"), (1, "Published")), default=0)
+    excerpt = models.TextField(max_length=500)
     biography = models.TextField(max_length=1500, default='')
     image = models.ImageField(upload_to='images/')
     genre = models.ForeignKey(
