@@ -6,19 +6,20 @@ from django.views import generic
 
 
 class BookList(generic.ListView):
-    queryset = CreateBook.objects.all()
+    queryset = CreateBook.objects.filter(status=1)
     template_name = "browse/browse.html"
-    paginate_by = 12
+    paginate_by = 6
+    context_object_name = 'book_list'
 
 
 def book_post(request, slug):
-    # queryset = CreateBook.objects.all()
-    post = get_object_or_404(CreateBook, slug=slug)
+    queryset = CreateBook.objects.filter()
+    book = get_object_or_404(CreateBook, slug=slug)
 
     return render(
         request,
         "browse/book_view.html",
         {
-            "book": post,
+            "book": book,
         },
     )
