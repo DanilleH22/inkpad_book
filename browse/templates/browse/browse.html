@@ -8,9 +8,10 @@
       
     {% for book in book_list %}
     <div>
-        <img src="{{ book.image }}" alt="" />
-        <h3>{{ book.title }}</h3>
-        <p>{{ book.excerpt }}</p>
+        <img src="{{ book.image | safe }}" alt="" />
+        <h3>{{ book.title | safe }}</h3>
+        <p>{{ book.excerpt | safe }}</p>
+        <button><a href="{% url 'book_view' book.slug %}">View book</a></button>
     </div>
 </div>
 {% endfor %}
