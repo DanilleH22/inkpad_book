@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+    <div>
+        <img src="{{ book.image.url }}" alt="" />
+        <h3>{{ book.title | safe }}</h3>
+        <p>{{ book.biography | safe }}</p>
+        <button><a href="{% url 'browse' %}">Back</a></button>
+    </div>
+</div>
+
+{% endblock %}
