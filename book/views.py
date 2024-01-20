@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
 from django.views.generic import DetailView
 from django.views.generic import ListView
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.views import generic
 from django.urls import reverse_lazy
@@ -49,11 +49,11 @@ class BookChapter(LoginRequiredMixin, CreateView):
 
 class CompletedBook(LoginRequiredMixin, ListView):
     template_name = 'book/completed_book.html'
-    # model = CreateBook
-    # queryset = CreateBook.objects.all()
-    # context_object_name = 'book'
+    model = CreateBook
+    queryset = CreateBook.objects.filter()
+    context_object_name = 'book_list'
 
-    def get(self, request, *args, **kwargs):
-        title = kwargs.get('title')
-        book = get_object_or_404(CreateBook, title=title)
-        return render(request, self.template_name, {'book': book})
+    # def get(self, request, *args, **kwargs):
+    #     title = kwargs.get('title')
+    #     book = get_object_or_404(CreateBook, title=title)
+    #     return render(request, self.template_name, {'book': book})
