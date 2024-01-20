@@ -1,72 +1,37 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
-<!-- browse.html content starts here -->
-<div class="container-fluid">
-  <div class="row">
-    <!-- Book Post Columns -->
-    <div class="col-12 mt-3 left">
-      <div class="row">
-        {% for b in book %}
-        <div class="col-md-4">
-          <div class="card mb-4">
-            <div class="card-body">
-              <div class="image-container">
-                <img
-                  class="card-img-top"
-                  src=" {{ b.featured_image.url }}"
-                  alt="{{ b.title }}"
-                />
-              </div>
-              <a href="{% url 'book_view' b.slug %}" class="post-link">
-                <h2
-                  class="card-title"
-                  onclick="location.href='{% url 'book_details' %}'"
-                >
-                  {{ b.title }}
-                </h2>
-                <p
-                  class="author"
-                  onclick="location.href='{% url 'book_details' %}'"
-                >
-                  Author: {{ b.author }}
-                </p>
-                <p
-                  class="card-text"
-                  onclick="location.href='{% url 'book_details' %}'"
-                >
-                  {{ b.excerpt }}
-                </p>
-              </a>
-              <hr />
-            </div>
-          </div>
-        </div>
-        {% if forloop.counter|divisibleby:3 %}
-      </div>
-      <div class="row">{% endif %} {% endfor %}</div>
+<div>
+    <header>
+        <h1>Browse our book selections</h1>
+    </header>
+
+      
+    {% for book in book_list %}
+    <div>
+        <img src="{{ book.image }}" alt="" />
+        <h3>{{ book.title }}</h3>
+        <p>{{ book.excerpt }}</p>
     </div>
-  </div>
+</div>
+{% endfor %}
 
-  {% if is_paginated %}
-  <nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
+
+<div class="pagination">
+  <span class="step-links">
       {% if page_obj.has_previous %}
-      <li>
-        <a href="?page={{ page_obj.previous_page_number }}" class="page-link"
-          >&laquo; PREV</a
-        >
-      </li>
-      {% endif %} {% if page_obj.has_next %}
-      <li>
-        <a href="?page={{ page_obj.next_page_number }}" class="page-link"
-          >NEXT &raquo;</a
-        >
-      </li>
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
       {% endif %}
-    </ul>
-  </nav>
 
-  {% endif %}
+      <span class="current">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+  </span>
 </div>
 
 <!-- index.html content ends here -->
