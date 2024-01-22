@@ -22,6 +22,7 @@ class CreateBook(models.Model):
     title = models.CharField(max_length=300, unique=True)
     slug = models.SlugField(max_length=300, unique=True,
                             default='', blank=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='books', null=True, blank=True)
     status = models.IntegerField(
         choices=((0, "Draft"), (1, "Published")), default=0)
     excerpt = models.TextField(max_length=500)
@@ -42,7 +43,8 @@ class CreateBook(models.Model):
 
 
 class CreateChapter(models.Model):
-    book = models.ForeignKey(CreateBook, on_delete=models.CASCADE, null=True, blank=True)
+    book = models.ForeignKey(CreateBook, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='chapter', null=True, blank=True)
     chapter_id = models.AutoField(primary_key=True)
     chapter = models.CharField(max_length=200)
     content = models.TextField()
