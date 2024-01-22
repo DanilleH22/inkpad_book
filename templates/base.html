@@ -40,7 +40,7 @@
           </li>
           <li>
             <a href="#">{% if user.is_authenticated %}
-              <p class="text-end m-3">{{ user }}</p>
+              <p class="text-end m-3"><a href="#">{{ user }}</a></p>
               {% else %}
               <p class="text-end m-3">You are not logged in</p>
               {% endif %}
