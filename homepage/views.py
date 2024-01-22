@@ -7,7 +7,7 @@ from django.views import View
 
 def home(request):
     # Retrieve three random fun facts from the database
-    fun_facts = FunFact.objects.order_by('?')[:3]
+    fun_facts = FunFact.objects.order_by('?')[:2]
 
     # Retrieve two random quotes from the database
     quotations = BookQuote.objects.order_by('?')[:2]
@@ -17,6 +17,6 @@ def home(request):
         "homepage/index.html",
         {
             "fun_facts": fun_facts,
-            "quotations": quotations
+            "quotations": quotations,
         },
     )
