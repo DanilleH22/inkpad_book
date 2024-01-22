@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<div class="container">
+    
+    <div class="row">
+        <h2>{{ user }}</h2>
+    </div>
+    <div class="row">
+        <h3><a href="{% url 'book_details' %}">Create new book</a></h3>
+    </div>
+    {% if user == request.user %}
+    <div class="row">  
+        <p><strong>Books you've written:</strong></p>
+        {% for book in user_books %}
+            <a href="{% url 'book_view' book_slug%}">
+                <div class="row">
+                    {% if book.image %}
+                        <img src="{{ book.image.url }}" alt="{{ book.title }}">
+                    {% endif %}
+                    <p><strong>{{ book.title }}</strong></p>
+                    <p>{{ book.excerpt }}</p>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        <p>Wishlist</p>
+        <a href="{% url 'wishlist_view' %}">View Wishlist</a>
+    </div>
+    {% endif %}
+
+    
+</div>
+
+
+{% endblock content %}
