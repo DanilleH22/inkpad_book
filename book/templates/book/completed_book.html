@@ -2,18 +2,17 @@
 
 <div>
     <header>
-        <h1>Congrats, your book is completed!</h1>
+        <h1>Your book has been updated!</h1>
     </header>
 
-    {% for book in book_list %}
     <div>
-        <img src="{{ book.image }}" alt="" />
-        <h3>{{ book.title }}</h3>
-        <p>{{ book.excerpt }}</p>
-        <p>{{ book.biography }}</p>
+        <img src="{{ latest_book.image }}" alt="" />
+        <h3>{{ latest_book.title }}</h3>
+        <p>{{ latest_book.excerpt }}</p>
+        <p>{{ latest_book.biography }}</p>
+        <button><a href="">Edit Book</a></button>
+        <button><a href="{% url 'add_chapter' book_slug=latest_book.slug %}">Add another chapter</a></button>
     </div>
 </div>
-
-{% endfor %}
 
 {% endblock content %}
