@@ -23,7 +23,7 @@ class AddBook(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         # Save and get the created book instance
         self.object = form.save()
-        # Redirect to add chapter with book's pk
+        # Redirect to add chapter with book's slug
         return redirect('add_chapter', book_slug=self.object.slug)
 
 
@@ -31,10 +31,9 @@ class AddBookChapter(LoginRequiredMixin, CreateView):
     template_name = 'book/add_chapter.html'
     model = CreateChapter
     form_class = CreateChapterForm
-    # success_url = reverse_lazy('completed_book')
 
     def form_valid(self, form):
-        # Get book's pk from the URL
+        # Get book's slug from the URL
         book_slug = self.kwargs['book_slug']
         # Retrieve the book
         book = get_object_or_404(CreateBook, slug=book_slug)
@@ -59,18 +58,11 @@ class AddBookChapter(LoginRequiredMixin, CreateView):
 class CompletedBook(LoginRequiredMixin, ListView):
     template_name = 'book/completed_book.html'
     model = CreateBook
-    # context_object_name = 'book_list'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['latest_book'] = CreateBook.objects.latest('pk')
         return context
-
-
-    # def get(self, request, *args, **kwargs):
-    #     title = kwargs.get('title')
-    #     book = get_object_or_404(CreateBook, title=title)
-    #     return render(request, self.template_name, {'book': book})
 
 
 # class EditChapter(LoginRequiredMixin, UpdateView):
