@@ -2,11 +2,11 @@ from . import views
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import BookCreation, BookChapter, CompletedBook
+from .views import AddBook, AddBookChapter, CompletedBook
 
 urlpatterns = [
-    path('book_details/', BookCreation.as_view(), name='book_details'),
-    path('book_chapter/', BookChapter.as_view(), name='book_chapter'),
+    path('book_details/', AddBook.as_view(), name='book_details'),
+    path('<slug:book_slug>/add_chapter/', AddBookChapter.as_view(), name='add_chapter'),
     path('completed_book/',
          CompletedBook.as_view(),
          name='completed_book'),
