@@ -2,14 +2,16 @@ from django import forms
 from .models import CreateBook, CreateChapter
 
 
-class BookForm(forms.ModelForm):
+class CreateBookForm(forms.ModelForm):
     class Meta:
         model = CreateBook
         fields = ["title", "genre", 'status', 'excerpt',
                   'biography', 'image']
 
 
-class ChapterForm(forms.ModelForm):
+class CreateChapterForm(forms.ModelForm):
+    book = forms.ModelChoiceField(queryset=CreateBook.objects.all(), required=True)
+
     class Meta:
         model = CreateChapter
-        fields = ['chapter_id', 'chapter', 'content', 'status']
+        fields = ['chapter', 'content', 'status']
