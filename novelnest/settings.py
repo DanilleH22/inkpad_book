@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'browse',
     'homepage',
     'profiles',
+    'bootstrap5',
 ]
 
 SITE_ID = 1
