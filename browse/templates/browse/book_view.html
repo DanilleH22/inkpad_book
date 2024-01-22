@@ -1,10 +1,24 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
     <div>
-        <img src="{{ book.image.url }}" alt="" />
+        <img src="{{ book.image }}" alt="{{ book.title }}" />
         <h3>{{ book.title | safe }}</h3>
         <p>{{ book.biography | safe }}</p>
-        <button><a href="{% url 'browse' %}">Back</a></button>
+        <!-- <button><a href="{% url 'browse' %}">Back</a></button> -->
+        {% if user.is_authenticated %}
+            <button><a href="#">Read now</a></button>
+            <button><a href="#">Add to Wishlist</a></button>
+            {% if user == request.user %}
+            <button><a href="{% url 'add_chapter' book_slug=book.slug %}">Add a chapter</a></button>
+            <button><a href="#">View Chapters</a></button>
+            <button>Delete book</button>
+            {% endif %}
+
+        {% else %}
+        <!-- Content to display if the user is not logged in -->
+        {% endif %}
+
+        
     </div>
 </div>
 
