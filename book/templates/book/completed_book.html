@@ -10,7 +10,7 @@
         <h3>{{ latest_book.title }}</h3>
         <p>{{ latest_book.excerpt }}</p>
         <p>{{ latest_book.biography }}</p>
-        <button><a href="">Edit Book</a></button>
+        <button><a href="#">Edit Book</a></button>
         <button><a href="{% url 'add_chapter' book_slug=latest_book.slug %}">Add another chapter</a></button>
     </div>
 </div>
