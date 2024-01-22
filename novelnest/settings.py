@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'book',
     'browse',
     'homepage',
+    'profiles',
 ]
 
 SITE_ID = 1
