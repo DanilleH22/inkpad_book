@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from book.models import CreateBook, CreateChapter
 from django.views import generic
 from django.views.generic import View, DetailView, ListView, UpdateView
+from django.urls import reverse_lazy, reverse
 # from book.forms import CreateChapterForm
 
 # Create your views here.
@@ -44,11 +45,14 @@ class BookChaptersView(generic.ListView):
         return context
 
 
-# class EditChapter(LoginRequiredMixin, UpdateView):
-#     template_name = 'book/edit_chapter.html'
-#     model = CreateChapter
-#     form_class = CreateChapterForm
-    # queryset = CreateChapter.objects.filter()
+class EditChapter(LoginRequiredMixin, UpdateView):
+    template_name = 'browse/edit_chapter.html'
+    model = CreateChapter
+    fields = ['chapter', 'content', 'status']
+
+    def get_success_url(self):
+        # Define where to redirect after successful update
+        return reverse('completed_book')
 
 
     # def form_valid(self, form):
