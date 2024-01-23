@@ -1,16 +1,11 @@
 from . import views
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
-from .views import BookList
+from .views import BookList, BookChaptersView
 
 
 urlpatterns = [
     path('', BookList.as_view(), name='browse'),
     path('<slug:slug>/', views.book_post, name='book_view'),
+    path('<slug:book_slug>/chapters', BookChaptersView.as_view(), name='view_book_chapters'),
+    # path('<slug:book_slug>/edit_chapter', EditChapter.as_view(), name='edit_book_chapter'),
 ]
-
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
