@@ -13,8 +13,9 @@
         <p>{{ book.excerpt | safe }}</p>
         <button><a href="{% url 'book_view' book.slug %}">View book</a></button>
     </div>
+    {% endfor %}
 </div>
-{% endfor %}
+
 
 
 <div class="pagination">
