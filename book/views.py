@@ -54,7 +54,6 @@ class AddBookChapter(LoginRequiredMixin, CreateView):
         return reverse('completed_book')
 
 
-
 class CompletedBook(LoginRequiredMixin, ListView):
     template_name = 'book/completed_book.html'
     model = CreateBook
@@ -65,12 +64,10 @@ class CompletedBook(LoginRequiredMixin, ListView):
         return context
 
 
-# class EditChapter(LoginRequiredMixin, UpdateView):
-#     model = CreateChapter
-#     form_class = CreateChapterForm
-#     success_url = reverse_lazy('articles:list')
+class EditChapter(LoginRequiredMixin, UpdateView):
+    template_name = 'book/edit_chapter.html'
+    model = CreateChapter
+    form_class = CreateChapterForm
 
-#     def get_queryset(self, *args, **kwargs):
-#         return (
-#             super().get_queryset(*args, **kwargs).filter(author=self.request.user)
-#         )
+    def get_success_url(self):
+        return reverse('completed_book')
