@@ -2,7 +2,7 @@ from . import views
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import AddBook, AddBookChapter, CompletedBook
+from .views import AddBook, AddBookChapter, CompletedBook, EditChapter
 
 urlpatterns = [
     path('book_details/', AddBook.as_view(), name='book_details'),
@@ -10,6 +10,7 @@ urlpatterns = [
     path('completed_book/',
          CompletedBook.as_view(),
          name='completed_book'),
+    path('<slug:book_slug>/edit_chapter/<int:pk>/', EditChapter.as_view(), name='edit_chapter'),
 ]
 
 if settings.DEBUG:
