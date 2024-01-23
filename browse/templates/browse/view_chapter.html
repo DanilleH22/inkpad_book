@@ -1,5 +1,23 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
+    <h2>Book name: {{ book.title }}</h2>
+    <p><strong>Description:</strong> {{ book.biography }}</p>
 
+    {% for chapter in object_list %}
+        <div>
+            <h3>Chapter: {{ chapter.chapter }}</h3>
+            <p>{{ chapter.content }}</p>
+            <!-- Add more details about each chapter here -->
+        </div>
+    {% empty %}
+        <p>No chapters found for this book.</p>
+    {% endfor %}
+
+    {% if user.is_authenticated %}
+        {% if book.author == request.user %}
+            <button><a href="{% url 'add_chapter' book.slug %}">Add a chapter</a></button>
+        {% endif %}
+        <button><a href="#">Read now</a></button>
+    {% endif %}
 
 {% endblock content %}
