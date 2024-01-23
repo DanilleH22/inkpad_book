@@ -5,7 +5,7 @@
 
     {% for chapter in object_list %}
         <div>
-            <h3>Chapter: {{ chapter.chapter }}</h3>
+            <h5>Chapter: {{ chapter.chapter }} - <a href="{% url 'edit_book_chapter' book_slug=book.slug pk=chapter.pk %}">Edit</a> - <a href="#">Delete</a></h5>
             <p>{{ chapter.content }}</p>
             <!-- Add more details about each chapter here -->
         </div>
