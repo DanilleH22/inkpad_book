@@ -16,8 +16,8 @@
             <a href="{% url 'book_view' book.slug %}">
                 <div class="row">
                         <img src="{{ book.image.url }}" alt="{{ book.title }}">
-                    <p><strong>{{ book.title }}</strong></p>
-                    <p>{{ book.excerpt }}</p>
+                    <p><strong>{{ book.title | safe }}</strong></p>
+                    <p>{{ book.excerpt | safe }}</p>
                 </div>
             </a>
         {% endfor %}
@@ -31,7 +31,7 @@
 
     <div class="row">
         <p>Wishlist</p>
-       <button><a href="#">View Wishlist</a></button>
+       <button><a href="{% url 'bookmarked' %}">View Wishlist</a></button>
     </div>
 
     
