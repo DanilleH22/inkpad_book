@@ -12,7 +12,7 @@
             <p>{{ obj.biography }}</p>
             <p>{{ obj.pk }}</p>
             <button><a href="{% url 'add_chapter' book_slug=obj.slug %}">Add a chapter</a></button>
-            <button><a href="{% url 'edit_book' slug=obj.slug pk=obj.pk %}">Edit</a></button>
+            <button><a href="{% url 'edit_book' slug=obj.slug pk=obj.pk %}">Edit book details</a></button>
             <button><a href="{% url 'delete_book' slug=obj.slug %}">Delete book</a></button>
         </div>
     {% endfor %}
