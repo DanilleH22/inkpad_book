@@ -13,12 +13,19 @@
         <p>{{ book.excerpt | safe }}</p>
         <button><a href="{% url 'book_view' book.slug %}">View book</a></button>
         <br>
-        <form action="{% url 'bookmark_book' slug=book.slug %}" method="POST">
-            {% csrf_token %}
-            <!-- When font awesome is installed correctly -->
-            <!-- <i class="fa-regular fa-bookmark" type="submit" name="book_id" value="{{ book.id }}"></i> -->
-            <button type="submit" name="book_id" value="{{ book.id }}">Bookmark</button>
-        </form>
+        {% if user.is_authenticated %}
+            <form action="{% url 'bookmark_book' slug=book.slug %}" method="POST">
+                {% csrf_token %}
+                {% if book.id in bookmarked_book_ids %}
+                    <!-- Unbookmark button -->
+                    <button type="submit" name="book_id" value="{{ book.id }}" class="btn btn-danger">UnBookmark</button>
+                {% else %}
+                    <!-- Bookmark button -->
+                    <button type="submit" name="book_id" value="{{ book.id }}" class="btn btn-primary">Bookmark</button>
+                {% endif %}
+            </form>
+        {% endif %}
+        
     </div>
     {% endfor %}
 </div>

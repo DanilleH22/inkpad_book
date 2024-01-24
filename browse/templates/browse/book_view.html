@@ -17,12 +17,18 @@
                 <button><a href="{% url 'delete_book' book_view.slug %}">Delete book</a></button>
             {% endif %}
             <button><a href="{% url 'view_book_chapters' book_view.slug %}">View Chapters</a></button>
+            
             <form action="{% url 'bookmark_book' slug=book_view.slug %}" method="POST">
                 {% csrf_token %}
+                {% if bookmarked %}
                 <!-- When font awesome is installed correctly -->
                 <!-- <i class="fa-regular fa-bookmark" type="submit" name="book_id" value="{{ book.id }}"></i> -->
-                <button type="submit" name="book_id" value="{{ book.id }}">Bookmark</button>
+                    <button type="submit" name="book_id" value="{{ book_view.id }}" class="btn btn-danger">UnBookmark</button>
+                {% else %}
+                    <button type="submit" name="book_id" value="{{ book_view.id }}" class="btn btn-primary">Bookmark</button>
+                {% endif %}
             </form>
+            
             
 
         {% else %}
