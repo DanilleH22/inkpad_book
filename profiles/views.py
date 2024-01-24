@@ -11,7 +11,7 @@ def view_profile(request):
 
 
 @login_required
-def view_wishlist(request):
+def view_bookmark(request):
     bookmarked_books = request.user.bookmarked_books.all()
 
     return render(request, "profiles/bookmarked.html", {'bookmarked_books': bookmarked_books})
