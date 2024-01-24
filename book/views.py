@@ -121,21 +121,28 @@ class DeleteBook(LoginRequiredMixin, DeleteView):
         return super(DeleteBook, self).delete(request, *args, **kwargs)
 
 
-def BookmarkView(request, slug):
-    #  Get the book using its slug
-    book = get_object_or_404(CreateBook, slug=request.POST.get('book_id'))
-    book.bookmark.add(request.user)
+# def BookmarkView(request, slug):
+#     #  Get the book using its slug
+#     book = get_object_or_404(CreateBook, slug=request.POST.get('book_id'))
+#     book.bookmark.add(request.user)
     
 
 
-@login_required
-def BookmarkView(request, slug):
-    if request.method == 'POST':
-        book = get_object_or_404(CreateBook, slug=slug)
-        book.bookmark.add(request.user)
-        return HttpResponseRedirect(reverse('browse'))
-    else:
-        return redirect('home')
+# @login_required
+# def BookmarkView(request, slug):
+#     if request.method == 'POST':
+#         book = get_object_or_404(CreateBook, slug=slug)
+#         bookmarked = False 
+#         if book.bookmark.filter(id=request.user.id).exists():
+#             book.bookmark.remove(request.user)
+#             bookmarked = False
+#         else:     
+#             book.bookmark.add(request.user)
+#             bookmarked = True 
+#          # Redirect to the referring page or a default page
+#         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/default-redirect/'))
+#     else:
+#         return redirect('home')
 
 
 # class DeleteChapter(LoginRequiredMixin, DeleteView):
