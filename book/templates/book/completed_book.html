@@ -4,15 +4,18 @@
     <header>
         <h1>Your book has been updated!</h1>
     </header>
-
-    <div>
-        <img src="{{ latest_book.image }}" alt="{{ latest_book.title }}" />
-        <h3>{{ latest_book.title }}</h3>
-        <p>{{ latest_book.excerpt }}</p>
-        <p>{{ latest_book.biography }}</p>
-        <button><a href="{% url 'edit_chapter' book_slug=latest_book.slug pk=chapter.pk %}">Edit chapter</a></button>
-        <button><a href="{% url 'add_chapter' book_slug=latest_book.slug %}">Add another chapter</a></button>
-    </div>
+    {% for obj in books %}
+        <div>
+            <img src="{{ obj.image }}" alt="{{ obj.title }}" />
+            <h3>{{ obj.title }}</h3>
+            <p>{{ obj.excerpt }}</p>
+            <p>{{ obj.biography }}</p>
+            <p>{{ obj.pk }}</p>
+            <button><a href="{% url 'add_chapter' book_slug=obj.slug %}">Add a chapter</a></button>
+            <button><a href="{% url 'edit_book' slug=obj.slug pk=obj.pk %}">Edit</a></button>
+            <button><a href="{% url 'delete_book' slug=obj.slug %}">Delete book</a></button>
+        </div>
+    {% endfor %}
 </div>
 
 {% endblock content %}
