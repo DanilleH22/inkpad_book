@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from book.models import CreateBook, CreateChapter
 from django.views import generic
-from django.views.generic import View, DetailView, ListView, UpdateView
+from django.views.generic import View, DetailView, ListView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
+from django.contrib import messages
 # from book.forms import CreateChapterForm
 
 # Create your views here.
@@ -53,6 +54,17 @@ class EditChapter(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         # Define where to redirect after successful update
         return reverse('completed_book')
+
+
+class DeleteChapter(LoginRequiredMixin, DeleteView):
+    template_name = 'browse/delete_chapter.html'
+    model = CreateChapter
+    success_url = reverse_lazy('home')
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(request, 'Chapter deleted successfully.')
+        return super(DeleteChapter, self).delete(request, *args, **kwargs)
+
 
 
     # def form_valid(self, form):
