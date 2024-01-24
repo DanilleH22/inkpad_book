@@ -9,11 +9,11 @@ admin.site.register(Categories)
 @admin.register(CreateBook)
 class CreateBookAdmin(SummernoteModelAdmin):
 
-    list_display = ('title', 'slug', 'biography', 'excerpt', )
+    list_display = ('title', 'slug', 'synopsis', 'excerpt', )
     search_fields = ['title']
     list_filter = ('genre',)
     prepopulated_fields = {'slug': ('title',)}
-    summernote_fields = ('biography', 'excerpt')
+    summernote_fields = ('synopsis', 'excerpt')
 
 
 @admin.register(CreateChapter)

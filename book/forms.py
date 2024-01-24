@@ -6,7 +6,7 @@ class CreateBookForm(forms.ModelForm):
     class Meta:
         model = CreateBook
         fields = ["title", "genre", 'status', 'excerpt',
-                  'biography', 'image']
+                  'synopsis', 'image']
 
 
 class CreateChapterForm(forms.ModelForm):
