@@ -7,10 +7,10 @@
     {% for obj in books %}
         <div>
             <img src="{{ obj.image }}" alt="{{ obj.title }}" />
-            <h3>{{ obj.title }}</h3>
-            <p>{{ obj.excerpt }}</p>
-            <p>{{ obj.biography }}</p>
-            <p>{{ obj.pk }}</p>
+            <h3>{{ obj.title | safe }}</h3>
+            <p>{{ obj.excerpt | safe }}</p>
+            <p>{{ obj.synopsis | safe }}</p>
+            <!-- <p>{{ obj.pk | safe }}</p> -->
             <button><a href="{% url 'add_chapter' book_slug=obj.slug %}">Add a chapter</a></button>
             <button><a href="{% url 'edit_book' slug=obj.slug pk=obj.pk %}">Edit book details</a></button>
             <button><a href="{% url 'delete_book' slug=obj.slug %}">Delete book</a></button>

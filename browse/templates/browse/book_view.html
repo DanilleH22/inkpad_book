@@ -5,7 +5,7 @@
 
         <img src="{{ book_view.image }}" alt="{{ book_view.title }}" />
         <h3>{{ book_view.title | safe }}</h3>
-        <p>{{ book_view.biography | safe }}</p>
+        <p>{{ book_view.synopsis | safe }}</p>
         <!-- <button><a href="{% url 'browse' %}">Back</a></button> -->
         {% if user.is_authenticated %}
             <button><a href="#">Read now</a></button>

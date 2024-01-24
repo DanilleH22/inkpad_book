@@ -1,15 +1,15 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
-    <h2>Book name: {{ book.title }}</h2>
-    <p><strong>Description:</strong> {{ book.biography }}</p>
+    <h2>Book name: {{ book.title | safe }}</h2>
+    <p><strong>Description:</strong> {{ book.synopsis | safe }}</p>
 
     {% for chapter in object_list %}
         <div>
-            <h5>Chapter: {{ chapter.chapter }} - 
+            <h5>Chapter {{ chapter.pk }}: {{ chapter.chapter | safe }} - 
                 <a href="{% url 'edit_book_chapter' book_slug=book.slug pk=chapter.pk %}">
                     Edit</a> - 
                     <a href="{% url 'delete_book_chapter' book_slug=book.slug pk=chapter.pk %}">Delete</a></h5>
-            <p>{{ chapter.content }}</p>
+            <!-- <p>{{ chapter.content | safe}}</p> -->
             <!-- Add more details about each chapter here -->
         </div>
     {% empty %}
