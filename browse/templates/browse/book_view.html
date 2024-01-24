@@ -10,9 +10,10 @@
         {% if user.is_authenticated %}
             <button><a href="#">Read now</a></button>
             <button><a href="#">Add to Wishlist</a></button>
-            {% if book.author == request.user %}
-            <button><a href="{% url 'add_chapter' book_view.slug %}">Add a chapter</a></button>
-            <button><a href="#"></a>Delete book</button>
+            {% if book_view.author == request.user %}
+                <button><a href="{% url 'add_chapter' book_view.slug %}">Add a chapter</a></button>
+                <button><a href="{% url 'edit_book' book_view.slug book_view.pk %}">Edit</a></button>
+                <button><a href="{% url 'delete_book' book_view.slug %}">Delete book</a></button>
             {% endif %}
             <button><a href="{% url 'view_book_chapters' book_view.slug %}">View Chapters</a></button>
 
