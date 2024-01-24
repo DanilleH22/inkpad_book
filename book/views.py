@@ -10,6 +10,7 @@ from django.http import HttpResponseRedirect
 from .forms import CreateBookForm, CreateChapterForm
 from .models import CreateBook, CreateChapter
 from django.forms import forms
+from django.contrib import messages
 
 
 # Create your views here.
@@ -90,6 +91,16 @@ class EditChapter(LoginRequiredMixin, UpdateView):
         return reverse('completed_book')
 
 
+class EditBookDetails(LoginRequiredMixin, UpdateView):
+    template_name = 'book/edit_book.html'
+    model = CreateBook
+    form_class = CreateBookForm
+
+    def get_success_url(self):
+        # Define where to redirect after successful update
+        return reverse('completed_book')
+
+
 class DeleteChapter(LoginRequiredMixin, DeleteView):
     template_name = 'book/delete_chapter.html'
     model = CreateChapter
@@ -99,6 +110,15 @@ class DeleteChapter(LoginRequiredMixin, DeleteView):
         messages.success(request, 'Chapter deleted successfully.')
         return super(DeleteChapter, self).delete(request, *args, **kwargs)
 
+
+class DeleteBook(LoginRequiredMixin, DeleteView):
+    template_name = 'book/delete_book.html'
+    model = CreateBook
+    success_url = reverse_lazy('home')
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(request, 'Book deleted successfully.')
+        return super(DeleteBook, self).delete(request, *args, **kwargs)
 # 
 #     # def get_context_data(self, **kwargs):
 #     #     context = super().get_context_data(**kwargs)
