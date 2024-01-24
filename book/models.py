@@ -32,7 +32,7 @@ class CreateBook(models.Model):
         Categories, related_name='category', on_delete=models.SET_NULL,
         blank=True,
         null=True,)
-    bookmark = models.ManyToManyField(User, related_name="book", blank=True)
+    bookmark = models.ManyToManyField(User, related_name="bookmarked_books", blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
