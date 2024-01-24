@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
 from django.contrib.auth.models import User
-from django.views.generic import DetailView, ListView, UpdateView
+from django.views.generic import View, DetailView, ListView, UpdateView, DeleteView
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.urls import reverse_lazy, reverse
@@ -54,20 +54,76 @@ class AddBookChapter(LoginRequiredMixin, CreateView):
         return reverse('completed_book')
 
 
-class CompletedBook(LoginRequiredMixin, ListView):
-    template_name = 'book/completed_book.html'
-    model = CreateBook
+# class CompletedBook(LoginRequiredMixin, ListView):
+#     template_name = 'book/completed_book.html'
+#     model = CreateBook
+#     queryset = CreateBook.objects.filter()
+    # context_object_name = 'book_list'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['latest_book'] = CreateBook.objects.latest('pk')
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['latest_book'] = CreateBook.objects.latest('pk')
+    #     return context
+
+class CompletedBook(LoginRequiredMixin, ListView):
+    def get(self, request, *args, **kwargs):
+        books = CreateBook.objects.all()
+        # chapters = CreateChapter.objects.all()
+
+        return render(
+            request,
+            'book/completed_book.html',
+            {
+                'books': books,
+                # 'chapters': chapters,
+            }
+        )
 
 
 class EditChapter(LoginRequiredMixin, UpdateView):
     template_name = 'book/edit_chapter.html'
     model = CreateChapter
-    form_class = CreateChapterForm
+    fields = ['chapter', 'content', 'status']
 
     def get_success_url(self):
+        # Define where to redirect after successful update
         return reverse('completed_book')
+
+
+class DeleteChapter(LoginRequiredMixin, DeleteView):
+    template_name = 'book/delete_chapter.html'
+    model = CreateChapter
+    success_url = reverse_lazy('home')
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(request, 'Chapter deleted successfully.')
+        return super(DeleteChapter, self).delete(request, *args, **kwargs)
+
+# 
+#     # def get_context_data(self, **kwargs):
+#     #     context = super().get_context_data(**kwargs)
+#     #     context['chapter'] = self.object
+#     #     return context
+
+#     def get_success_url(self):
+#         return reverse('completed_book')
+
+
+
+# class DeleteChapter(LoginRequiredMixin, DeleteView):
+#     template_name = 'book/delete_chapter.html'
+#     model = CreateChapter
+
+#     def get_success_url(self):
+#         return reverse('completed_book')
+
+
+# To check Pk in shell for both chapter and book
+
+# from book.models import CreateBook
+# for book in CreateBook.objects.all():
+#     print(book.pk, book)
+
+# from book.models import CreateChapter
+# for chapter in CreateChapter.objects.all():
+#    print(chapter.pk, chapter)
