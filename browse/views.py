@@ -46,27 +46,6 @@ class BookChaptersView(generic.ListView):
         return context
 
 
-class EditChapter(LoginRequiredMixin, UpdateView):
-    template_name = 'browse/edit_chapter.html'
-    model = CreateChapter
-    fields = ['chapter', 'content', 'status']
-
-    def get_success_url(self):
-        # Define where to redirect after successful update
-        return reverse('completed_book')
-
-
-class DeleteChapter(LoginRequiredMixin, DeleteView):
-    template_name = 'browse/delete_chapter.html'
-    model = CreateChapter
-    success_url = reverse_lazy('home')
-
-    def delete(self, request, *args, **kwargs):
-        messages.success(request, 'Chapter deleted successfully.')
-        return super(DeleteChapter, self).delete(request, *args, **kwargs)
-
-
-
     # def form_valid(self, form):
     #     # Get book's slug from the URL
     #     book_slug = self.kwargs['book_slug']
