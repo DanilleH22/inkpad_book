@@ -5,9 +5,26 @@ from django.views import generic
 from django.views.generic import View, DetailView, ListView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
 from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.db.models import Prefetch
 # from book.forms import CreateChapterForm
 
 # Create your views here.
+# @login_required
+def BookmarkView(request, slug):
+    if request.method == 'POST':
+        book = get_object_or_404(CreateBook, slug=slug)
+        bookmarked = False 
+        if book.bookmark.filter(id=request.user.id).exists():
+            book.bookmark.remove(request.user)
+            bookmarked = False
+        else:     
+            book.bookmark.add(request.user)
+            bookmarked = True 
+         # Redirect to the referring page or a default page
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/default-redirect/'))
+    else:
+        return redirect('home')
 
 
 class BookList(generic.ListView):
@@ -16,17 +33,33 @@ class BookList(generic.ListView):
     paginate_by = 6
     context_object_name = 'book_list'
 
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.user.is_authenticated:
+            # Get a list of book IDs that the user has bookmarked
+            bookmarked_book_ids = self.request.user.bookmarked_books.values_list('id', flat=True)
+            context['bookmarked_book_ids'] = bookmarked_book_ids
+        return context
+
 
 def book_post(request, slug):
     queryset = CreateBook.objects.filter()
     book_view = get_object_or_404(CreateBook, slug=slug)
+        
+    bookmarked = False
+    if request.user.is_authenticated and book_view.bookmark.filter(id=request.user.id).exists():
+        bookmarked = True
+        
+
+    context = {
+        "book_view": book_view,
+        "bookmarked": bookmarked,
+        }
 
     return render(
         request,
-        "browse/book_view.html",
-        {
-            "book_view": book_view,
-        },
+        "browse/book_view.html", context
     )
 
 
