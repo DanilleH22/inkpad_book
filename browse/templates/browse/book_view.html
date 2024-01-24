@@ -1,6 +1,7 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
 
+
     <div>
 
         <img src="{{ book_view.image }}" alt="{{ book_view.title }}" />
@@ -16,6 +17,13 @@
                 <button><a href="{% url 'delete_book' book_view.slug %}">Delete book</a></button>
             {% endif %}
             <button><a href="{% url 'view_book_chapters' book_view.slug %}">View Chapters</a></button>
+            <form action="{% url 'bookmark_book' slug=book_view.slug %}" method="POST">
+                {% csrf_token %}
+                <!-- When font awesome is installed correctly -->
+                <!-- <i class="fa-regular fa-bookmark" type="submit" name="book_id" value="{{ book.id }}"></i> -->
+                <button type="submit" name="book_id" value="{{ book.id }}">Bookmark</button>
+            </form>
+            
 
         {% else %}
         <!-- Content to display if the user is not logged in -->
