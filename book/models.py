@@ -26,12 +26,13 @@ class CreateBook(models.Model):
     status = models.IntegerField(
         choices=((0, "Draft"), (1, "Published")), default=0)
     excerpt = models.TextField(max_length=500)
-    biography = models.TextField(max_length=1500, default='')
+    synopsis = models.TextField(max_length=1500, default='')
     image = models.ImageField(upload_to='images/')
     genre = models.ForeignKey(
         Categories, related_name='category', on_delete=models.SET_NULL,
         blank=True,
         null=True,)
+    bookmark = models.ManyToManyField(User, related_name="book", blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
