@@ -1,6 +1,6 @@
 from . import views
 from django.urls import path
-from .views import AddBook, AddBookChapter, CompletedBook, DeleteChapter, EditChapter, EditBookDetails, DeleteBook
+from .views import AddBook, AddBookChapter, CompletedBook, DeleteChapter, EditChapter, EditBookDetails, DeleteBook, BookmarkView
 
 urlpatterns = [
     path('book_details/', AddBook.as_view(), name='book_details'),
@@ -12,6 +12,7 @@ urlpatterns = [
     path('edit-book/<slug:slug>/<int:pk>/', EditBookDetails.as_view(), name='edit_book'),
     path('<slug:book_slug>/<int:pk>/delete', DeleteChapter.as_view(), name='delete_book_chapter'),
     path('<slug:slug>/delete', DeleteBook.as_view(), name='delete_book'),
+    path('like/<slug:slug>', BookmarkView, name='bookmark_book'),
 ]
 
 
