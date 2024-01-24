@@ -119,15 +119,23 @@ class DeleteBook(LoginRequiredMixin, DeleteView):
     def delete(self, request, *args, **kwargs):
         messages.success(request, 'Book deleted successfully.')
         return super(DeleteBook, self).delete(request, *args, **kwargs)
-# 
-#     # def get_context_data(self, **kwargs):
-#     #     context = super().get_context_data(**kwargs)
-#     #     context['chapter'] = self.object
-#     #     return context
 
-#     def get_success_url(self):
-#         return reverse('completed_book')
 
+def BookmarkView(request, slug):
+    #  Get the book using its slug
+    book = get_object_or_404(CreateBook, slug=request.POST.get('book_id'))
+    book.bookmark.add(request.user)
+    
+
+
+@login_required
+def BookmarkView(request, slug):
+    if request.method == 'POST':
+        book = get_object_or_404(CreateBook, slug=slug)
+        book.bookmark.add(request.user)
+        return HttpResponseRedirect(reverse('browse'))
+    else:
+        return redirect('home')
 
 
 # class DeleteChapter(LoginRequiredMixin, DeleteView):
