@@ -10,7 +10,8 @@ def home(request):
     fun_facts = FunFact.objects.order_by('?')[:2]
 
     # Retrieve two random quotes from the database
-    quotations = BookQuote.objects.order_by('?')[:2]
+    quotations = BookQuote.objects.order_by('quote')[:2]
+    quotation_author = BookQuote.objects.order_by('quote_author')[:2]
 
     return render(
         request,
@@ -18,5 +19,6 @@ def home(request):
         {
             "fun_facts": fun_facts,
             "quotations": quotations,
+            "quotation_author": quotation_author,
         },
     )
