@@ -55,21 +55,9 @@ class AddBookChapter(LoginRequiredMixin, CreateView):
         return reverse('completed_book')
 
 
-# class CompletedBook(LoginRequiredMixin, ListView):
-#     template_name = 'book/completed_book.html'
-#     model = CreateBook
-#     queryset = CreateBook.objects.filter()
-    # context_object_name = 'book_list'
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['latest_book'] = CreateBook.objects.latest('pk')
-    #     return context
-
 class CompletedBook(LoginRequiredMixin, ListView):
     def get(self, request, *args, **kwargs):
-        books = CreateBook.objects.all()
-        # chapters = CreateChapter.objects.all()
+        books = CreateBook.objects.latest('id')
 
         return render(
             request,
@@ -85,20 +73,24 @@ class EditChapter(LoginRequiredMixin, UpdateView):
     template_name = 'book/edit_chapter.html'
     model = CreateChapter
     fields = ['chapter', 'content', 'status']
+    success_url = reverse_lazy('home')
 
-    def get_success_url(self):
+    def get_success_url(self, request, *args, **kwargs):
+        messages.success(request, 'Chapter has been edited successfully.')
         # Define where to redirect after successful update
-        return reverse('completed_book')
+        return super(EditChapter, self).delete(request, *args, **kwargs)
 
 
 class EditBookDetails(LoginRequiredMixin, UpdateView):
     template_name = 'book/edit_book.html'
     model = CreateBook
     form_class = CreateBookForm
+    success_url = reverse_lazy('home')
 
-    def get_success_url(self):
+    def get_success_url(self, request, *args, **kwargs):
+        messages.success(request, 'Book has been deleted successfully.')
         # Define where to redirect after successful update
-        return reverse('completed_book')
+        return super(EditBookDetails, self).delete(request, *args, **kwargs)
 
 
 class DeleteChapter(LoginRequiredMixin, DeleteView):
@@ -107,7 +99,7 @@ class DeleteChapter(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('home')
 
     def delete(self, request, *args, **kwargs):
-        messages.success(request, 'Chapter deleted successfully.')
+        messages.success(request, 'Chapter has been deleted successfully.')
         return super(DeleteChapter, self).delete(request, *args, **kwargs)
 
 
@@ -117,7 +109,7 @@ class DeleteBook(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('home')
 
     def delete(self, request, *args, **kwargs):
-        messages.success(request, 'Book deleted successfully.')
+        messages.success(request, 'Book has been deleted successfully.')
         return super(DeleteBook, self).delete(request, *args, **kwargs)
 
 
