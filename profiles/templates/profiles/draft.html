@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+
+<div class="row">
+    
+        <img src="{{ view_drafts.image.url }}" alt="{{ view_drafts.title }}">
+        <p><strong>{{ view_drafts.title | safe }}</strong></p>
+        <p>{{ view_drafts.excerpt | safe }}</p>
+        <p>{{ view_drafts.synopsis | safe }}</p>
+        <button><a href="#">Edit book details</a></button>
+        <button><a href="#">Delete book</a></button>
+</div>
+<br>
+<div class="row">
+    <p><strong>{{ view_drafts.chapter | safe }}</strong></p>
+    <p>{{ view_drafts.chapter | safe }}</p>
+    <button><a href="">Edit Chapter</a></button>
+    <button><a href="">Add Chapter</a></button>
+    <button><a href="">Delete Chapter</a></button>
+</div>
+
+
+{% endblock content %}
