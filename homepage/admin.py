@@ -14,6 +14,6 @@ class FunFactAdmin(admin.ModelAdmin):
 
 @admin.register(BookQuote)
 class QuotesAdmin(admin.ModelAdmin):
-    list_display = ['quote',]
-    search_fields = ['quote']
-    summernote_fields = ('quote',)
+    list_display = ['quote', 'quote_author']
+    search_fields = ['quote', 'quote_author']
+    summernote_fields = ('quote', 'quote_author')

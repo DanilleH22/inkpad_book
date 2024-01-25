@@ -12,6 +12,7 @@ class FunFact(models.Model):
 
 class BookQuote(models.Model):
     quote = models.CharField(max_length=200, blank=False)
+    quote_author = models.CharField(max_length=200, blank=False, default='')
 
     def __str__(self):
         return self.quote
