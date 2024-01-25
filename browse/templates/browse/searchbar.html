@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+    {% if books %}
+
+        {% for book in books %}
+            <div class="row">
+                <img src="{{ book.image }}" alt="{{ book.title }}" />
+                <h3>{{ book.title | safe }}</h3>
+                <p>{{ book.excerpt | safe }}</p>
+                <button><a href="{% url 'book_view' book.slug %}">View book</a></button>
+            </div>
+        {% endfor %}
+
+    {% else %}
+        <h3>
+            No results found.
+        </h3>
+
+    {% endif%}
+
+{% endblock %}
