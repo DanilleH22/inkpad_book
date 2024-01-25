@@ -1,38 +1,69 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
-<div>
+<div class="container-fluid">
     <header>
-        <h1>Browse our book selections</h1>
+        <h1 class="text-center">Browse our book selections</h1>
     </header>
+    
+    <div>
+        <form action="{% url 'searchbar' %}" method="GET">
+            <input type="text" name="search">
+            <button type="submit">Search</button>
+        </form>
+    </div>
 
       
-    {% for book in book_list %}
-    <div>
-        <img src="{{ book.image }}" alt="{{ book.title }}" />
-        <h3>{{ book.title | safe }}</h3>
-        <p>{{ book.excerpt | safe }}</p>
-        <button><a href="{% url 'book_view' book.slug %}">View book</a></button>
-        <br>
-        {% if user.is_authenticated %}
-            <form action="{% url 'bookmark_book' slug=book.slug %}" method="POST">
-                {% csrf_token %}
-                {% if book.id in bookmarked_book_ids %}
-                    <!-- Unbookmark button -->
-                    <button type="submit" name="book_id" value="{{ book.id }}" class="btn btn-danger">UnBookmark</button>
-                {% else %}
-                    <!-- Bookmark button -->
-                    <button type="submit" name="book_id" value="{{ book.id }}" class="btn btn-primary">Bookmark</button>
-                {% endif %}
-            </form>
+    <div class="row">
+        {% for book in book_list %}
+        <div class="col-sm-4 mb-3 text-center">
+            <div class="card">
+                <div class="card-body">
+                    <img src="{{ book.image }}" alt="{{ book.title }}" class="card-img-top">
+                    <h5 class="card-title">{{ book.title | safe }}</h5>
+                    <p class="card-text">{{ book.excerpt | safe }}</p>
+                    <a href="{% url 'book_view' book.slug %}" class="btn btn-primary">View book</a>
+                    {% if user.is_authenticated %}
+                        <a href="#" class="btn btn-primary">Read now</a>
+                        <form action="{% url 'bookmark_book' slug=book.slug %}" method="POST">
+                            {% csrf_token %}
+                            {% if book.id in bookmarked_book_ids %}
+                                <button type="submit" name="book_id" value="{{ book.id }}" class="btn btn-danger">UnBookmark</button>
+                            {% else %}
+                                <button type="submit" name="book_id" value="{{ book.id }}" class="btn btn-primary">Bookmark</button>
+                            {% endif %}
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 and not forloop.last %}
+        </div><div class="row">
         {% endif %}
-        
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 
 
+  <nav aria-label="Page navigation">
+    <ul class="pagination">
+      <li class="page-item">
+        {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}" class="page-link" aria-label="Prev">&laquo; Prev </a>
+      {% endif %}
+      </li>
+      <span class="current">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+    </span>
+      <li class="page-item">
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}" class="page-link" aria-label="Next">next &raquo;</a>
+      {% endif %}
+    
+      </li>
+    </ul>
+  </nav>
 
-<div class="pagination">
+<!-- <div class="pagination">
   <span class="step-links">
       {% if page_obj.has_previous %}
           <a href="?page=1">&laquo; first</a>
@@ -48,7 +79,7 @@
           <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
       {% endif %}
   </span>
-</div>
+</div> -->
 
 <!-- index.html content ends here -->
 {% endblock content %}
