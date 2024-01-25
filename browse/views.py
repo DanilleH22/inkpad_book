@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from book.models import CreateBook, CreateChapter
 from django.views import generic
 from django.views.generic import View, DetailView, ListView, UpdateView, DeleteView
@@ -10,7 +11,7 @@ from django.db.models import Prefetch
 # from book.forms import CreateChapterForm
 
 # Create your views here.
-# @login_required
+@login_required
 def BookmarkView(request, slug):
     if request.method == 'POST':
         book = get_object_or_404(CreateBook, slug=slug)
@@ -77,6 +78,17 @@ class BookChaptersView(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['book'] = self.book
         return context
+
+
+def searchbar(request):
+    if request.method == 'GET':
+        search = request.GET.get('search')
+        books = CreateBook.objects.all().filter(title__icontains=search)
+        return render (request, 'searchbar.html', {
+            "books": books
+            }
+            )
+
 
 
     # def form_valid(self, form):
