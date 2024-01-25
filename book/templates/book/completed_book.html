@@ -2,20 +2,17 @@
 
 <div>
     <header>
-        <h1>Your book has been updated!</h1>
+        <h1>Your book has been published!</h1>
     </header>
-    {% for obj in books %}
         <div>
-            <img src="{{ obj.image }}" alt="{{ obj.title }}" />
-            <h3>{{ obj.title | safe }}</h3>
-            <p>{{ obj.excerpt | safe }}</p>
-            <p>{{ obj.synopsis | safe }}</p>
-            <!-- <p>{{ obj.pk | safe }}</p> -->
-            <button><a href="{% url 'add_chapter' book_slug=obj.slug %}">Add a chapter</a></button>
-            <button><a href="{% url 'edit_book' slug=obj.slug pk=obj.pk %}">Edit book details</a></button>
-            <button><a href="{% url 'delete_book' slug=obj.slug %}">Delete book</a></button>
+            <img src="{{ books.image }}" alt="{{ books.title }}" />
+            <h3>{{ books.title | safe }}</h3>
+            <p>{{ books.excerpt | safe }}</p>
+            <p>{{ books.synopsis | safe }}</p>
+            <button><a href="{% url 'add_chapter' book_slug=books.slug %}">Add a chapter</a></button>
+            <button><a href="{% url 'edit_book' slug=books.slug pk=books.pk %}">Edit book details</a></button>
+            <button><a href="{% url 'delete_book' slug=books.slug %}">Delete book</a></button>
         </div>
-    {% endfor %}
 </div>
 
 {% endblock content %}
