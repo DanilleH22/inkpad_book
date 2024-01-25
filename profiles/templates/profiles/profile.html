@@ -24,13 +24,23 @@
     </div>
 
     <div class="row">
+        <h4>Books in draft:</h4>
+        {% for draft in drafts %}
+        <a href="{% url 'draft' slug=draft.slug %}">
+            <img src="{{ draft.image.url }}" alt="{{ draft.title }}">
+            <p><strong>{{ draft.title | safe }}</strong></p>
+            <p>{{ draft.excerpt | safe }}</p>
+        </a>
+        {% endfor %}
+    </div>
+
+    <div class="row">
         <h4>Books currently reading:</h4>
         <p>Books reading</p>
         <button><a href="">continue reading</a></button>
     </div>
 
     <div class="row">
-        <p>Wishlist</p>
        <button><a href="{% url 'bookmarked' %}">View Bookmarks</a></button>
     </div>
 
