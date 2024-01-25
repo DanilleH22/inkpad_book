@@ -18,7 +18,7 @@
         <div class="col-sm-4 mb-3 text-center">
             <div class="card">
                 <div class="card-body">
-                    <img src="{{ book.image }}" alt="{{ book.title }}" class="card-img-top">
+                    <img src="{{ book.image.url }}" alt="{{ book.title }}" class="card-img-top">
                     <h5 class="card-title">{{ book.title | safe }}</h5>
                     <p class="card-text">{{ book.excerpt | safe }}</p>
                     <a href="{% url 'book_view' book.slug %}" class="btn btn-primary">View book</a>
@@ -63,23 +63,9 @@
     </ul>
   </nav>
 
-<!-- <div class="pagination">
-  <span class="step-links">
-      {% if page_obj.has_previous %}
-          <a href="?page=1">&laquo; first</a>
-          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-      {% endif %}
-
-      <span class="current">
-          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-      </span>
-
-      {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}">next</a>
-          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-      {% endif %}
-  </span>
-</div> -->
+<!-- MAke search bar bigger and centre  -->
+<!-- make boxes align  -->
+<!-- center pagination -->
 
 <!-- index.html content ends here -->
 {% endblock content %}
