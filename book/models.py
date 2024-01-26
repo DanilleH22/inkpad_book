@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+from cloudinary.models import CloudinaryField
+
 
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -27,7 +29,7 @@ class CreateBook(models.Model):
         choices=((0, "Draft"), (1, "Published")), default=0)
     excerpt = models.TextField(max_length=500)
     synopsis = models.TextField(max_length=1500, default='')
-    image = models.ImageField(upload_to='images/')
+    image = CloudinaryField('image', default='placeholder')
     genre = models.ForeignKey(
         Categories, related_name='category', on_delete=models.SET_NULL,
         blank=True,
