@@ -25,12 +25,12 @@
             <div class="card-wrapper container-sm d-flex justify-content-around">
                 {% endif %}
 
-                <div class="card" style="width: 18rem;">
+                <div class="card h-100" style="width: 25rem;">
                     <img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.title }}">
                     <div class="card-body">
-                        <h5 class="card-title">{{ book.title }}</h5>
-                        <p class="card-text"><strong>{{ book.title | safe }}</strong></p>
-                        <p class="card-text">{{ book.excerpt | safe }}</p>
+                        <h5 class="card-title">{{ book.title | safe }}</h5>
+                        <p class="card-text"><strong>{{ book.excerpt | safe }}</strong></p>
+                        <button><a href="{% url 'book_view' slug=book.slug %}">View book</a></button>
                     </div>
                 </div>
 
@@ -74,12 +74,12 @@
         <div class="card-wrapper container-sm d-flex justify-content-around">
             {% endif %}
 
-            <div class="card" style="width: 18rem;">
+            <div class="card h-100" style="width: 25rem;">
                 <img src="{{ draft.image.url }}" class="card-img-top" alt="{{ draft.title }}">
                 <div class="card-body">
-                    <h5 class="card-title">{{ draft.title }}</h5>
-                    <p class="card-text"><strong>{{ draft.title | safe }}</strong></p>
+                    <h5 class="card-title">{{ draft.title | title }}</h5>
                     <p class="card-text">{{ draft.excerpt | safe }}</p>
+                    <button><a href="{% url 'draft' slug=draft.slug pk=draft.pk %}">View book</a></button>
                 </div>
             </div>
 
