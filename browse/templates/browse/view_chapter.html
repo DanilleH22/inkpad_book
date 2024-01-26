@@ -31,7 +31,7 @@
   </div>
   {% if user.is_authenticated %}
           {% if book.author == request.user %}
-          <button><a href="{% url 'add_chapter' book.slug %} btn btn-light">Add a chapter</a></button>
+          <button class="bg-warning-bg-subtle"><a href="{% url 'add_chapter' book.slug %}" >Add a chapter</a></button>
           {% endif %}
           <button><a href="#">Read now</a></button>
           {% endif %}
