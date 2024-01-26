@@ -1,20 +1,25 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
-<div>
+<div class="container">
     <header>
-        <h1>Create Your Book</h1>
-        <h3>Please note that once you have created the title, excerpt and biography it can not be changed.</h3>
+        <h1 class="text-center">Create Your Book</h1>
+        
     </header>
 
     <!-- Form for Book details -->
-    <div>
-        <form method="post" enctype="multipart/form-data" id="bookCreationForm">
-            {% csrf_token %} {{ form.as_p }}
-            <button type="submit" id="submitAndNext">
-                Next
-            </button>
+    <div class="d-flex justify-content-center">
+        <form method="post" enctype="multipart/form-data" id="bookCreationForm" class="form-group">
+            <div class="form-group">
+                {% csrf_token %} {{ form.as_p }}
+            </div>
+                <button type="submit" id="submitAndNext">
+                    Next
+                </button>
+            
         </form>
     </div>
+    
+    
 </div>
 
 {% endblock content %}

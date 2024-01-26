@@ -1,19 +1,22 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
-<body>
-  <header>
-    <h1>Edit {{ book.title }} chapter </h1>
+<div class="container">
+  <header class="d-flex justify-content-center">
+    <h1>Edit {{ books.title }} Book </h1>
   </header>
 
-  <div>
-    <form method="post" enctype="multipart/form-data" id="bookCreationForm">
-      {% csrf_token %} {{ form.as_p }}
-      <button
-        type="submit">
-        Update
-      </button>
+  <div class="d-flex justify-content-center">
+    <form method="post" enctype="multipart/form-data" id="bookCreationForm" class="form-group">
+        <div class="form-group">
+            {% csrf_token %} {{ form.as_p }}
+        </div>
+            <button type="submit" id="submitAndNext">
+              Update
+            </button>
+        
     </form>
+  
   </div>
 
   {% endblock content %}
-</body>
+</div>
