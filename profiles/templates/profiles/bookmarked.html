@@ -2,26 +2,46 @@
 
 <div class="container">
     
-    {% for bookmark in bookmarked_books %}
-        <img src="{{ bookmark.image.url }}" alt="{{ bookmark.title }}">
-        <h2>{{ bookmark.title | safe }}</h2>
-        <p>{{ bookmark.excerpt | safe }}</p>
-        <button><a href="#">Read now</a></button>
-        <form action="{% url 'bookmark_book' slug=bookmark.slug %}" method="POST">
-            {% csrf_token %}
-            {% if book.id in bookmarked_book_ids %}
-                <button type="submit" class="btn btn-primary">Bookmark</button>
-            {% else %}
-                <button type="submit" class="btn btn-danger">UnBookmark</button>
+    <section>
+        {% for bookmark in bookmarked_books %}
+            {% if forloop.counter0|divisibleby:2 %}
+                {% if not forloop.first %}</div>{% endif %} 
+                <div class="row g-0">
             {% endif %}
-        </form>
-    {% empty %}
-        <h2>No books in Bookmarks</h2>
-        <p>Why don't you browse our books?</p>
-        <button type="submit"><a href="{% url 'browse' %}">Browse</a></button>
-        
-    {% endfor %}
-
+    
+            <div class="col-md-6">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{{ bookmark.image.url }}" class="img-fluid rounded-start" alt="{{ bookmark.title }}">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ bookmark.title | safe }}</h5>
+                                <p class="card-text">{{ bookmark.excerpt | safe }}</p>
+                                <button><a href="#">Read now</a></button>
+                                <form action="{% url 'bookmark_book' slug=bookmark.slug %}" method="POST">
+                                    {% csrf_token %}
+                                    {% if bookmark.id in bookmarked_book_ids %}
+                                        <button type="submit" class="btn btn-primary">Bookmark</button>
+                                    {% else %}
+                                        <button type="submit" class="btn btn-danger">UnBookmark</button>
+                                    {% endif %}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            {% if forloop.last %}</div>{% endif %} 
+        {% empty %}
+            <h2>No books in Bookmarks</h2>
+            <p>Why don't you browse our books?</p>
+            <button type="submit"><a href="{% url 'browse' %}">Browse</a></button>
+            {% endfor %}
+    </section>
+    
     
 </div>
 
