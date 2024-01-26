@@ -54,50 +54,63 @@
     <div class="card-header --bs-warning-bg-subtle">
       <h2>Fun Quotes</h2>
     </div>
-    <div class="card-body">
+    <div class="card-body" id="funFacts">
       <blockquote class="blockquote mb-0">
         {% for q in quotations %}
         <p>{{ q.quote }}</p>
         <footer class="blockquote-footer"><cite title="Source Title">{{ q.quote_author }}</cite></footer>
+        <hr>
         {% endfor %}
       </blockquote>
     </div>
   </div>
   <br>
 
-  <div class="row">
-    <h3>Whats the purpose?</h3>
-            <p>
-              We are Inkpad, an online website for upcoming authors. We give unpublished
+  <section>
+    <h2>About us</h2>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Whats the purpose?</h5>
+            <p class="card-text">We are Inkpad, an online website for upcoming authors. We give unpublished
               and even published authors the oppurtunity to show the world whats in their
               mind. We allow people to express themself with no limits (shout out to the ones
               who write freaky books). But it's not just for those who wants to write,
-              Inkpad is for those who love to read.
-            </p>
-  </div>
-  <div class="row">
-    <h3>Why make the website?</h3>
-            <p>
+              Inkpad is for those who love to read.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Why make the website?</h5>
+            <p class="card-text">
               I'm gald you asked. Wattpad is no longer free, and since it's not I'm making my own version!
             </p>
-            <p>
+            <p class="card-text">
               On a more serious note... When I was younger I used to read Wattpad until 3/4am because I could never
               afford to actually buy books (perks of being 13 with no job). So to see that
               they are charging, upsets me because my love for books started with Wattpad.
               So to charge for it stops the next generation having that same love.
             </p>
-  </div>
-  
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   
   <br>
 
-    <div class="card text-center --bs-warning-bg-subtle">
+    <div class="card text-center bg-warning-bg-subtle">
       <div class="card-header">
         <h2>Fun Facts</h2>
       </div>
       <div class="card-body">
         {% for fun in fun_facts %}
         <p>{{ fun.fact }}</p>
+        <hr>
         {% endfor %}
       </div>
       <div class="card-footer text-body-secondary">
