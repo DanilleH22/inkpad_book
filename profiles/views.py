@@ -17,9 +17,13 @@ def view_profile(request):
             )
 
 
-def book_draft(request, slug):
-    view_drafts = get_object_or_404(CreateBook, slug=slug, status=0)
-    return render(request, 'profiles/draft.html', {'view_drafts': view_drafts})
+def book_draft(request, slug, pk):
+    view_draft_books = get_object_or_404(CreateBook, slug=slug, pk=pk, status=0)
+    view_draft_chapters = get_object_or_404(CreateChapter, slug=slug, pk=pk, status=0)
+    return render(request, 'profiles/draft.html', {
+        'view_draft_books': view_draft_books,
+        'view_draft_chapters': view_draft_chapters, 
+    })
 
 
 @login_required
