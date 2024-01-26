@@ -64,7 +64,7 @@ class CompletedBook(LoginRequiredMixin, ListView):
             'book/completed_book.html',
             {
                 'books': books,
-                # 'chapters': chapters,
+               
             }
         )
 
@@ -72,14 +72,13 @@ class CompletedBook(LoginRequiredMixin, ListView):
 class EditChapter(LoginRequiredMixin, UpdateView):
     template_name = 'book/edit_chapter.html'
     model = CreateChapter
-    fields = ['chapter', 'content', 'status']
+    form_class = CreateChapterForm
     success_url = reverse_lazy('home')
-
-    def get_success_url(self, request, *args, **kwargs):
-        messages.success(request, 'Chapter has been edited successfully.')
-        # Define where to redirect after successful update
-        return super(EditChapter, self).delete(request, *args, **kwargs)
-
+    
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'Chapter has been updated successfully.')
+        return response
 
 class EditBookDetails(LoginRequiredMixin, UpdateView):
     template_name = 'book/edit_book.html'
@@ -87,10 +86,12 @@ class EditBookDetails(LoginRequiredMixin, UpdateView):
     form_class = CreateBookForm
     success_url = reverse_lazy('home')
 
-    def get_success_url(self, request, *args, **kwargs):
-        messages.success(request, 'Book has been deleted successfully.')
-        # Define where to redirect after successful update
-        return super(EditBookDetails, self).delete(request, *args, **kwargs)
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'Book has been updated successfully.')
+        return response
+
+
 
 
 class DeleteChapter(LoginRequiredMixin, DeleteView):
@@ -112,45 +113,3 @@ class DeleteBook(LoginRequiredMixin, DeleteView):
         messages.success(request, 'Book has been deleted successfully.')
         return super(DeleteBook, self).delete(request, *args, **kwargs)
 
-
-# def BookmarkView(request, slug):
-#     #  Get the book using its slug
-#     book = get_object_or_404(CreateBook, slug=request.POST.get('book_id'))
-#     book.bookmark.add(request.user)
-    
-
-
-# @login_required
-# def BookmarkView(request, slug):
-#     if request.method == 'POST':
-#         book = get_object_or_404(CreateBook, slug=slug)
-#         bookmarked = False 
-#         if book.bookmark.filter(id=request.user.id).exists():
-#             book.bookmark.remove(request.user)
-#             bookmarked = False
-#         else:     
-#             book.bookmark.add(request.user)
-#             bookmarked = True 
-#          # Redirect to the referring page or a default page
-#         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/default-redirect/'))
-#     else:
-#         return redirect('home')
-
-
-# class DeleteChapter(LoginRequiredMixin, DeleteView):
-#     template_name = 'book/delete_chapter.html'
-#     model = CreateChapter
-
-#     def get_success_url(self):
-#         return reverse('completed_book')
-
-
-# To check Pk in shell for both chapter and book
-
-# from book.models import CreateBook
-# for book in CreateBook.objects.all():
-#     print(book.pk, book)
-
-# from book.models import CreateChapter
-# for chapter in CreateChapter.objects.all():
-#    print(chapter.pk, chapter)
