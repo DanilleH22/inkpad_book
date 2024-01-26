@@ -1,53 +1,121 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
 <div class="container">
-    
-    <div class="row">
+
+    <div class="row text-center">
         <h2>{{ user }}</h2>
     </div>
     <div class="row">
-        <h3><a href="{% url 'book_details' %}">Create new book</a></h3>
+        <button type="button"><a href="{% url 'book_details' %}">Create new book</a></button>
+        <button type="button"><a href="{% url 'bookmarked' %}">View Bookmarks</a></button>
     </div>
-    
-    {% if user == request.user %}
-    <div class="row">  
-        <p><strong>Books you've written:</strong></p>
-        {% for book in user_books %}
-            <a href="{% url 'book_view' book.slug %}">
-                <div class="row">
-                        <img src="{{ book.image.url }}" alt="{{ book.title }}">
-                    <p><strong>{{ book.title | safe }}</strong></p>
-                    <p>{{ book.excerpt | safe }}</p>
+
+    <section>
+        <h4>Books you've published:</h4>
+        {% if user_books %}
+        <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {% for book in user_books %}
+                {% if forloop.counter0|divisibleby:3 %}
+                {% if not forloop.first %}
+            </div>
+        </div>
+        {% endif %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <div class="card-wrapper container-sm d-flex justify-content-around">
+                {% endif %}
+
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text"><strong>{{ book.title | safe }}</strong></p>
+                        <p class="card-text">{{ book.excerpt | safe }}</p>
+                    </div>
                 </div>
-            </a>
+
+                {% if forloop.last %}
+            </div>
+        </div>
+        {% endif %}
         {% endfor %}
-    </div>
+        </div>
 
-    <div class="row">
-        <h4>Books in draft:</h4>
-        {% for draft in drafts %}
-        <a href="{% url 'draft' slug=draft.slug %}">
-            <img src="{{ draft.image.url }}" alt="{{ draft.title }}">
-            <p><strong>{{ draft.title | safe }}</strong></p>
-            <p>{{ draft.excerpt | safe }}</p>
-        </a>
-        {% endfor %}
-    </div>
+        <!-- Carousel controls here -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        </div>
+        {% else %}
+        <h4>You have not published any books</h4>
+        {% endif %}
+</section>
 
-    <div class="row">
-        <h4>Books currently reading:</h4>
-        <p>Books reading</p>
-        <button><a href="">continue reading</a></button>
-    </div>
 
-    <div class="row">
-       <button><a href="{% url 'bookmarked' %}">View Bookmarks</a></button>
-    </div>
 
-    
+
+<section>
+    <h4>Books in draft:</h4>
+    {% if drafts %}
+    <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for draft in drafts %}
+            {% if forloop.counter0|divisibleby:3 %}
+            {% if not forloop.first %}
+        </div>
+    </div>
     {% endif %}
+    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <div class="card-wrapper container-sm d-flex justify-content-around">
+            {% endif %}
 
-    
+            <div class="card" style="width: 18rem;">
+                <img src="{{ draft.image.url }}" class="card-img-top" alt="{{ draft.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ draft.title }}</h5>
+                    <p class="card-text"><strong>{{ draft.title | safe }}</strong></p>
+                    <p class="card-text">{{ draft.excerpt | safe }}</p>
+                </div>
+            </div>
+
+            {% if forloop.last %}
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+
+    <!-- Carousel controls here -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+    </div>
+    {% else %}
+    <h4>You have not got any books in draft</h4>
+    {% endif %}
+</section>
+
+<div class="row">
+    <h4>Books currently reading:</h4>
+    <p>Books reading</p>
+    <button><a href="">continue reading</a></button>
+</div>
+
+
+
+
+
+
 </div>
 
 
