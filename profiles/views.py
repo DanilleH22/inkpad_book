@@ -18,12 +18,21 @@ def view_profile(request):
 
 
 def book_draft(request, slug, pk):
-    view_draft_books = get_object_or_404(CreateBook, slug=slug, pk=pk, status=0)
-    view_draft_chapters = get_object_or_404(CreateChapter, slug=slug, pk=pk, status=0)
+    # Retrieve the draft book using slug and pk
+    draft_book = get_object_or_404(CreateBook, slug=slug, pk=pk, status=0)
+    
+    # Retrieve the chapters related to the draft book
+    draft_chapters = CreateChapter.objects.filter(book=draft_book, status=0)
+
+     # Add the book's slug to each chapter for URL construction
+    for chapter in draft_chapters:
+        chapter.book_slug = draft_book.slug
+
     return render(request, 'profiles/draft.html', {
-        'view_draft_books': view_draft_books,
-        'view_draft_chapters': view_draft_chapters, 
+        'draft_book': draft_book,
+        'draft_chapters': draft_chapters, 
     })
+
 
 
 @login_required
