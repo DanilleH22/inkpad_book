@@ -8,7 +8,7 @@
   <div class="d-flex justify-content-center">
     <form method="post" enctype="multipart/form-data" id="bookCreationForm" class="form-group">
         <div class="form-group">
-            {% csrf_token %} {{ form.as_p }}
+            {% csrf_token %} {{ form }}
         </div>
             <button type="submit" id="submitAndNext">
               Update
