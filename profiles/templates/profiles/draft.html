@@ -1,23 +1,30 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
-
-<div class="row">
-    
-        <img src="{{ view_drafts.image.url }}" alt="{{ view_drafts.title }}">
-        <p><strong>{{ view_drafts.title | safe }}</strong></p>
-        <p>{{ view_drafts.excerpt | safe }}</p>
-        <p>{{ view_drafts.synopsis | safe }}</p>
-        <button><a href="#">Edit book details</a></button>
-        <button><a href="#">Delete book</a></button>
+<div class="container">
+    <section class="text-center">
+        <div class="card" style="width: 30rem;">
+            <div class="card-body">
+                <img src="{{ draft_book.image.url }}" class="card-img-top" alt="{{ draft_book.title }}">
+              <h5 class="card-title">{{ draft_book.title | safe }}</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">{{ draft_book.excerpt | safe }}</h6>
+              <p class="card-text">{{ draft_book.synopsis | safe }}</p>
+              <a href="{% url 'edit_book' slug=draft_book.slug pk=draft_book.pk %}" class="btn btn-secondary card-link">Edit book details</a>
+              <a href="{% url 'delete_book' slug=draft_book.slug %}" class="btn btn-secondary card-link" >Delete book</a>
+            </div>
+            <hr>
+            {% for chapters in draft_chapters %}
+            <div class="row">
+                <h6><strong>Chapters:</strong></h6>
+                <p class="card-text">{{ chapters.chapter | safe }} - <a href="{% url 'edit_book_chapter' book_slug=chapters.book_slug pk=chapters.pk %}" class="btn btn-secondary card-link">
+                    Edit Chapter</a> - <a href="{% url 'delete_book_chapter' book_slug=chapters.book_slug pk=chapters.pk %}" class="btn btn-secondary card-link">Delete chapter</a></p>
+                <a href="{% url 'add_chapter' book_slug=chapters.book_slug %}" class="btn btn-secondary card-link">Add a chapter</a>
+                
+            </div>
+            {% endfor %}
+          </div>
+          
+    </section>
+   
 </div>
-<br>
-<div class="row">
-    <p><strong>{{ view_drafts.chapter | safe }}</strong></p>
-    <p>{{ view_drafts.chapter | safe }}</p>
-    <button><a href="">Edit Chapter</a></button>
-    <button><a href="">Add Chapter</a></button>
-    <button><a href="">Delete Chapter</a></button>
-</div>
-
 
 {% endblock content %}
