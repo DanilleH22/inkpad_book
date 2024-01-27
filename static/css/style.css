@@ -118,9 +118,7 @@ footer {
 
 .button-container {
     display: flex;
-  }
-
-
+}
 
 /* ---------- Reading Book */
 
@@ -143,4 +141,13 @@ footer {
 #prev-chapter,
 #next-chapter {
     position: relative;
+}
+
+
+/* ----------- Bookmark Page */
+/* Read now button */
+#btnTest {
+    width: 80%;
+  height: 80%;
+  display: block;
 }
