@@ -1,0 +1,39 @@
+
+a {
+    text-decoration: none;
+    color: #484747;
+}
+
+/* --------- Index --------- */
+
+.homepage-container{
+    height: auto;
+    max-width: 100%;
+}
+
+.banner-card{
+    position: relative;
+}
+
+.banner-card img {
+    width: 100vw;
+    height: 80vh;
+}
+
+.banner-text{
+    position: absolute;
+    top: 80px;
+    right: 0;
+    color: #403e3e;
+    padding: 100px;
+}
+
+.banner-text h4 {
+    font-size: 75px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.banner-text p {
+    font-size: 20px;
+}
