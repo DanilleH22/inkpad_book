@@ -1,33 +1,38 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
 <!-- Image head re-size -->
-<div class="container-fluid w-75">
-    <div class="card text-center">
-        <div class="card-header">
-            <img src="{{ book_view.image.url }}" alt="{{ book_view.title }}" />
+<div class="container-fluid w-50">
+    <div class="card text-center" >
+        <div class="card-header" >
+            <img src="{{ book_view.image.url }}" alt="{{ book_view.title }}" id="img-size"/>
         </div>
         <div class="card-body">
             <h3>{{ book_view.title | safe }}</h3>
             <p>{{ book_view.synopsis | safe }}</p>
             {% if user.is_authenticated %}
-            <button><a href="#">Read now</a></button>
+            <div class="grid">
+                <div class="g-col-6 g-col-md-4">
+                    <a href="#" class=" btn btn-secondary">Read now</a>
             {% if book_view.author == request.user %}
-            <button><a href="{% url 'add_chapter' book_view.slug %}">Add a chapter</a></button>
-            <button><a href="{% url 'edit_book' book_view.slug book_view.pk %}">Edit book details</a></button>
-            <button><a href="{% url 'delete_book' book_view.slug %}">Delete book</a></button>
+            <a href="{% url 'add_chapter' book_view.slug %}" class="btn btn-secondary">Add a chapter</a>
+            <a href="{% url 'edit_book' book_view.slug book_view.pk %}" class="btn btn-secondary">Edit book details</a>
+            <a href="{% url 'delete_book' book_view.slug %}" class="btn btn-secondary">Delete book</a>
             {% endif %}
-            <button><a href="{% url 'view_book_chapters' book_view.slug %}">View Chapters</a></button>
+            <a href="{% url 'view_book_chapters' book_view.slug %}" class="btn btn-secondary">View Chapters</a>
+                </div>
+            </div>
+            
 
             <form action="{% url 'bookmark_book' slug=book_view.slug %}" method="POST">
                 {% csrf_token %}
                 {% if bookmarked %}
                 <!-- When font awesome is installed correctly -->
                 <!-- <i class="fa-regular fa-bookmark" type="submit" name="book_id" value="{{ book.id }}"></i> -->
-                <button type="submit" name="book_id" value="{{ book_view.id }}" class="btn btn-danger"><i
-                        class="fa-solid fa-bookmark"></i></button>
+                <button type="submit" name="book_id" value="{{ book_view.id }}" class="bookmark"><i
+                        class="fa-solid fa-bookmark fa-2x"></i></button>
                 {% else %}
-                <button type="submit" name="book_id" value="{{ book_view.id }}" class="btn btn-primary"><i
-                        class="fa-regular fa-bookmark"></i></button>
+                <button type="submit" name="book_id" value="{{ book_view.id }}" class="bookmark"><i
+                        class="fa-regular fa-bookmark fa-2x"></i></button>
                 {% endif %}
             </form>
         </div>
