@@ -3,6 +3,13 @@ from .models import CreateBook, CreateChapter
 
 
 class CreateBookForm(forms.ModelForm):
+    STATUS_CHOICES = [
+        (0, 'Draft'),
+        (1, 'Publish')
+    ]
+
+    status = forms.ChoiceField(choices=STATUS_CHOICES)
+
     class Meta:
         model = CreateBook
         fields = ["title", "genre", 'status', 'excerpt',
@@ -17,6 +24,12 @@ class CreateBookForm(forms.ModelForm):
 
 
 class CreateChapterForm(forms.ModelForm):
+    STATUS_CHOICES = [
+        (0, 'Draft'),
+        (1, 'Publish')
+    ]
+
+    status = forms.ChoiceField(choices=STATUS_CHOICES)
 
     class Meta:
         model = CreateChapter
