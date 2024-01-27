@@ -20,6 +20,12 @@ button {
     object-fit: cover;
 }
 
+#img-size-row {
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+}
+
 .card  {
     margin: 15px;
 }
@@ -108,3 +114,33 @@ footer {
 }
 
 
+/* Buttons  */
+
+.button-container {
+    display: flex;
+  }
+
+
+
+/* ---------- Reading Book */
+
+.book-container {
+    border: 5px solid #d8d6d6dd;
+    border-radius: 25px;
+    margin: 10px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+}
+
+#bookContent {
+   object-fit: cover;
+}
+
+/* Buttons for next and prev content */
+#prev-chapter,
+#next-chapter {
+    position: relative;
+}
