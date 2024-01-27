@@ -7,12 +7,12 @@
 
   
   <div class="d-flex justify-content-center">
-    <form method="post" enctype="multipart/form-data" id="bookCreationForm" class="form-group">
+    <form method="post" enctype="multipart/form-data" class="form-group">
         <div class="form-group">
             {% csrf_token %} {{ form }}
         </div>
         <div class="col text-center">
-          <button type="submit" id="submitAndNext" class="btn btn-secondary">
+          <button type="submit" class="btn btn-secondary">
             Submit
           </button>
         </div>
