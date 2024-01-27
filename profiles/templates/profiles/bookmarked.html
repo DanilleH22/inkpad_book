@@ -13,21 +13,28 @@
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="{{ bookmark.image.url }}" class="img-fluid rounded-start" alt="{{ bookmark.title }}">
+                            <img src="{{ bookmark.image.url }}" class="img-fluid rounded-start" alt="{{ bookmark.title }}" id="img-size-row">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">{{ bookmark.title | safe }}</h5>
                                 <p class="card-text">{{ bookmark.excerpt | safe }}</p>
-                                <button><a href="#">Read now</a></button>
-                                <form action="{% url 'bookmark_book' slug=bookmark.slug %}" method="POST">
-                                    {% csrf_token %}
-                                    {% if bookmark.id in bookmarked_book_ids %}
-                                        <button type="submit" class="btn btn-primary">Bookmark</button>
-                                    {% else %}
-                                        <button type="submit" class="btn btn-danger">UnBookmark</button>
-                                    {% endif %}
-                                </form>
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-md-5 text-center">
+                                      <a href="{% url 'read_book' slug=bookmark.slug %}" class="btn btn-secondary" id="btnTest">Read now</a>
+                                    </div>
+                                    <div class="col-md-3">
+                                      <form action="{% url 'bookmark_book' slug=bookmark.slug %}" method="POST">
+                                          {% csrf_token %}
+                                          {% if bookmark.id in bookmarked_book_ids %}
+                                          <button type="submit" name="book_id" value="{{ book.id }}" class="bookmark"><i class="fa-regular fa-bookmark fa-lg"></i></button>
+                                          {% else %}
+                                          <button type="submit" name="book_id" value="{{ book.id }}" class="bookmark" ><i class="fa-solid fa-bookmark fa-lg"></i></button>
+                                          {% endif %}
+                                      </form>
+                                    </div>
+                                  </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -42,7 +49,8 @@
             {% endfor %}
     </section>
     
-    
+    <div class="container text-center">
+        
 </div>
 
 
