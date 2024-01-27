@@ -7,6 +7,11 @@ a {
     margin: 3px 2px;
 }
 
+
+button {
+    margin: 10px;
+}
+
 /* image card sizes */
 
 #img-size {
@@ -18,6 +23,7 @@ a {
 .card  {
     margin: 15px;
 }
+
 
 
 /* ------- Base.html --------- */
