@@ -4,14 +4,6 @@
     <header>
         <h1 class="text-center">Browse our book selections</h1>
     </header>
-    
-    <div>
-        <form action="{% url 'searchbar' %}" method="GET">
-            <input type="text" name="search">
-            <button type="submit">Search</button>
-        </form>
-    </div>
-
       
     <div class="row">
         {% for book in book_list %}
@@ -23,7 +15,7 @@
                     <p class="card-text">{{ book.excerpt | safe }}</p>
                     <a href="{% url 'book_view' book.slug %}" class="btn btn-secondary">View book</a>
                     {% if user.is_authenticated %}
-                        <a href="#" class="btn btn-secondary">Read now</a>
+                        <a href="{% url 'read_book' slug=book.slug %}" class="btn btn-secondary">Read now</a>
                         <form action="{% url 'bookmark_book' slug=book.slug %}" method="POST">
                             {% csrf_token %}
                             {% if book.id in bookmarked_book_ids %}
