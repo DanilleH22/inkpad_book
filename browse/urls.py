@@ -1,6 +1,6 @@
 from . import views
 from django.urls import path
-from .views import BookList, BookChaptersView, BookmarkView, searchbar
+from .views import BookList, BookChaptersView, BookmarkView, searchbar, flipbook
 
 
 urlpatterns = [
@@ -9,4 +9,5 @@ urlpatterns = [
     path('<slug:book_slug>/chapters', BookChaptersView.as_view(), name='view_book_chapters'), 
     path('<slug:slug>/bookmark/', BookmarkView, name='bookmark_book'),
     path('searchbar/', views.searchbar, name='searchbar'),
+    path('<slug:slug>/reading', flipbook, name='read_book')
 ]
