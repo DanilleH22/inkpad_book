@@ -101,3 +101,13 @@ def searchbar(request):
     #     # Retrive the book chapter 
 
     #     return super().form_valid(form)
+
+
+def flipbook(request, slug):
+    book_view = get_object_or_404(CreateBook, slug=slug)
+
+    context = {
+        "book_view": book_view,
+        "chapters": book_view.createchapter_set.all()
+    }
+    return render(request, 'browse/read_book.html', context)
