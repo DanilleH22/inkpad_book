@@ -1,8 +1,24 @@
 
+/* ---------  For tags throughout HTML */
+
 a {
     text-decoration: none;
     color: #484747;
+    margin: 3px 2px;
 }
+
+/* image card sizes */
+
+#img-size {
+    width: 100%;
+    height: 32vw;
+    object-fit: cover;
+}
+
+.card  {
+    margin: 15px;
+}
+
 
 /* ------- Base.html --------- */
 
@@ -80,14 +96,3 @@ footer {
 }
 
 
-/* image card sizes */
-
-#img-size {
-    width: 100%;
-    height: 32vw;
-    object-fit: cover;
-}
-
-.card  {
-    margin: 15px;
-}
