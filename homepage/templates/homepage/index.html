@@ -18,10 +18,10 @@
         <h3>From thoughts to pages - Inkpad is your space</h3>
         <p>Lets get you started then shall we?</p>
             {% if user.is_authenticated %}
-              <button type="button" class="btn btn-light"><a href="{% url 'browse' %}">Browse books</a></button>
-              <button type="button" class="btn btn-light"><a href="{% url 'book_details' %}">Create a book</a></button>
+              <a href="{% url 'browse' %}" class="btn btn-light">Browse books</a>
+              <a href="{% url 'book_details' %}" class="btn btn-light">Create a book</a>
             {% else %}
-              <button type="button" class="btn btn-light"><a href="{% url 'account_signup' %}">Log in </a></button>
+              <a href="{% url 'account_signup' %}" class="btn btn-light">Log in </a>
             {% endif %}
       </div>
     </div>

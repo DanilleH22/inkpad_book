@@ -2,7 +2,7 @@
 
 <div class="container">
     
-    <section>
+    <div>
         {% for bookmark in bookmarked_books %}
             {% if forloop.counter0|divisibleby:2 %}
                 {% if not forloop.first %}</div>{% endif %} 
@@ -45,11 +45,11 @@
         {% empty %}
             <h2>No books in Bookmarks</h2>
             <p>Why don't you browse our books?</p>
-            <button type="submit"><a href="{% url 'browse' %}">Browse</a></button>
+            <a href="{% url 'browse' %}" class="btn btn-secondary">Browse</a>
             {% endfor %}
-    </section>
+        </div>
     
-    <div class="container text-center">
+    <div>
         
 </div>
 

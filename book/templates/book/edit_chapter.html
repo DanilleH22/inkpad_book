@@ -1,24 +1,25 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
-<div class="container">
-  <header class="d-flex justify-content-center">
-    <h1>Edit chapter </h1>
-  </header>
+  <div class="container">
+    <header class="d-flex justify-content-center">
+      <h1>Edit chapter </h1>
+    </header>
 
-  <div class="d-flex justify-content-center">
-    <form method="post" enctype="multipart/form-data" id="bookCreationForm" class="form-group">
-        <div class="form-group">
-            {% csrf_token %} {{ form }}
-        </div>
-        <div class="col text-center">
-          <button type="submit" class="btn btn-secondary">
-            Update
-          </button>
-        </div>
-            
-        
-    </form>
-  
+    <div class="d-flex justify-content-center">
+      <form method="post" enctype="multipart/form-data" id="bookCreationForm" class="form-group">
+          <div class="form-group">
+              {% csrf_token %} {{ form }}
+          </div>
+          <div class="col text-center">
+            <button type="submit" class="btn btn-secondary">
+              Update
+            </button>
+          </div>
+              
+          
+      </form>
+    
+    </div>
   </div>
-  {% endblock content %}
-</div>
+{% endblock content %}
+
