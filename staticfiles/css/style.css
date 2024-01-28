@@ -108,6 +108,13 @@ footer {
     font-size: 20px;
 }
 
+/* Container for index */
+
+#homeContainer {
+    overflow: hidden;
+}
+
+
 
 /* ------ Browse -------- */
 
@@ -160,3 +167,26 @@ footer {
   height: 80%;
   display: block;
 }
+
+
+/* Log in page */
+
+#login {
+    left: 350px;
+    top: 40px;
+}
+
+
+/* Sign up page */
+#signup {
+    left: 350px;
+}
+
+/* Sign out page */
+
+#logout {
+    width: 500px;
+    left: 480px;
+    top: 120px;
+}
+
