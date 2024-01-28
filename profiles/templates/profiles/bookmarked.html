@@ -19,11 +19,11 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ bookmark.title | safe }}</h5>
                                 <p class="card-text">{{ bookmark.excerpt | safe }}</p>
-                                <div class="row d-flex justify-content-center">
-                                    <div class="col-md-5 text-center">
+                                <div class="row d-flex justify-content-center row-cols-md-3 row-cols-sm-2">
+                                    <div class="col-md-6 col-sm-auto text-center">
                                       <a href="{% url 'read_book' slug=bookmark.slug %}" class="btn btn-secondary" id="btnTest">Read now</a>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-6 col-sm-auto">
                                       <form action="{% url 'bookmark_book' slug=bookmark.slug %}" method="POST">
                                           {% csrf_token %}
                                           {% if bookmark.id in bookmarked_book_ids %}
