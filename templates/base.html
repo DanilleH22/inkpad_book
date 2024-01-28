@@ -41,12 +41,11 @@
                 <a class="nav-link" href="{% url 'browse' %}">Browse</a>
               </li>
               <li class="nav-item dropdown text-end">
+                {% if user.is_authenticated %}
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  {% if user.is_authenticated %}
+                  
                   {{ user }}
-                  {% else %}
-                  <p>You are not logged in</p>
                   {% endif %}
                 </a>
                 <ul class="dropdown-menu">
