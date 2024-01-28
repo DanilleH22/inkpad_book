@@ -1,0 +1,162 @@
+
+/* ---------  For tags throughout HTML */
+
+a {
+    text-decoration: none;
+    color: #484747;
+    margin: 3px 2px;
+}
+
+
+button {
+    margin: 10px;
+}
+
+/* ------image card sizes -----*/
+#img-size {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+}
+
+/* ----- Images in view_chapter.html -------*/
+
+#img-size-row {
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+}
+
+.card  {
+    margin: 15px;
+}
+
+/* Image in card - view_chapter  */
+#testingImg {
+    height: 40%;
+    margin: 20px;
+}
+
+
+/* Forms */
+
+.form-control {
+    margin: 8px;
+}
+
+
+
+/* ------- Base.html --------- */
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* All of the content wrapper */
+.body-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+/* Content on other html */
+.content-wrapper {
+    flex: 1;
+    /* Add padding or margin as needed */
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    height: auto;
+}
+
+
+/* --------- Index --------- */
+
+/* Image */
+.homepage-container{
+    height: auto;
+    max-width: 100%;
+}
+
+.banner-card{
+    position: relative;
+}
+
+.banner-card img {
+    width: 100vw;
+    height: 80vh;
+}
+
+.banner-text{
+    position: absolute;
+    top: 80px;
+    right: 0;
+    color: #403e3e;
+    padding: 100px;
+}
+
+.banner-text h4 {
+    font-size: 75px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.banner-text p {
+    font-size: 20px;
+}
+
+
+/* ------ Browse -------- */
+
+/* Bookmark button */
+
+.bookmark {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+
+/* Buttons  */
+
+.button-container {
+    display: flex;
+}
+
+/* ---------- Reading Book --------- */
+
+.book-container {
+    border: 5px solid #d8d6d6dd;
+    border-radius: 25px;
+    margin: 10px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+}
+
+#bookContent {
+   object-fit: cover;
+}
+
+/* Buttons for next and prev content */
+#prev-chapter,
+#next-chapter {
+    position: relative;
+}
+
+
+/* ----------- Bookmark Page */
+
+/* Read now button */
+#btnTest {
+    width: 80%;
+  height: 80%;
+  display: block;
+}
