@@ -14,14 +14,16 @@
                 </div>
                 <hr>
                 {% for chapters in draft_chapters %}
+                <h6><strong>Chapters:</strong></h6>
+                    <p class="card-text">{{ chapters.chapter | safe }} <a href="{% url 'edit_book_chapter' book_slug=chapters.book_slug pk=chapters.pk %}" class="btn btn-secondary card-link">
+                            Edit Chapter</a> -<a href="{% url 'delete_book_chapter' book_slug=chapters.book_slug pk=chapters.pk %}" class="btn btn-secondary card-link">Delete chapter</a></p>
                 <div class="row">
-                    <h6><strong>Chapters:</strong></h6>
-                    <p class="card-text">{{ chapters.chapter | safe }} - <a href="{% url 'edit_book_chapter' book_slug=chapters.book_slug pk=chapters.pk %}" class="btn btn-secondary card-link">
-                        Edit Chapter</a> - <a href="{% url 'delete_book_chapter' book_slug=chapters.book_slug pk=chapters.pk %}" class="btn btn-secondary card-link">Delete chapter</a></p>
-                    <a href="{% url 'add_chapter' book_slug=chapters.book_slug %}" class="btn btn-secondary card-link">Add a chapter</a>
-                    
+                    <div class="col">
+                        <a href="{% url 'add_chapter' book_slug=chapters.book_slug %}" class="btn btn-secondary card-link">Add a chapter</a>
+                    </div>
                 </div>
                 {% endfor %}
+                
             </div>
         </div>
         
