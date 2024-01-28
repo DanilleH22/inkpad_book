@@ -27,32 +27,33 @@
     </div>
   </section>
 
-  <br>
-  <div class="row">
-    <div class="card text-center">
-      <div class="card-header --bs-warning-bg-subtle">
-        <h2>Quotes</h2>
-      </div>
-      <div class="card-body" id="funFacts">
-        <blockquote class="blockquote mb-0">
-          {% for q in quotations %}
-          <p>{{ q.quote }}</p>
-          <footer class="blockquote-footer"><cite title="Source Title">{{ q.quote_author }}</cite></footer>
-          <hr>
-          {% endfor %}
-        </blockquote>
+  <section>
+    <div class="row" id="quotes">
+      <div class="card text-center">
+        <div class="card-header --bs-warning-bg-subtle w-100">
+          <h2>Quotes</h2>
+        </div>
+        <div class="card-body" id="funFacts">
+          <blockquote class="blockquote mb-0">
+            {% for q in quotations %}
+            <p>{{ q.quote }}</p>
+            <footer class="blockquote-footer"><cite title="Source Title">{{ q.quote_author }}</cite></footer>
+            <hr>
+            {% endfor %}
+          </blockquote>
+        </div>
       </div>
     </div>
-  </div>
-  
-  <br>
+  </section>
 
+  
+  
   <section>
-    <div class="card">
+    <div class="card" id="aboutUs">
       <div class="card-header --bs-warning-bg-subtle">
         <h2 class="text-center">About us</h2>
       </div>
-      <div class="card-body">
+      <div class="card-body text-center">
         <div class="row">
           <div class="col-sm-6">
             <div class="card h-100">
@@ -86,12 +87,9 @@
       </div>
     </div>
     
-    
   </section>
 
-  
-  <br>
-
+  <section>
     <div class="card text-center bg-warning-bg-subtle">
       <div class="card-header">
         <h2>Fun Facts</h2>
@@ -105,12 +103,7 @@
       <div class="card-footer text-body-secondary">
       </div>
     </div>
-
-  <br>
-
-  
-    
- 
+  </section>
 
 </div>
 
