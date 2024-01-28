@@ -1,32 +1,39 @@
-// ------------- Reading book ----------
+// ------------- Read now.html
 
-    let currentChapter = 0;
-    const chapters = document.querySelectorAll('.chapter');
-    const totalChapters = chapters.length;
+let currentChapterIndex = 0;
+const chapters = document.querySelectorAll('.chapter');
+const totalChapters = chapters.length;
+const btnPrev = document.getElementById('prevChapter');
+const btnNext = document.getElementById('nextChapter');
 
-// Function to show the chapters
-    function showChapter(index) {
-        chapters.forEach((chapter, idx) => {
-            chapter.style.display = idx === index ? 'block' : 'none';
-        });
+// Shows each chapter one at a time
+function showChapter(index) {
+    // Update visibility of chapters
+    chapters.forEach((chapter, idx) => {
+        chapter.style.display = idx === index ? 'block' : 'none';
+    });
+
+    // Update button visibility
+    btnPrev.style.display = index > 0 ? 'block' : 'none';
+    btnNext.style.display = index < totalChapters - 1 ? 'block' : 'none';
+}
+
+// Next button - won't show on last chapter
+btnNext.addEventListener('click', function() {
+    if (currentChapterIndex < totalChapters - 1) {
+        currentChapterIndex++;
+        showChapter(currentChapterIndex);
     }
+});
 
-// For clicking the next button - next chapter
-    document.getElementById('nextChapter').addEventListener('click', function() {
-        if (currentChapter < totalChapters - 1) {
-            currentChapter++;
-            showChapter(currentChapter);
-        }
-    });
 
-// Clicking previous and going to previoius chapter
-    document.getElementById('prevChapter').addEventListener('click', function() {
-        if (currentChapter > 0) {
-            currentChapter--;
-            showChapter(currentChapter);
-        }
-    });
+// Previous button only show after 2nd chapter
+btnPrev.addEventListener('click', function() {
+    if (currentChapterIndex > 0) {
+        currentChapterIndex--;
+        showChapter(currentChapterIndex);
+    }
+});
 
-    // Initially show the first chapter
-    showChapter(currentChapter);
-
+// Initially show the first chapter and set button visibility
+showChapter(currentChapterIndex);
