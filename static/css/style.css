@@ -14,9 +14,10 @@ button {
 
 /* image card sizes */
 
+/* Images in view_chapter.html */
 #img-size {
     width: 100%;
-    height: 32vw;
+    height: 50%;
     object-fit: cover;
 }
 
@@ -29,6 +30,12 @@ button {
 .card  {
     margin: 15px;
 }
+
+#testingImg {
+    height: 40%;
+    margin: 20px;
+}
+
 
 /* Forms */
 
@@ -101,7 +108,7 @@ footer {
 }
 
 
-/* ------ Browse */
+/* ------ Browse -------- */
 
 /* Bookmark button */
 
@@ -120,7 +127,7 @@ footer {
     display: flex;
 }
 
-/* ---------- Reading Book */
+/* ---------- Reading Book --------- */
 
 .book-container {
     border: 5px solid #d8d6d6dd;
@@ -145,6 +152,7 @@ footer {
 
 
 /* ----------- Bookmark Page */
+
 /* Read now button */
 #btnTest {
     width: 80%;
