@@ -1,44 +1,51 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
 <!-- Image head re-size -->
-<div class="container-fluid w-50">
-    <div class="card text-center" >
-        <div class="card-header" >
-            <img src="{{ book_view.image.url }}" alt="{{ book_view.title }}" id="img-size"/>
-        </div>
-        <div class="card-body">
-            <h3>{{ book_view.title | safe }}</h3>
-            <p>{{ book_view.synopsis | safe }}</p>
-            {% if user.is_authenticated %}
-            <div class="grid">
-                <div class="g-col-6 g-col-md-4">
-                    <a href="{% url 'read_book' slug=book_view.slug %}" class=" btn btn-secondary">Read now</a>
-            {% if book_view.author == request.user %}
-            <a href="{% url 'add_chapter' book_view.slug %}" class="btn btn-secondary">Add a chapter</a>
-            <a href="{% url 'edit_book' book_view.slug book_view.pk %}" class="btn btn-secondary">Edit book details</a>
-            <a href="{% url 'delete_book' book_view.slug %}" class="btn btn-secondary">Delete book</a>
-            {% endif %}
-            <a href="{% url 'view_book_chapters' book_view.slug %}" class="btn btn-secondary">View Chapters</a>
+<div class="container-fluid">
+    <div class="d-flex row justify-content-center">
+        <div class="col-sm-6">
+            <div class="card text-center" >
+                <div class="card-header" >
+                    <img src="{{ book_view.image.url }}" alt="{{ book_view.title }}" id="img-size"/>
                 </div>
+                <div class="card-body">
+                    <h3>{{ book_view.title | safe }}</h3>
+                    <p>{{ book_view.synopsis | safe }}</p>
+                    {% if user.is_authenticated %}
+                    <div class="grid">
+                        <div class="g-col-sm-4 g-col-md-4">
+                            <a href="{% url 'read_book' slug=book_view.slug %}" class=" btn btn-secondary">Read now</a>
+                            {% if book_view.author == request.user %}
+                            <a href="{% url 'add_chapter' book_view.slug %}" class="btn btn-secondary">Add a chapter</a>
+                            <a href="{% url 'edit_book' book_view.slug book_view.pk %}" class="btn btn-secondary">Edit book details</a>
+                            <a href="{% url 'delete_book' book_view.slug %}" class="btn btn-secondary">Delete book</a>
+                            {% endif %}
+                            <a href="{% url 'view_book_chapters' book_view.slug %}" class="btn btn-secondary">View Chapters</a>
+                        </div>
+                    </div>
+                    
+        
+                    <form action="{% url 'bookmark_book' slug=book_view.slug %}" method="POST">
+                        {% csrf_token %}
+                        {% if bookmarked %}
+                        <button type="submit" name="book_id" value="{{ book_view.id }}" class="bookmark"><i
+                                class="fa-solid fa-bookmark fa-2x"></i></button>
+                        {% else %}
+                        <button type="submit" name="book_id" value="{{ book_view.id }}" class="bookmark"><i
+                                class="fa-regular fa-bookmark fa-2x"></i></button>
+                        {% endif %}
+                    </form>
+                </div>
+                {% else %}
+            <a href="{% url 'account_signup' %}" class="btn btn-secondary">Please sign up</a> 
+            {% endif %}
             </div>
             
-
-            <form action="{% url 'bookmark_book' slug=book_view.slug %}" method="POST">
-                {% csrf_token %}
-                {% if bookmarked %}
-                <button type="submit" name="book_id" value="{{ book_view.id }}" class="bookmark"><i
-                        class="fa-solid fa-bookmark fa-2x"></i></button>
-                {% else %}
-                <button type="submit" name="book_id" value="{{ book_view.id }}" class="bookmark"><i
-                        class="fa-regular fa-bookmark fa-2x"></i></button>
-                {% endif %}
-            </form>
         </div>
     </div>
+   
 </div>
 
-{% else %}
-    <a href="{% url 'account_signup' %}" class="btn btn-secondary">Please sign up</a> 
-{% endif %}
+
 
 {% endblock %}
