@@ -196,8 +196,7 @@ footer {
 /* Log in page */
 
 #login {
-    left: 350px;
-    top: 40px;
+    width: 100%;
 }
 
 
@@ -214,3 +213,36 @@ footer {
     top: 120px;
 }
 
+
+/* ------------ Profile ------- */
+
+/* Carousel */
+
+.carousel-control-next,
+.carousel-control-prev {
+    background-color: #e1e1e1;
+    width: 5vh;
+    height: 5vh;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+/* @media (max-width: 550px) {
+    .custom-profile {
+        flex-basis: 50%;
+        width: 100%; 
+    }
+
+    .card-profile {
+        height: 75%;
+    }
+    
+}  */
+
+/* Ensures the card body doesn't stretch too much */
+.card-body {
+    overflow-y: auto;
+    height: 50%;
+}
