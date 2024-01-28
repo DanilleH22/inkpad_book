@@ -26,8 +26,6 @@
             <form action="{% url 'bookmark_book' slug=book_view.slug %}" method="POST">
                 {% csrf_token %}
                 {% if bookmarked %}
-                <!-- When font awesome is installed correctly -->
-                <!-- <i class="fa-regular fa-bookmark" type="submit" name="book_id" value="{{ book.id }}"></i> -->
                 <button type="submit" name="book_id" value="{{ book_view.id }}" class="bookmark"><i
                         class="fa-solid fa-bookmark fa-2x"></i></button>
                 {% else %}
@@ -40,7 +38,7 @@
 </div>
 
 {% else %}
-<!-- Content to display if the user is not logged in -->
+    <a href="{% url 'account_signup' %}" class="btn btn-secondary">Please sign up</a> 
 {% endif %}
 
 {% endblock %}
