@@ -1,40 +1,52 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
     
-<div class="row text-center">
-    <div class="card-group">
-      <div class="card">
-        <img src="{{ book.image.url }}" class="card-img-top" alt="...">
+<div class="d-flex row justify-content-center">
+    <div class="card-group w-75 text-center" id="testingImg">
+      <div class="card h-100">
+        <img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.title }}" id="img-size">
         <div class="card-body">
           <h2 class="card-title">{{ book.title | safe }}</h2>
           <p class="card-text">{{ book.synopsis | safe }}</p>
+          <h4>Chapters in book:</h4>
           {% for chapter in object_list %}
           <div>
-            <h5>{{ chapter.pk }}: {{ chapter.chapter | safe }} -
-              <a href="{% url 'edit_book_chapter' book_slug=book.slug pk=chapter.pk %}">
-                Edit</a> -
-              <a href="{% url 'delete_book_chapter' book_slug=book.slug pk=chapter.pk %}">Delete</a>
-              <!-- data-toggle="dropdown" - add to chapter for dropdown in java -->
+            <h5>{{ chapter.chapter | safe }} -
+              {% if user.is_authenticated %}
+                {% if book.author == request.user %}
+                <a href="{% url 'edit_book_chapter' book_slug=book.slug pk=chapter.pk %}" class="btn btn-secondary">
+                  Edit</a> -
+                <a href="{% url 'delete_book_chapter' book_slug=book.slug pk=chapter.pk %}" class="btn btn-secondary">Delete</a>
+                {% endif %}
+              {% endif %}
             </h5>
-            <!-- <p>{{ chapter.content | safe}}</p> -->
-            <!-- Add more details about each chapter here -->
           </div>
           
           {% empty %}
           <p>No chapters found for this book.</p>
           {% endfor %}
+          <div class="row d-flex justify-content-center">
+            {% if user.is_authenticated %}
+              <div class="col-md-3">
+                {% if book.author == request.user %}
+                    <a href="{% url 'add_chapter' book.slug %}" class="btn btn-secondary">Add a chapter</a>
+                {% endif %}
+              </div>
+              <div class="col-md-2">
+                <a href="{% url 'read_book' slug=book.slug %}" class="btn btn-secondary">Read now</a>
+              </div>
+            {% else %}
+              <p>Please log in</p>
+            {% endif %}
+          </div>
         </div>
         
       </div>
     </div>
     
   </div>
-  {% if user.is_authenticated %}
-          {% if book.author == request.user %}
-          <button class="bg-warning-bg-subtle"><a href="{% url 'add_chapter' book.slug %}" >Add a chapter</a></button>
-          {% endif %}
-          <button><a href="#">Read now</a></button>
-          {% endif %}
+  
+  
   
   
 
