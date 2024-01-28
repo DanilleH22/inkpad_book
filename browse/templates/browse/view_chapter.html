@@ -11,13 +11,15 @@
           <h4>Chapters in book:</h4>
           {% for chapter in object_list %}
           <div>
-            <h5>{{ chapter.chapter | safe }} -
+            <h5>{{ chapter.chapter | safe }}
               {% if user.is_authenticated %}
                 {% if book.author == request.user %}
                 <a href="{% url 'edit_book_chapter' book_slug=book.slug pk=chapter.pk %}" class="btn btn-secondary">
                   Edit</a> -
                 <a href="{% url 'delete_book_chapter' book_slug=book.slug pk=chapter.pk %}" class="btn btn-secondary">Delete</a>
                 {% endif %}
+                {% else %}
+                  <a href="{% url 'login' %}">Please log in</a>
               {% endif %}
             </h5>
           </div>
