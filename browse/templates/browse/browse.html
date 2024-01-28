@@ -7,8 +7,8 @@
       
     <div class="row">
         {% for book in book_list %}
-        <div class="col-sm-4 mb-3 text-center">
-            <div class="card vh-100">
+        <div class="col-sm-4 col-md-4 text-center">
+            <div class="card h-75">
               <img src="{{ book.image.url }}" alt="{{ book.title }}" class="card-img-top" id="img-size">
                 <div class="card-body">
                     <h5 class="card-title">{{ book.title | safe }}</h5>
