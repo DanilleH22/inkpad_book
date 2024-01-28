@@ -60,10 +60,10 @@ html, body {
     flex-direction: column;
     min-height: 100vh;
 }
+
 /* Content on other html */
 .content-wrapper {
     flex: 1;
-    /* Add padding or margin as needed */
 }
 
 /* Footer */
@@ -79,6 +79,11 @@ footer {
 .homepage-container{
     height: auto;
     max-width: 100%;
+    
+}
+
+.homepage-container img {
+    padding-right: 25px;
 }
 
 .banner-card{
@@ -115,6 +120,16 @@ footer {
 }
 
 
+/* About us section */
+#aboutUs {
+    padding-bottom: 30px;
+}
+
+/* quotes */
+
+#quotes {
+    margin: 0px 35px 0px 1px;
+}
 
 /* ------ Browse -------- */
 
