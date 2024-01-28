@@ -21,10 +21,12 @@ button {
 
 /* ----- Images in view_chapter.html -------*/
 
+/* Bookmark page image */
 #img-size-row {
     width: 100%;
-    height: 20vw;
+    height: 300px;
     object-fit: cover;
+    
 }
 
 .card  {
@@ -242,7 +244,4 @@ footer {
 }  */
 
 /* Ensures the card body doesn't stretch too much */
-.card-body {
-    overflow-y: auto;
-    height: 50%;
-}
+
