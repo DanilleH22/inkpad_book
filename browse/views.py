@@ -80,15 +80,6 @@ class BookChaptersView(generic.ListView):
         return context
 
 
-def searchbar(request):
-    if request.method == 'GET':
-        search = request.GET.get('search')
-        books = CreateBook.objects.all().filter(title__icontains=search)
-        return render (request, 'searchbar.html', {
-            "books": books
-            }
-            )
-
 
 
     # def form_valid(self, form):
