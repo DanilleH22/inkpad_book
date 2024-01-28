@@ -12,14 +12,14 @@ button {
     margin: 10px;
 }
 
-/* image card sizes */
-
-/* Images in view_chapter.html */
+/* ------image card sizes -----*/
 #img-size {
     width: 100%;
     height: 50%;
     object-fit: cover;
 }
+
+/* ----- Images in view_chapter.html -------*/
 
 #img-size-row {
     width: 100%;
@@ -31,6 +31,7 @@ button {
     margin: 15px;
 }
 
+/* Image in card - view_chapter  */
 #testingImg {
     height: 40%;
     margin: 20px;
