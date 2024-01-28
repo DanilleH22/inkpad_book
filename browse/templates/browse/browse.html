@@ -8,9 +8,9 @@
     <div class="row">
         {% for book in book_list %}
         <div class="col-sm-4 mb-3 text-center">
-            <div class="card h-100">
+            <div class="card vh-100">
+              <img src="{{ book.image.url }}" alt="{{ book.title }}" class="card-img-top" id="img-size">
                 <div class="card-body">
-                    <img src="{{ book.image.url }}" alt="{{ book.title }}" class="card-img-top" id="img-size">
                     <h5 class="card-title">{{ book.title | safe }}</h5>
                     <p class="card-text">{{ book.excerpt | safe }}</p>
                     <a href="{% url 'book_view' book.slug %}" class="btn btn-secondary">View book</a>
@@ -19,9 +19,9 @@
                         <form action="{% url 'bookmark_book' slug=book.slug %}" method="POST">
                             {% csrf_token %}
                             {% if book.id in bookmarked_book_ids %}
-                                <button type="submit" name="book_id" value="{{ book.id }}" class="bookmark" ><i class="fa-solid fa-bookmark fa-1x"></i></button>
+                                <button type="submit" name="book_id" value="{{ book.id }}" class="bookmark" ><i class="fa-solid fa-bookmark fa-2x"></i></button>
                             {% else %}
-                                <button type="submit" name="book_id" value="{{ book.id }}" class="bookmark"><i class="fa-regular fa-bookmark fa-1x"></i></button>
+                                <button type="submit" name="book_id" value="{{ book.id }}" class="bookmark"><i class="fa-regular fa-bookmark fa-2x"></i></button>
                             {% endif %}
                         </form>
                     {% endif %}
