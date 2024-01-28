@@ -19,25 +19,6 @@ class AddBook(LoginRequiredMixin, CreateView):
     model = CreateBook
     form_class = CreateBookForm
     
-    # def form_valid(self, form):
-    #     # Set the author of the book
-    #     form.instance.author = self.request.user
-    #     # Save and get the created book instance
-    #     self.object = form.save()
-    #     # Redirect to add chapter with book's slug
-    #     return redirect('add_chapter', book_slug=self.object.slug)
-    
-    # def form_valid(self, form):
-    #     form.instance.author = self.request.user
-    #     self.object = form.save()
-    #     messages.success(self.request, 'New book created successfully.')
-    #     return redirect('add_chapter', book_slug=self.object.slug)
-
-    # def form_valid(self, form):
-    #     form.instance.author = self.request.user
-    #     self.object = form.save()
-    #     messages.success(self.request, 'New book published successfully.')
-    #     return redirect('add_chapter', book_slug=self.object.slug)
     
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -56,24 +37,6 @@ class AddBookChapter(LoginRequiredMixin, CreateView):
     template_name = 'book/add_chapter.html'
     model = CreateChapter
     form_class = CreateChapterForm
-
-    # def form_valid(self, form):
-    #     # Get book's slug from the URL
-    #     book_slug = self.kwargs['book_slug']
-    #     # Retrieve the book
-    #     book = get_object_or_404(CreateBook, slug=book_slug)
-    #     # Associate the chapter with the book
-    #     form.instance.book = book
-    #     # Save the form
-    #     return super().form_valid(form)
-    
-    # def form_valid(self, form):
-    #     book_slug = self.kwargs['book_slug']
-    #     book = get_object_or_404(CreateBook, slug=book_slug)
-    #     form.instance.book = book
-    #     self.object = form.save()
-    #     messages.success(self.request, 'New chapter added successfully.')
-    #     return redirect('completed_book') 
 
     def form_valid(self, form):
         book_slug = self.kwargs['book_slug']
@@ -95,9 +58,6 @@ class AddBookChapter(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse('completed_book') 
-
-    # def get_success_url(self):
-    #     return reverse('completed_book')
 
 
 class CompletedBook(LoginRequiredMixin, ListView):
