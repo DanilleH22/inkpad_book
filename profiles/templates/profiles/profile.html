@@ -16,7 +16,7 @@
                 <div class="col-sm ">
                     <h4>Books you've published:</h4>
                     {% if user_books %}
-                    <div id="carouselPublishControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div id="carouselPublishControls" class="carousel carousel-dark slide img-fluid" data-bs-ride="carousel">
                     <div class="carousel-inner">
                     {% for book in user_books %}
                     {% if forloop.counter0|divisibleby:3 %}
@@ -75,15 +75,15 @@
                 {% for draft in drafts %}
                 {% if forloop.first or forloop.counter0|divisibleby:3 %}
                 {% if not forloop.first %}
-                    </div> <!-- Close the card-wrapper -->
-                </div> <!-- Close the carousel-item -->
+                    </div> 
+                </div> 
                 {% endif %}
                 <div class="carousel-item {% if forloop.first %}active{% endif %}">
                     <div class="card-wrapper container-sm d-flex justify-content-around">
                 {% endif %}
 
                 <div class=" card text-center " style="width: 25rem;">
-                    <img src="{{ draft.image.url }}" class="card-img-top profile-img-top" alt="{{ draft.title }}" id="img-size">
+                    <img src="{{ draft.image.url }}" class="card-img-top profile-img-top img-fluid" alt="{{ draft.title }}" id="img-size">
                     <div class="card-body">
                         <h5 class="card-title">{{ draft.title | title }}</h5>
                         <p class="card-text">{{ draft.excerpt | safe }}</p>
