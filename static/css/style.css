@@ -258,7 +258,16 @@ footer {
     .square-sign-up .row {
         width: 60vw; 
     }
-}
+
+    /* .published .card.custom-card {
+        width: 100%;
+        height: auto;
+    }
+
+    .published {
+        max-width: 75%;
+    }
+} */
 
 
 
