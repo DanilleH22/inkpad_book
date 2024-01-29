@@ -194,26 +194,58 @@ footer {
   display: block;
 }
 
+/* --------- Authentication */
 
-/* Log in page */
+/* For login, logout */
 
-#login {
-    width: 100%;
+.square-box {
+    max-width: 60vw;
+    /* min-height: 20vh;  */
+    margin-top: 60px;
+    padding: 0;
+}
+
+/* For sign-up */
+.square-sign-up {
+    max-width: 60vw;
+    margin-top: 0px;
+    padding: 0;
 }
 
 
-/* Sign up page */
-#signup {
-    left: 350px;
+/* ---------- -------- Media queries  */
+
+/* For screens up to 740px */
+
+@media (max-width: 768px) {
+    /* login, logout */
+    .square-box .row {
+        width: 400px; 
+        margin: 30px; 
+    }
+
+    /* For sign-up */
+    .square-sign-up .row {
+        width: 400px; 
+        margin: 30px; 
+    }
 }
 
-/* Sign out page */
+/* For screens up to 540px */
 
-#logout {
-    width: 500px;
-    left: 480px;
-    top: 120px;
+@media (max-width: 540px) {
+    /* login, logout */
+    .square-box .row {
+        width: 60vw; 
+    }
+
+    /* For sign-up */
+    .square-sign-up .row {
+        width: 60vw; 
+    }
 }
+
+
 
 
 /* ------------ Profile ------- */
@@ -231,17 +263,4 @@ footer {
 }
 
 
-/* @media (max-width: 550px) {
-    .custom-profile {
-        flex-basis: 50%;
-        width: 100%; 
-    }
-
-    .card-profile {
-        height: 75%;
-    }
-    
-}  */
-
-/* Ensures the card body doesn't stretch too much */
 
