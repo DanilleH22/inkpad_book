@@ -6,21 +6,21 @@
 
 {% block content %}
 
-<div class="card w-50" id="signup">
-  <div class="card-body">
-    <div class="row">
-      <div class="col-md-8 mt-3 offset-md-2">
+
+
+
+<div class="container square-sign-up d-flex justify-content-center align-items-center">
+  <div class="row">
+    <div class="card">
+      <div class="col-md-8 offset-md-2 text-center">
         <h2>{% trans "Sign Up" %}</h2>
-  
         <p>{% blocktrans %}
           Do you already have an account? Then please
           <a class="link" href="{{ login_url }}">sign in</a>
-          instead.
-        {% endblocktrans %}</p>
+          instead.{% endblocktrans %}
+        </p>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 mt-3 offset-md-2">
+      <div class="col-md-8 offset-md-2 text-center">
         <form class="signup" id="signup_form" method="post"
           action="{% url 'account_signup' %}">
           {% csrf_token %}
@@ -34,6 +34,7 @@
         </form>
       </div>
     </div>
+
   </div>
 </div>
 {% endblock content %}

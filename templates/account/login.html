@@ -5,26 +5,34 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock head_title %}
 
 {% block content %}
-<div class="card w-50" id="login">
-  <div class="card-body">
-    <div class="col-md-8 mt-3 offset-md-2">
-      <h3 class="text-center">{% trans "Sign In" %}</h3>
-      <p>{% blocktrans %}Welcome back to Inkpad. To create a book or read a book, you must log in. If
-          you have not created an account yet, then <a class="link" href="{{ signup_url }}">sign up</a>
-          first.{% endblocktrans %}</p>
-    </div>
-  </div>
+
+
+<div class="container square-box d-flex justify-content-center align-items-center">
   <div class="row">
-    <div class="col-md-8 mt-3 offset-md-2">
+    <div class="card">
+      <div class="col-md-8 offset-md-2 text-center">
+        <h3 class="text-center">{% trans "Sign In" %}</h3>
+        <p>{% blocktrans %}
+          Welcome back to Inkpad. To create a book or read a book, you must log in. If
+          you have not created an account yet, then <a class="link" href="{{ signup_url }}">sign up</a>
+          first.{% endblocktrans %}
+        </p>
+      </div>
+      <div class="col-md-8 offset-md-2 text-center">
         <form class="login" method="POST" action="{% url 'account_login' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            {% if redirect_field_value %}
-            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-            {% endif %}
-            <button class="btn btn-signup right btn-secondary" type="submit">{% trans "Sign In" %}</button>
+          {% csrf_token %}
+          {{ form.as_p }}
+          {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+          <button class="btn btn-signup btn-secondary" type="submit">{% trans "Sign In" %}</button>
         </form>
+      </div>
     </div>
+
+  </div>
 </div>
-</div>
+
+
+
 {% endblock content %}
