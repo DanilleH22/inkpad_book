@@ -215,9 +215,23 @@ footer {
 
 /* ---------- -------- Media queries  */
 
+/* For screens up to 1030px */
+
+@media (max-width: 1030px) {
+
+    /* Index page */
+    .banner-text {
+        position: absolute;
+        top: 20%;
+        left: 30%;
+        padding: 100px 30px 100px 100px;
+    }
+}
+
 /* For screens up to 740px */
 
 @media (max-width: 768px) {
+
     /* login, logout */
     .square-box .row {
         width: 400px; 
@@ -234,6 +248,7 @@ footer {
 /* For screens up to 540px */
 
 @media (max-width: 540px) {
+
     /* login, logout */
     .square-box .row {
         width: 60vw; 
