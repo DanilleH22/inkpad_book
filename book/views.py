@@ -15,12 +15,20 @@ from django.contrib import messages
 
 # Create your views here.
 class AddBook(LoginRequiredMixin, CreateView):
+    """
+    User can create a book
+    """
     template_name = 'book/book_details.html'
     model = CreateBook
     form_class = CreateBookForm
     
     
     def form_valid(self, form):
+        """
+        Check form is valid - all fields have been completed
+        Checks if user has clicked published or save as draft
+        Success message given after
+        """
         form.instance.author = self.request.user
         book = form.save()
 
@@ -34,11 +42,19 @@ class AddBook(LoginRequiredMixin, CreateView):
 
 
 class AddBookChapter(LoginRequiredMixin, CreateView):
+    """
+    User can create a chapter
+    """
     template_name = 'book/add_chapter.html'
     model = CreateChapter
     form_class = CreateChapterForm
 
     def form_valid(self, form):
+        """
+        Check form is valid - all fields have been completed
+        Checks if user has clicked published or save as draft
+        Success message given after
+        """
         book_slug = self.kwargs['book_slug']
         book = get_object_or_404(CreateBook, slug=book_slug)
         form.instance.book = book
@@ -61,6 +77,9 @@ class AddBookChapter(LoginRequiredMixin, CreateView):
 
 
 class CompletedBook(LoginRequiredMixin, ListView):
+    """
+    Collects the Create book model data just created by user by id
+    """
     def get(self, request, *args, **kwargs):
         books = CreateBook.objects.latest('id')
 
@@ -75,23 +94,35 @@ class CompletedBook(LoginRequiredMixin, ListView):
 
 
 class EditChapter(LoginRequiredMixin, UpdateView):
+    """
+    Allows users to edit chapter created
+    """
     template_name = 'book/edit_chapter.html'
     model = CreateChapter
     form_class = CreateChapterForm
     success_url = reverse_lazy('home')
     
     def form_valid(self, form):
+        """
+        If valid success message is returned
+        """
         response = super().form_valid(form)
         messages.success(self.request, 'Chapter has been updated successfully.')
         return response
 
 class EditBookDetails(LoginRequiredMixin, UpdateView):
+    """
+    Allows users to edit book created
+    """
     template_name = 'book/edit_book.html'
     model = CreateBook
     form_class = CreateBookForm
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
+        """
+        If valid success message is returned
+        """
         response = super().form_valid(form)
         messages.success(self.request, 'Book has been updated successfully.')
         return response
@@ -100,21 +131,35 @@ class EditBookDetails(LoginRequiredMixin, UpdateView):
 
 
 class DeleteChapter(LoginRequiredMixin, DeleteView):
+    """
+    Finds chapter and redirects user to delete page 
+    to confirm deletion of chapter
+    """
     template_name = 'book/delete_chapter.html'
     model = CreateChapter
     success_url = reverse_lazy('home')
 
     def delete(self, request, *args, **kwargs):
+        """
+        If chapter deleted a success message is returned
+        """
         messages.success(request, 'Chapter has been deleted successfully.')
         return super(DeleteChapter, self).delete(request, *args, **kwargs)
 
 
 class DeleteBook(LoginRequiredMixin, DeleteView):
+    """
+    Finds book and redirects user to delete page 
+    to confirm deletion of chapter
+    """
     template_name = 'book/delete_book.html'
     model = CreateBook
     success_url = reverse_lazy('home')
 
     def delete(self, request, *args, **kwargs):
+        """
+        If chapter deleted a success message is returned
+        """
         messages.success(request, 'Book has been deleted successfully.')
         return super(DeleteBook, self).delete(request, *args, **kwargs)
 
