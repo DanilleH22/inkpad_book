@@ -1,7 +1,7 @@
 # Inkpad
 Inkpad is a book that allows users to become their own author. It helps people who want to publish a book, put their writing to action and share their talent with the world. But it's not just for the future authors, it's also for those who love to read. This website allowsusers to dive deeper into their passion to write, or just their passion to read.
 
-![Site view across devices](static/images-readme/readme-amiresponsive.png)
+![Site view across devices](static/images-readme/homepage.png)
 
 The live link for "Inkpad" can be found [HERE](https://p4-inkpad-f8f405fd38c0.herokuapp.com/)
 
@@ -370,6 +370,8 @@ A manual test had to be completed to test that Javascript had to b created which
 
 ### Unfixed Bugs
 Responsiveness for screen on profile will, not shrink as the nature of how the cards, were formatted. This is only for when users have 3 or more books published or in draft. This has been left like this as I have scored the internet but could not find a resource to help me fix this. 
+
+Browser can't be used on thired party websites.
 
 ## Technologies Used
 ### Main Languages Used
