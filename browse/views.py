@@ -13,6 +13,8 @@ from django.db.models import Prefetch
 # Create your views here.
 @login_required
 def BookmarkView(request, slug):
+    """
+    """
     if request.method == 'POST':
         book = get_object_or_404(CreateBook, slug=slug)
         bookmarked = False 
@@ -29,6 +31,10 @@ def BookmarkView(request, slug):
 
 
 class BookList(generic.ListView):
+    """
+    View book list
+    Only 6 to a page
+    """
     queryset = CreateBook.objects.filter(status=1)
     template_name = "browse/browse.html"
     paginate_by = 6
@@ -36,6 +42,9 @@ class BookList(generic.ListView):
 
     
     def get_context_data(self, **kwargs):
+        """
+        Retrieve data for when users bookmark a book
+        """
         context = super().get_context_data(**kwargs)
         if self.request.user.is_authenticated:
             # Get a list of book IDs that the user has bookmarked
@@ -45,6 +54,10 @@ class BookList(generic.ListView):
 
 
 def book_post(request, slug):
+    """"
+    View the books details
+    What to do if a user un-bookmarks a book
+    """"
     queryset = CreateBook.objects.filter()
     book_view = get_object_or_404(CreateBook, slug=slug)
         
@@ -65,10 +78,17 @@ def book_post(request, slug):
 
 
 class BookChaptersView(generic.ListView):
+    """
+    View book chapter
+    """
     model = CreateChapter
     template_name = 'browse/view_chapter.html'
 
     def get_queryset(self):
+        """
+        Get book by slug 
+        Gets chapte in this book and lists it
+        """
         book_slug = self.kwargs.get('book_slug')
         self.book = get_object_or_404(CreateBook, slug=book_slug)
         return CreateChapter.objects.filter(book=self.book)
@@ -80,21 +100,11 @@ class BookChaptersView(generic.ListView):
         return context
 
 
-
-
-    # def form_valid(self, form):
-    #     # Get book's slug from the URL
-    #     book_slug = self.kwargs['book_slug']
-    #     chapter_pk = self.kwargs['pk']
-    #     # Retrieve the book
-    #     book = get_object_or_404(CreateBook, slug=book_slug)
-    #     chapter = get_object_or_404(CreateChapter, pk=chapter_pk)
-    #     # Retrive the book chapter 
-
-    #     return super().form_valid(form)
-
-
 def flipbook(request, slug):
+    """
+    For reading the book
+    Get book content and return it to browser
+    """
     book_view = get_object_or_404(CreateBook, slug=slug)
 
     context = {
