@@ -3,7 +3,7 @@ Inkpad is a book that allows users to become their own author. It helps people w
 
 ![Site view across devices](static/images-readme/readme-amiresponsive.png)
 
-The live link for "print(STATEMENTS)" can be found [HERE](https://project4-print-statements.onrender.com/)
+The live link for "Inkpad" can be found [HERE](https://p4-inkpad-f8f405fd38c0.herokuapp.com/)
 
 ## Table of Contents
 + [UX](#ux "UX")
@@ -75,7 +75,7 @@ Not all stories have been implemented. Some have been left for future implementa
 3. I can **create a log in / sign up page** so that **artists and visitors can sign up to the site**.
  - Story points: 2
 
-### Artist stories:
+### Book stories:
 #### As an artist:
 1. I can **create a user profile** so that **I can be found & viewed on the site**.
  - Story points: 3
@@ -198,7 +198,7 @@ All fonts were obtained from the Google Fonts library. I chose to stick with one
 
 #### Edit Book Page:
 
-![Edit Book](static/images-readme/edit_book.png)
+![Edit Book](static/images-readme/edit_book_details.png)
 
 #### Browse Books Page:
 
@@ -345,11 +345,54 @@ All fonts were obtained from the Google Fonts library. I chose to stick with one
 | Login                         | User logs in           | UI updates & user is logged in                            | ✅         |
 | Sign up                       | User signs up          | new account created for the user                          | ✅         |
 | Logout                        | User clicks logout     | UI updates, user is logged out, user cannot create a book or read a book | ✅         |
+| Read book                     | User clicks next Button or Prev button    | Next chapter given                          | ✅         |
 
 ### BUG TESTING:
 1. index.html page not loading:
  - Through trial and error, I changed the view code from a class to a function.
  - as well as removed the ```.as_view()``` from the URL path.
+
+2. Testing CRUD functionality:
+- Each of the features were tested multiple times to ensure that numerous new posts could be submitted, and that each post had the ability to be updated and edited by the user that submitted it.
+- If a post is submitted by another user, the edit/delete buttons do not appear on the page.
+
+3. CSS styles not loading on app :
+The CCS was not loading on the server, I had missed the S of the STACTIC_DIRS in settings.
+
+4. Forms text had html text and fields were next to each other:
+I had used {{ form.as_p }}, so i had changed it to {{ form }}, for the edit forms i had made it {{ form | safe }}.
+To stop the fields sitting next to each other i had installed crispy forms and used in templates wiht the form.
+
+5. Admin panel not showing duee to TypeError
+This was because I had tried to add book.urls to add to another app, they had cauused an error and was removed and the url pattern was re-adjusted to reflect this
+
+6. Jest was not installing:
+A manual test had to be completed to test that Javascript had to b created which is listed below.
+  Javascript Manual Test -
+    Test Case 1: Verify that the 'Next' button in the chapter navigation displays the next chapter.
+    Steps to Reproduce:
+    - Open the website.
+    - Go to browse and choose a book
+    - Click read now
+    - Press next chapter, previous chapter should appear
+    - When on last chapter next button disappears
+    Expected Results: Buttons are only, displayed when needed
+    Actual Result: As expected buttons only appear when needed
+    Pass/Fail: Pass
+    Date: 28th January, 2024
+    Tester's Name: Danille Hamilton
+
+    Test case 2: Verify that chapters are hidden and only show when buttons are clicked.
+    Steps to reproduce:
+    - Open the website.
+    - Go to browse and choose a book
+    - Click read now
+    - Only first chapter should. be shown
+    Expected Result: The current chapter should be hidden, and the next chapter should be displayed.
+    Actual Result: As expected, the next chapter is displayed when the 'Next' button is clicked.
+    Pass/Fail: Pass
+    Date: 28th January, 2024
+    Tester's Name: Danille Hamilton
 
 ### Unfixed Bugs
 - Responsiveness for screen on profile
@@ -430,14 +473,15 @@ The site was deployed to Heroku. The steps to deploy are as follows:
 ## Credits
 
 ### Content
-- [Codemy.com](https://github.com/Pelikantapeten): Youtube video aided in setting up bookmark button and unliking bookmark button.
-- [Coding Shiksha](https://github.com/Pelikantapeten): Youtube video aided in setting up Javascript function for buttons clicking to the next page on reading the book..
+- [Codemy.com](https://www.youtube.com/watch?si=h0MdiwlTrnzxDM3b&v=PXqRPqDjDgc&feature=youtu.be): Youtube video aided in setting up bookmark button and unliking bookmark button.
+- [Coding Shiksha](https://www.youtube.com/watch?si=rvKu1ZYg2DASbKhL&v=85-_8j-u4WI&feature=youtu.be): Youtube video aided in setting up Javascript function for buttons clicking to the next page on reading the book..
 - “Developing with Django” walkthrough: Provided the initial steps for setting up & deploying the site, as well as this, I also used the instructions they provided in order to implement a django book into my app, following the walkthrough once again step-by-step. This also includes some formatting for the way each log-in, sign-up & log-out is desiigned.
 - Tutor Support: For helping mee set up Static when it would not work. Along with helping me understaing a HTTP ERROR code i could not figure out why was coming up, which lead to me having ot use Gitpod. 
 - ['Simple is Better Than Complex'](https://simpleisbetterthancomplex.com/tutorial/2018/01/18/how-to-implement-multiple-user-types-with-django.html): creating types of user groups.
 - [Bootstrap](https://getbootstrap.com/docs/5.2/components/dropdowns/): dropdown nav menu.
 - [Bootstrap](https://getbootstrap.com/docs/5.2/components/card/): dropdown nav menu.
 - Django for beginners by William S. Vincent for setting up test for editing book and editing chapter in the book model.
+- [Lauren-Nicole](https://github.com/CluelessBiker): For giving me notes on my project and helping me fix html showing up in form when editing. 
 
 
 ### Media
