@@ -59,7 +59,8 @@ To become instantly engaged with the design of the site, and feel intrigued to e
 ### Future Goals:
 - To create a profile biography for users, where they write about themself and add a image.
 - To be able to see the author username, taking you to their profile to see their other work.
-- Users will be able to follow authors they like.
+- Users will be able to search for books by name
+- Users will be able to filter browse by genre
 - Implement a feature that for a fee we help them get published on Amazon or print.
 - Users can have a discussion thats only available after reading the book.
 
@@ -68,45 +69,22 @@ Not all stories have been implemented. Some have been left for future implementa
 
 ### Admin stories:
 #### As an admin:
-1. I can **submit new blog posts** so that **I can inform site visitors & artists of new events, artists, and more**.
- - Story points: 3
+1. I can **submit new chapter** so that **I can inform site visitors & artists of new events, artists, and more**.
 2. I can **moderate blog comments** so that **the feedback provided is appropriate**.
- - Story points: 1
 3. I can **create a log in / sign up page** so that **artists and visitors can sign up to the site**.
- - Story points: 2
 
 ### Book stories:
-#### As an artist:
-1. I can **create a user profile** so that **I can be found & viewed on the site**.
- - Story points: 3
-2. I can **upload artwork** so that **I can share it with art enthusiasts**.
- - Story points: 5
-3. I can **select a medium, and print size** so that **I can have the work printed**.
- - Story points: 1
-4. I can **choose how many prints I would like** so that **my work is sold as a limited edition run**.
- - Story points: 1
-5. I can **set a price** so that **I can sell my work**.
- - Story points: 1
-
-### Visitor stories:
-#### As a visitor:
-1. I can **visit the blog** so that **I can see what is new**.
- - Story points: 5
-2. I can **comment on blog posts** so that **I can give my feedback**.
- - Story points: 2
-3. I can **like blog posts** so that **I can easily share my enthusiasm**.
- - Story points: 1
-4. I can **peruse the gallery** so that **I can discover new artists, and new artworks by artists I already know**.
- - Story points: 5
-5. I can **follow artists** so that **I can be updated when new work is released**.
- - Story points: 3
-6. I can **like an artists** so that **I can show my appreciation**.
- - Story points: 2
+#### As an User:
+1. I can **create a user profile** so that **I can create books, for publish and draft**.
+2. I can **create a book** so that **I can publish it or put in drafts**.
+3. I can **create a chapter** so that **I can publish it to my book or put in drafts**.
+4. I can **bookmark a book** so that **I can hsave books I like**.
+5. I can **read a book** so that **I can enjoy a book**.
+6. I can **edit or delete a book** so that **I can change my work to suit me**.
+7. I can **edit or delete a chapter** so that **I can update of details of my chapter**.
 
 
  ## Design
-
-### Wireframes:
 
 ### Database Schema
 
@@ -252,6 +230,8 @@ All fonts were obtained from the Google Fonts library. I chose to stick with one
 - Contact page
 - Password reset
 - Social media sign-in
+- Preview book and chapter
+- Search by name or genre 
 
 ## Testing
 
@@ -277,10 +257,7 @@ All fonts were obtained from the Google Fonts library. I chose to stick with one
 | Prints page - html | W3C validator - source code | No issues found | ✅ |
 | Sign-in page - html | W3C validator - source code | No issues found | ✅ |
 | Home page - html | lighthouse | [Acceptable scores]| ✅ |
-| About page - html | lighthouse | Acceptable scores | ✅ |
-| Blog page - html | lighthouse | Acceptable scores | ✅ |
-| Prints page - html | lighthouse | Acceptable scores | ✅ |
-| Sign-in page - html | lighthouse | Acceptable scores | ✅ |
+| script.js- js | JS Lint | No issues found | ✅ |
 | Chrome browser | Launch site | Site opens without issue | ✅ |
 | Safari browser | Launch site | Site opens without issue | ✅ |
 
@@ -289,31 +266,31 @@ All fonts were obtained from the Google Fonts library. I chose to stick with one
 | **TEST**                      | **ACTION**              | **EXPECTATION**             | **RESULT** |
 | ----------------------------- | ----------------------- | --------------------------- | ---------- |
 | Home page - responsiveness    | Size site down to 320px | all elements stay on screen | ✅         |
-| Home page - responsiveness    | Size site up to 1920ox  | all elements stay on screen | ✅         |
+| Home page - responsiveness    | Size site up to 1300px  | all elements stay on screen | ✅         |
 | Edit pages - responsiveness   | Size site down to 320px | all elements stay on screen | ✅         |
-| Edit pages - responsiveness   | Size site up to 1920ox  | all elements stay on screen | ✅         |
+| Edit pages - responsiveness   | Size site up to 1300px  | all elements stay on screen | ✅         |
 | Delete pages - responsiveness  | Size site down to 320px | all elements stay on screen | ✅         |
-| Delete pages - responsiveness  | Size site up to 1920ox  | all elements stay on screen | ✅         |
+| Delete pages - responsiveness  | Size site up to 1300px  | all elements stay on screen | ✅         |
 | Read book page - responsiveness    | Size site down to 320px | all elements stay on screen | ✅         |
-| Read book page - responsiveness    | Size site up to 1920ox  | all elements stay on screen | ✅         |
+| Read book page - responsiveness    | Size site up to 1300px  | all elements stay on screen | ✅         |
 | Sign-in page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| Sign-in page - responsiveness | Size site up to 1920ox  | all elements stay on screen | ✅         |
+| Sign-in page - responsiveness | Size site up to 1300px  | all elements stay on screen | ✅         |
 | Sign-up page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| Sign-up page - responsiveness | Size site up to 1920ox  | all elements stay on screen | ✅         |
+| Sign-up page - responsiveness | Size site up to 1300px  | all elements stay on screen | ✅         |
 | Log-in page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| Log-in page - responsiveness | Size site up to 1920ox  | all elements stay on screen | ✅         |
+| Log-in page - responsiveness | Size site up to 1300px  | all elements stay on screen | ✅         |
 | Create pages - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| Create pages - responsiveness | Size site up to 1920ox  | all elements stay on screen | ✅         |
+| Create pages - responsiveness | Size site up to 1300px  | all elements stay on screen | ✅         |
 | View chapters page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| View chapters page - responsiveness | Size site up to 1920ox  | all elements stay on screen | ✅         |
+| View chapters page - responsiveness | Size site up to 130px  | all elements stay on screen | ✅         |
 | Draft page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| Draft page - responsiveness | Size site up to 1920ox  | all elements stay on screen | ✅         |
+| Draft page - responsiveness | Size site up to 1300px  | all elements stay on screen | ✅         |
 | Bookmark page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| Bookmark page - responsiveness | Size site up to 1920ox  | all elements stay on screen | ✅         |
+| Bookmark page - responsiveness | Size site up to 1300px  | all elements stay on screen | ✅         |
 | Browse page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| Browse page - responsiveness | Size site up to 1920ox  | all elements stay on screen | ✅         |
+| Browse page - responsiveness | Size site up to 1300ox  | all elements stay on screen | ✅         |
 | Book view page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| Book view page - responsiveness | Size site up to 1920ox  | all elements stay on screen | ✅         |
+| Book view page - responsiveness | Size site up to 1300ox  | all elements stay on screen | ✅         |
 
 ### C.R.U.D. testing
 
@@ -348,25 +325,22 @@ All fonts were obtained from the Google Fonts library. I chose to stick with one
 | Read book                     | User clicks next Button or Prev button    | Next chapter given                          | ✅         |
 
 ### BUG TESTING:
-1. index.html page not loading:
- - Through trial and error, I changed the view code from a class to a function.
- - as well as removed the ```.as_view()``` from the URL path.
 
-2. Testing CRUD functionality:
+1. Testing CRUD functionality:
 - Each of the features were tested multiple times to ensure that numerous new posts could be submitted, and that each post had the ability to be updated and edited by the user that submitted it.
 - If a post is submitted by another user, the edit/delete buttons do not appear on the page.
 
-3. CSS styles not loading on app :
+2. CSS styles not loading on app :
 The CCS was not loading on the server, I had missed the S of the STACTIC_DIRS in settings.
 
-4. Forms text had html text and fields were next to each other:
+3. Forms text had html text and fields were next to each other:
 I had used {{ form.as_p }}, so i had changed it to {{ form }}, for the edit forms i had made it {{ form | safe }}.
 To stop the fields sitting next to each other i had installed crispy forms and used in templates wiht the form.
 
-5. Admin panel not showing duee to TypeError
+4. Admin panel not showing duee to TypeError
 This was because I had tried to add book.urls to add to another app, they had cauused an error and was removed and the url pattern was re-adjusted to reflect this
 
-6. Jest was not installing:
+5. Jest was not installing:
 A manual test had to be completed to test that Javascript had to b created which is listed below.
   Javascript Manual Test -
     Test Case 1: Verify that the 'Next' button in the chapter navigation displays the next chapter.
@@ -395,7 +369,7 @@ A manual test had to be completed to test that Javascript had to b created which
     Tester's Name: Danille Hamilton
 
 ### Unfixed Bugs
-- Responsiveness for screen on profile
+Responsiveness for screen on profile will, not shrink as the nature of how the cards, were formatted. This is only for when users have 3 or more books published or in draft. This has been left like this as I have scored the internet but could not find a resource to help me fix this. 
 
 ## Technologies Used
 ### Main Languages Used
