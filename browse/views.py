@@ -57,7 +57,7 @@ def book_post(request, slug):
     """"
     View the books details
     What to do if a user un-bookmarks a book
-    """"
+    """
     queryset = CreateBook.objects.filter()
     book_view = get_object_or_404(CreateBook, slug=slug)
         
