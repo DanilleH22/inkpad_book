@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 # Create your views here.
 
 def view_profile(request):
+    """
+    Retrives all books linked ot the user, draft & published
+    """
     user_books = request.user.books.filter(author=request.user).exclude(status=0)
     drafts = request.user.books.filter(author=request.user).exclude(status=1)
     return render(
@@ -18,6 +21,9 @@ def view_profile(request):
 
 
 def book_draft(request, slug, pk):
+    """"
+    Retrives all books linked to the user, draft. 
+    """
     # Retrieve the draft book using slug and pk
     draft_book = get_object_or_404(CreateBook, slug=slug, pk=pk, status=0)
     
@@ -37,6 +43,9 @@ def book_draft(request, slug, pk):
 
 @login_required
 def view_bookmark(request):
+    """
+    ALlow users to view books they have bookmarked
+    """
     bookmarked_books = request.user.bookmarked_books.all()
 
     return render(request, "profiles/bookmarked.html", {'bookmarked_books': bookmarked_books})
