@@ -275,13 +275,3 @@ footer {
     top: 50%;
     transform: translateY(-50%);
 }
-
-
-#testing {
-    float: left;
-}
-
-#testing2 {
- margin-right: 0;
- margin-left: auto;
-}
