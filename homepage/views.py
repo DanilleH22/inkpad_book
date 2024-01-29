@@ -6,6 +6,10 @@ from django.views import View
 
 
 def home(request):
+    """
+    Get fun facts 
+    Get Author quotes 
+    """
     # Retrieve three random fun facts from the database
     fun_facts = FunFact.objects.order_by('?')[:2]
 
