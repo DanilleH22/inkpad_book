@@ -2,6 +2,8 @@
 {% load static %} 
 {% block content %}
 
+<!-- Homepage content starts here -->
+
 <div class="container-fluid" id="homeContainer">
   {% if messages %}
     {% for message in messages %}
@@ -27,6 +29,7 @@
     </div>
   </section>
 
+  <!-- Quotes -->
   <section>
     <div class="row" id="quotes">
       <div class="card text-center">
@@ -47,7 +50,7 @@
   </section>
 
   
-  
+  <!-- About us section -->
   <section>
     <div class="card" id="aboutUs">
       <div class="card-header --bs-warning-bg-subtle">
@@ -86,9 +89,9 @@
         </div>
       </div>
     </div>
-    
   </section>
 
+  <!-- Fun facts content here -->
   <section>
     <div class="card text-center bg-warning-bg-subtle">
       <div class="card-header">
@@ -106,5 +109,7 @@
   </section>
 
 </div>
+
+<!-- Home page content starts here -->
 
   {% endblock content %}

@@ -1,5 +1,7 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
+<!-- Completed book view content starts here -->
+
 {% if messages %}
     {% for message in messages %}
         <div class="alert alert-{{ message.tags }}">
@@ -22,5 +24,7 @@
         </div>
       </div>
 </div>
+
+<!-- Completed book view content ends here -->
 
 {% endblock content %}
