@@ -1,11 +1,12 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
+<!-- Browse page content starts here -->
 <div class="container-fluid">
   <header>
     <h1 class="text-center">Browse our book selections</h1>
   </header>
 
-  <section class="d-flex justify-content-center align-items-center h-100 min-vh-100">
+  <section class="d-flex justify-content-center align-items-center h-100 ">
     <div class="row gy-2">
       {% for book in book_list %}
       <div class="col-lg-4 col-md-4">
@@ -47,7 +48,7 @@
 
 
 
-
+  <!-- Page navigation -->
   <br>
   <nav aria-label="Page navigation">
     <ul class="d-flex pagination justify-content-center">
@@ -70,5 +71,5 @@
   </nav>
 </div>
 
-<!-- index.html content ends here -->
+<!-- Browse book content ends here -->
 {% endblock content %}
