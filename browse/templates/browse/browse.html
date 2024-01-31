@@ -5,38 +5,6 @@
     <h1 class="text-center">Browse our book selections</h1>
   </header>
 
-  <!-- <div class="row gy-2">
-    {% for book in book_list %}
-    <div class="col-md-4 col-lg-4 col-xl">
-        <div class="card h-100">
-            <img src="{{ book.image.url }}" alt="{{ book.title }}" class="card-img-top" id="img-size">
-            <div class="card-body">
-                <h5 class="card-title">{{ book.title | safe }}</h5>
-                <p class="card-text">{{ book.excerpt | safe }}</p>
-                <a href="{% url 'book_view' book.slug %}" class="btn btn-secondary mt-auto">View book</a>
-                {% if user.is_authenticated %}
-                    <a href="{% url 'read_book' slug=book.slug %}" class="btn btn-secondary mt-auto">Read now</a>
-                    <form action="{% url 'bookmark_book' slug=book.slug %}" method="POST">
-                        {% csrf_token %}
-                        {% if book.id in bookmarked_book_ids %}
-                        <button type="submit" name="book_id" value="{{ book.id }}" class="bookmark mt-auto"><i
-                            class="fa-solid fa-bookmark fa-2x"></i></button>
-                        {% else %}
-                        <button type="submit" name="book_id" value="{{ book.id }}" class="bookmark mt-auto"><i
-                            class="fa-regular fa-bookmark fa-2x"></i></button>
-                        {% endif %}
-                    </form>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-    {% if forloop.counter|divisibleby:3 and not forloop.last %}
-</div>
-<div class="row">
-    {% endif %}
-    {% endfor %}
-  </div> -->
-
   <section class="d-flex justify-content-center align-items-center h-100 min-vh-100">
     <div class="row gy-2">
       {% for book in book_list %}
