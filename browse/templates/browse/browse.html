@@ -1,60 +1,106 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
 <div class="container-fluid">
-    <header>
-        <h1 class="text-center">Browse our book selections</h1>
-    </header>
-      
-    <div class="row">
-        {% for book in book_list %}
-        <div class="col-sm-4 col-md-4 text-center">
-            <div class="card h-75">
-              <img src="{{ book.image.url }}" alt="{{ book.title }}" class="card-img-top" id="img-size">
-                <div class="card-body">
-                    <h5 class="card-title">{{ book.title | safe }}</h5>
-                    <p class="card-text">{{ book.excerpt | safe }}</p>
-                    <a href="{% url 'book_view' book.slug %}" class="btn btn-secondary">View book</a>
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'read_book' slug=book.slug %}" class="btn btn-secondary">Read now</a>
-                        <form action="{% url 'bookmark_book' slug=book.slug %}" method="POST">
-                            {% csrf_token %}
-                            {% if book.id in bookmarked_book_ids %}
-                                <button type="submit" name="book_id" value="{{ book.id }}" class="bookmark" ><i class="fa-solid fa-bookmark fa-2x"></i></button>
-                            {% else %}
-                                <button type="submit" name="book_id" value="{{ book.id }}" class="bookmark"><i class="fa-regular fa-bookmark fa-2x"></i></button>
-                            {% endif %}
-                        </form>
-                    {% endif %}
-                </div>
+  <header>
+    <h1 class="text-center">Browse our book selections</h1>
+  </header>
+
+  <!-- <div class="row gy-2">
+    {% for book in book_list %}
+    <div class="col-md-4 col-lg-4 col-xl">
+        <div class="card h-100">
+            <img src="{{ book.image.url }}" alt="{{ book.title }}" class="card-img-top" id="img-size">
+            <div class="card-body">
+                <h5 class="card-title">{{ book.title | safe }}</h5>
+                <p class="card-text">{{ book.excerpt | safe }}</p>
+                <a href="{% url 'book_view' book.slug %}" class="btn btn-secondary mt-auto">View book</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'read_book' slug=book.slug %}" class="btn btn-secondary mt-auto">Read now</a>
+                    <form action="{% url 'bookmark_book' slug=book.slug %}" method="POST">
+                        {% csrf_token %}
+                        {% if book.id in bookmarked_book_ids %}
+                        <button type="submit" name="book_id" value="{{ book.id }}" class="bookmark mt-auto"><i
+                            class="fa-solid fa-bookmark fa-2x"></i></button>
+                        {% else %}
+                        <button type="submit" name="book_id" value="{{ book.id }}" class="bookmark mt-auto"><i
+                            class="fa-regular fa-bookmark fa-2x"></i></button>
+                        {% endif %}
+                    </form>
+                {% endif %}
             </div>
         </div>
-        {% if forloop.counter|divisibleby:3 and not forloop.last %}
-        </div><div class="row">
-        {% endif %}
-        {% endfor %}
     </div>
+    {% if forloop.counter|divisibleby:3 and not forloop.last %}
 </div>
+<div class="row">
+    {% endif %}
+    {% endfor %}
+  </div> -->
+
+  <section class="d-flex justify-content-center align-items-center h-100 min-vh-100">
+    <div class="row gy-2">
+      {% for book in book_list %}
+      <div class="col-lg-4 col-md-4">
+        <div class="box h-100 d-flex p4 flex-column">
+          <div class="card h-100">
+            <img src="{{ book.image.url }}" alt="{{ book.title }}" class="card-img-top" id="img-size">
+            <div class="card-body">
+              <h5>{{ book.title | safe }}</h5>
+              <p>{{ book.excerpt | safe }}</p>
+              {% if user.is_authenticated %}
+              <div class="d-flex justify-content-around align-items-center">
+                  <a href="{% url 'book_view' book.slug %}" class="btn btn-secondary mt-auto">View book</a>
+                  <a href="{% url 'read_book' slug=book.slug %}" class="btn btn-secondary mt-auto">Read now</a>
+                  <form action="{% url 'bookmark_book' slug=book.slug %}" method="POST" class="mt-auto">
+                      {% csrf_token %}
+                      {% if book.id in bookmarked_book_ids %}
+                          <button type="submit" name="book_id" value="{{ book.id }}" class="bookmark"><i class="fa-solid fa-bookmark fa-lg"></i></button>
+                      {% else %}
+                          <button type="submit" name="book_id" value="{{ book.id }}" class="bookmark"><i class="fa-regular fa-bookmark fa-lg"></i></button>
+                      {% endif %}
+                  </form>
+              </div>
+              {% endif %}
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      {% if forloop.counter|divisibleby:3 and not forloop.last %}
+    </div>
+
+  </section>
+  <div class="row">
+    {% endif %}
+    {% endfor %}
+  </div>
 
 
+
+
+
+
+  <br>
   <nav aria-label="Page navigation">
     <ul class="d-flex pagination justify-content-center">
       <li class="page-item">
         {% if page_obj.has_previous %}
-          <a href="?page={{ page_obj.previous_page_number }}" class="page-link" aria-label="Prev">&laquo;</a>
+        <a href="?page={{ page_obj.previous_page_number }}" class="page-link" aria-label="Prev">&laquo;</a>
         {% endif %}
       </li>
       <li class="current">
-        <li class="page-item"></li>
-        <li class="page-item"><a class="page-link" href="#">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</a></li>
+      <li class="page-item"></li>
+      <li class="page-item"><a class="page-link" href="#">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages
+          }}.</a></li>
       </li>
       <li class="page-item">
         {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}" class="page-link" aria-label="Next">&raquo;</a>
+        <a href="?page={{ page_obj.next_page_number }}" class="page-link" aria-label="Next">&raquo;</a>
         {% endif %}
       </li>
     </ul>
   </nav>
-
+</div>
 
 <!-- index.html content ends here -->
 {% endblock content %}
