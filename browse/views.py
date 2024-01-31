@@ -100,7 +100,7 @@ class BookChaptersView(generic.ListView):
         return context
 
 
-def flipbook(request, slug):
+def read_book(request, slug):
     """
     For reading the book
     Get book content and return it to browser
