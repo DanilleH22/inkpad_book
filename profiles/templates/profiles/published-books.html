@@ -5,12 +5,13 @@
   <header>
     <h1 class="text-center">Published books</h1>
   </header>
-
+  <!-- Published books list -->
   <section class="d-flex justify-content-center align-items-center h-100 ">
     <div class="row gy-2">
       {% for book in published_books %}
       <div class="col-lg-4 col-md-4">
         <div class="box h-100 d-flex p4 flex-column">
+          <!-- Published books -->
           <div class="card h-100">
             <img src="{{ book.image.url }}" alt="{{ book.title }}" class="card-img-top" id="img-size">
             <div class="card-body">

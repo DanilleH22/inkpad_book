@@ -7,6 +7,7 @@
           {% for bookmark in bookmarked_books %}
           <div class="col-lg-4 col-md-4">
             <div class="box h-100 d-flex p4 flex-column">
+              <!-- Bookmarked book cards -->
               <div class="card h-100">
                 <img src="{{ bookmark.image.url }}" alt="{{ bookmark.title }}" class="card-img-top" id="img-size">
                 <div class="card-body">
@@ -14,8 +15,10 @@
                   <p>{{ bookmark.excerpt | safe }}</p>
                   {% if user.is_authenticated %}
                   <div class="d-flex justify-content-around align-items-center">
+                    <!-- Buttons for card -->
                       <a href="{% url 'book_view' bookmark.slug %}" class="btn btn-secondary mt-auto">View book</a>
                       <a href="{% url 'read_book' slug=bookmark.slug %}" class="btn btn-secondary mt-auto">Read now</a>
+                      <!-- Bookmark and un-bookmark  -->
                       <form action="{% url 'bookmark_book' slug=bookmark.slug %}" method="POST" class="mt-auto">
                           {% csrf_token %}
                           {% if bookmark.id in bookmarked_book_ids %}
