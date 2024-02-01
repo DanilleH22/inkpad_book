@@ -1,7 +1,7 @@
 # Inkpad
 Inkpad is a book that allows users to become their own author. It helps people who want to publish a book, put their writing to action and share their talent with the world. But it's not just for the future authors, it's also for those who love to read. This website allowsusers to dive deeper into their passion to write, or just their passion to read.
 
-![Site view across devices](static/images-readme/homepage.png)
+![Inkpad](static/images-readme/amiresp.png)
 
 The live link for "Inkpad" can be found [HERE](https://p4-inkpad-f8f405fd38c0.herokuapp.com/)
 
@@ -84,7 +84,10 @@ Not all stories have been implemented. Some have been left for future implementa
 7. I can **edit or delete a chapter** so that **I can update of details of my chapter**.
 
 
- ## Design
+## Design
+
+### Figma
+
 
 ### Database Schema
 
@@ -149,10 +152,13 @@ All fonts were obtained from the Google Fonts library. I chose to stick with one
 
 ![Read Book](static/images-readme/reading_book.png)
 
-#### Profile Page:
+#### Author's published books
 
-![Profile Publish](static/images-readme/profile_publish.png)
-![Profile Draft](static/images-readme/profile-draft.png)
+![Authors Published books](static/images-readme/published_list.png)
+
+#### Authors draft books list
+
+![Authors Draft books](static/images-readme/draft_list.png)
 
 #### Browse Books Page:
 
