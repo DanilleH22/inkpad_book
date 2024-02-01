@@ -1,4 +1,35 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
+<!-- Draft book list content starts here -->
+<div class="container-fluid">
+    <header>
+      <h1 class="text-center">Draft books</h1>
+      <h4>Below you will find a list of any books you have in draft</h4>
+    </header>
+  
+    <section class="d-flex justify-content-center align-items-center h-100 ">
+      <div class="row gy-2">
+        {% for draft in book_drafts %}
+        <div class="col-lg-4 col-md-4">
+          <div class="box h-100 d-flex p4 flex-column">
+            <div class="card h-100">
+              <img src="{{ draft.image.url }}" alt="{{ draft.title }}" class="card-img-top" id="img-size">
+              <div class="card-body">
+                <h5>{{ draft.title | safe }}</h5>
+                <p>{{ draft.excerpt | safe }}</p>
+                <a href="{% url 'draft' slug=draft.slug pk=draft.pk %}" class="btn btn-secondary">View book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 and not forloop.last %}
+      </div>
+    </section>
+    <div class="row">
+      {% endif %}
+      {% endfor %}
+    </div>
+  
+<!-- Draft book list content ends here -->
 
 {% endblock content %}
