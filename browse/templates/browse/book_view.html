@@ -8,6 +8,7 @@
                 <div class="card-header" >
                     <img src="{{ book_view.image.url }}" alt="{{ book_view.title }}" id="img-size">
                 </div>
+                <!-- Card for each book -->
                 <div class="card-body">
                     <h3>{{ book_view.title | safe }}</h3>
                     <p>{{ book_view.synopsis | safe }}</p>
@@ -16,6 +17,7 @@
                         <div class="g-col-sm-4 g-col-md-4">
                             <a href="{% url 'read_book' slug=book_view.slug %}" class=" btn btn-secondary">Read now</a>
                             {% if book_view.author == request.user %}
+                            <!-- Buttons for only the author -->
                             <a href="{% url 'add_chapter' book_view.slug %}" class="btn btn-secondary">Add a chapter</a>
                             <a href="{% url 'edit_book' book_view.slug book_view.pk %}" class="btn btn-secondary">Edit book details</a>
                             <a href="{% url 'delete_book' book_view.slug %}" class="btn btn-secondary">Delete book</a>
@@ -24,7 +26,7 @@
                         </div>
                     </div>
                     
-        
+                    <!-- Button for bookmarks -->
                     <form action="{% url 'bookmark_book' slug=book_view.slug %}" method="POST">
                         {% csrf_token %}
                         {% if bookmarked %}
