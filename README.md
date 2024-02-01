@@ -15,7 +15,7 @@ The live link for "Inkpad" can be found [HERE](https://p4-inkpad-f8f405fd38c0.he
   + [New User Goals](#new-user-goals "New User Goals")
 + [User Stories](#user-stories "User Stories")
   + [Admin stories](#admin-stories "Admin stories")
-  + [Artist stories](#artist-stories "Artist stories")
+  + [Artist stories](#author-stories "Artist stories")
   + [Visitor stories](#visitor-stories "Visitor stories")
 + [Design](#design "Design")
   + [Colour Scheme](#colour-scheme "Colour Scheme")
@@ -39,7 +39,7 @@ The live link for "Inkpad" can be found [HERE](https://p4-inkpad-f8f405fd38c0.he
 
 ### Site Purpose:
 
-There is two purposes for this website, the first is for helping people publish their book. This gives them the chance to post books they are curently writing, especially if they aren't confident in their work or writing. The second purpose is for those who love to read but are not always able to pay Amazon prices for books, and don't mind unedited books. The user also doesn't get the worlds input on a book, they just go into it with only a synopsis and their imagination. In this generation of BookTok where people are always commenting what book is good and not, this website prevents this. The 
+There is two purposes for this website, the first is for helping people publish their book. This gives them the chance to post books they are curently writing, especially if they aren't confident in their work or writing. The second purpose is for those who love to read but are not always able to pay Amazon prices for books, and don't mind unedited books. The user also doesn't get the worlds input on a book, they just go into it with only a synopsis and their imagination. In this generation of BookTok where people are always commenting what book is good and not, this website prevents this.
 
 ### Site Goal:
 The goal is to help authors publish their book, without having to worry about who likes it. The site purposely doesn't show you who's liked it or who bookmarked it, because the goal is to develop your writing skills and confidence in yourself. 
@@ -214,6 +214,7 @@ All fonts were obtained from the Google Fonts library. I chose to stick with one
 ![CRUD - Create Chapter](static/images-readme/add_a_chapter.png)
 
 #### Read:
+- Users can read books from the browse section
 ![CRUD - Read](static/images-readme/browse.png)
 
 #### Update & Delete:
@@ -371,7 +372,6 @@ A manual test had to be completed to test that Javascript had to b created which
 ### Unfixed Bugs
 Responsiveness for screen on profile will, not shrink as the nature of how the cards, were formatted. This is only for when users have 3 or more books published or in draft. This has been left like this as I have scored the internet but could not find a resource to help me fix this. 
 
-Browser can't be used on thired party websites.
 
 ## Technologies Used
 ### Main Languages Used
