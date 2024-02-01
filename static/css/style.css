@@ -1,5 +1,5 @@
 * {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
 }
 /* ---------  For tags throughout HTML */
 
@@ -173,11 +173,6 @@ footer {
   height: 80%;
   display: block;
 }
-
-/* --------- Authentication */
-
-
-
 
 
 /* ---------- -------- Media queries  */
