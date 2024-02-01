@@ -154,17 +154,6 @@ footer {
 
 /* ---------- Reading Book --------- */
 
-.book-container {
-    border: 5px solid #d8d6d6dd;
-    border-radius: 25px;
-    margin: 0;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 0;
-}
-
 #bookContent {
    object-fit: cover;
 }
