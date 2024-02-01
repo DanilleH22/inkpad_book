@@ -379,8 +379,10 @@ A manual test had to be completed to test that Javascript had to b created which
     Date: 28th January, 2024
     Tester's Name: Danille Hamilton
 
+6. Originally the profile dropdown had a profile section to see published and draft books in a carousel format, however the cards would not be responsive. To fix this I have created a simple layout for each on seperate pages.
+
 ### Unfixed Bugs
-Responsiveness for screen on profile will, not shrink as the nature of how the cards, were formatted. This is only for when users have 3 or more books published or in draft. This has been left like this as I have scored the internet but could not find a resource to help me fix this. 
+There are no unfixed bugs to my knowledge
 
 
 ## Technologies Used
