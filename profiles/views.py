@@ -5,19 +5,16 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 
-def view_profile(request):
+def view_published(request):
     """
     Retrives all books linked ot the user, draft & published
     """
-    user_books = request.user.books.filter(author=request.user).exclude(status=0)
-    drafts = request.user.books.filter(author=request.user).exclude(status=1)
-    return render(
-        request, 
-        'profiles/profile.html', {
-            'user_books': user_books,
-            'drafts': drafts,
-            }
-            )
+    published_books = request.user.books.filter(author=request.user).exclude(status=0) 
+    return render(request, 'profiles/published-books.html', {
+        'published_books': published_books,
+        }
+        )
+
 
 
 def book_draft(request, slug, pk):
