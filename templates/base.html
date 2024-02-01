@@ -2,11 +2,11 @@
 {% url 'account_signup' as signup_url %} {% url 'account_logout' as logout_url %}
 
 <!DOCTYPE html>
-<html class="h-100" lang="en">
+<html lang="en">
 
 <head>
   <title>Inkpad</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Google Fonts CSS -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -22,51 +22,51 @@
 
 <body>
   <div class="body-wrapper">
-      <nav class="navbar navbar-expand-lg" style="background-color: #f1e7c1ea;">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{{ home_url }}">Inkpad</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center text-center">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ home_url }}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'browse' %}">Browse</a>
-              </li>
-            </ul>
-            <ul class="navbar-nav d-flex justify-content-center text-center">
-              {% if user.is_authenticated %}
-              <li class="nav-item dropdown text-end ml-auto justify-content-end">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  {{ user }}
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{% url 'profile' %}">View Profile</a></li>
-                  <li><a class="dropdown-item" href="{% url 'book_details' %}">Create a book</a></li>
-                  <li><a class="dropdown-item" href="{% url 'bookmarked' %}">Bookmarks</a></li>
-                </ul>
-              </li>
-              <li class="nav-item text-end ml-auto justify-content-end">
-                <a class="nav-link" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
-              </li>
+    <nav class="navbar navbar-expand-lg" style="background-color: #f1e7c1ea;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{{ home_url }}">Inkpad</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ home_url }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'browse' %}">Browse</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ user }}
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'profile' %}">View Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'book_details' %}">Create a book</a></li>
+                <li><a class="dropdown-item" href="{% url 'bookmarked' %}">Bookmarks</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
+            </li>
             {% else %}
-              <li class="nav-item text-end ml-auto justify-content-end">
-                <a class="nav-link" aria-current="page" href="{% url 'account_signup' %}">Register</a>
-              </li>
-              <li class="nav-item text-end ml-auto justify-content-end">
-                <a class="nav-link" aria-current="page" href="{% url 'account_login' %}">Login</a>
-              </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'account_signup' %}">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'account_login' %}">Login</a>
+            </li>
             {% endif %}
-            </ul>
-          </div>
+          </ul>
         </div>
-      </nav>
-
+      </div>
+    </nav>
+    
 
       
 
