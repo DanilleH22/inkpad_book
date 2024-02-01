@@ -1,4 +1,6 @@
-
+* {
+    font-family: 'Montserrat';
+}
 /* ---------  For tags throughout HTML */
 
 a {
@@ -26,7 +28,6 @@ button {
     width: 100%;
     height: 300px;
     object-fit: cover;
-    
 }
 
 .card  {
@@ -39,14 +40,12 @@ button {
     margin: 20px;
 }
 
-
 /* Forms */
 
 .form-control {
     margin: 8px;
+    width: 95%;
 }
-
-
 
 /* ------- Base.html --------- */
 
@@ -55,14 +54,6 @@ html, body {
     height: 100%;
     margin: 0;
 }
-
-/* navbar */
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000; 
-}
-
 
 /* All of the content wrapper */
 .body-wrapper {
@@ -196,21 +187,8 @@ footer {
 
 /* --------- Authentication */
 
-/* For login, logout */
 
-.square-box {
-    max-width: 60vw;
-    /* min-height: 20vh;  */
-    margin-top: 60px;
-    padding: 0;
-}
 
-/* For sign-up */
-.square-sign-up {
-    max-width: 60vw;
-    margin-top: 0px;
-    padding: 0;
-}
 
 
 /* ---------- -------- Media queries  */
@@ -228,49 +206,6 @@ footer {
     }
 }
 
-/* For screens up to 740px */
-
-@media (max-width: 768px) {
-
-    /* login, logout */
-    .square-box .row {
-        width: 400px; 
-        margin: 30px; 
-    }
-
-    /* For sign-up */
-    .square-sign-up .row {
-        width: 400px; 
-        margin: 30px; 
-    }
-}
-
-/* For screens up to 540px */
-
-@media (max-width: 540px) {
-
-    /* login, logout */
-    .square-box .row {
-        width: 60vw; 
-    }
-
-    /* For sign-up */
-    .square-sign-up .row {
-        width: 60vw; 
-    }
-
-    /* .published .card.custom-card {
-        width: 100%;
-        height: auto;
-    }
-
-    .published {
-        max-width: 75%;
-    }
-} */
-
-
-
 
 /* ------------ Profile ------- */
 
@@ -285,6 +220,3 @@ footer {
     top: 50%;
     transform: translateY(-50%);
 }
-
-
-
