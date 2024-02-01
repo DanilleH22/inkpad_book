@@ -16,6 +16,16 @@ def view_published(request):
         )
 
 
+def view_drafts(request):
+    """
+    Retrieve all draft books linked to the author
+    """
+    book_drafts = request.user.books.filter(author=request.user).exclude(status=1)
+    return render(request, 'profiles/draft-books.html', {
+        'book_drafts': book_drafts,
+    })
+
+
 
 def book_draft(request, slug, pk):
     """"
