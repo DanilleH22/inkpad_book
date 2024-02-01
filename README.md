@@ -298,6 +298,10 @@ All fonts were obtained from the Google Fonts library. I chose to stick with one
 | Browse page - responsiveness | Size site up to 1300ox  | all elements stay on screen | ✅         |
 | Book view page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
 | Book view page - responsiveness | Size site up to 1300ox  | all elements stay on screen | ✅         |
+| List of published books page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
+| List of published books page - responsiveness | Size site up to 1300ox  | all elements stay on screen | ✅         |
+| List of draft books - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
+| List of draft books - responsiveness | Size site up to 1300ox  | all elements stay on screen | ✅         |
 
 ### C.R.U.D. testing
 
