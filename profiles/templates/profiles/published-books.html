@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<!-- Published book page content starts here -->
+<div class="container-fluid">
+  <header>
+    <h1 class="text-center">Published books</h1>
+  </header>
+
+  <section class="d-flex justify-content-center align-items-center h-100 ">
+    <div class="row gy-2">
+      {% for book in published_books %}
+      <div class="col-lg-4 col-md-4">
+        <div class="box h-100 d-flex p4 flex-column">
+          <div class="card h-100">
+            <img src="{{ book.image.url }}" alt="{{ book.title }}" class="card-img-top" id="img-size">
+            <div class="card-body">
+              <h5>{{ book.title | safe }}</h5>
+              <p>{{ book.excerpt | safe }}</p>
+              <a href="{% url 'book_view' slug=book.slug %}" class="btn btn-secondary">View book</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% if forloop.counter|divisibleby:3 and not forloop.last %}
+    </div>
+  </section>
+  <div class="row">
+    {% endif %}
+    {% endfor %}
+  </div>
+
+<!-- Browse book content ends here -->
+{% endblock content %}
