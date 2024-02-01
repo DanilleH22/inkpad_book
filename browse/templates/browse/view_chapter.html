@@ -25,7 +25,8 @@
           {% empty %}
           <p>No chapters found for this book.</p>
           {% endfor %}
-  
+          
+
           {% if user.is_authenticated %}
             <div class="text-center">
               {% if book.author == request.user %}
