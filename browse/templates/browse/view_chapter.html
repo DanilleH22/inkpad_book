@@ -1,54 +1,50 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
-    
-<div class="d-flex row justify-content-center">
+  <!-- View chapter content starts here -->  
+  <div class="d-flex row justify-content-center">
     <div class="card-group w-75 text-center" id="testingImg">
       <div class="card h-100">
+        <!-- Book Image -->
         <img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.title }}" id="img-size">
         <div class="card-body">
+          <!-- Book title & synopsis -->
           <h2 class="card-title">{{ book.title | safe }}</h2>
           <p class="card-text">{{ book.synopsis | safe }}</p>
           <h4>Chapters in book:</h4>
           {% for chapter in object_list %}
           <div>
+            <!-- Chapters in book -->
             <h5>{{ chapter.chapter | safe }}
-              {% if user.is_authenticated %}
-                {% if book.author == request.user %}
-                <a href="{% url 'edit_book_chapter' book_slug=book.slug pk=chapter.pk %}" class="btn btn-secondary">
-                  Edit</a> -
-                <a href="{% url 'delete_book_chapter' book_slug=book.slug pk=chapter.pk %}" class="btn btn-secondary">Delete</a>
-                {% endif %}
-                {% else %}
-                  <a href="{% url 'login' %}">Please log in</a>
+              {% if user.is_authenticated and book.author == request.user %}
+              <!-- Book author buttons -->
+              <a href="{% url 'edit_book_chapter' book_slug=book.slug pk=chapter.pk %}" class="btn">Edit</a> -
+              <a href="{% url 'delete_book_chapter' book_slug=book.slug pk=chapter.pk %}" class="btn">Delete</a>
               {% endif %}
             </h5>
           </div>
-          
           {% empty %}
           <p>No chapters found for this book.</p>
           {% endfor %}
-          <div class="row d-flex justify-content-center row-cols-md-4">
-            {% if user.is_authenticated %}
-              <div class="col-md-3 col-lg-2">
-                {% if book.author == request.user %}
-                    <a href="{% url 'add_chapter' book.slug %}" class="btn btn-secondary">Add a chapter</a>
-                {% endif %}
-              </div>
-              <div class="col-md-2">
+  
+          {% if user.is_authenticated %}
+            <div class="text-center">
+              {% if book.author == request.user %}
+                <a href="{% url 'add_chapter' book.slug %}" class="btn btn-secondary">Add a chapter</a>
+              {% else %}
                 <a href="{% url 'read_book' slug=book.slug %}" class="btn btn-secondary">Read now</a>
-              </div>
-            {% else %}
+              {% endif %}
+            </div>
+          {% else %}
+            <div class="text-center">
               <p>Please log in</p>
-            {% endif %}
-          </div>
+            </div>
+          {% endif %}
         </div>
-        
       </div>
     </div>
-    
   </div>
   
-  
+  <!-- View chapter content ends here -->
   
   
 
