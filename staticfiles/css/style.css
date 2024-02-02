@@ -180,21 +180,6 @@ footer {
     }
 }
 
-
-/* ------------ Profile ------- */
-
-/* Carousel */
-
-.carousel-control-next,
-.carousel-control-prev {
-    background-color: #e1e1e1;
-    width: 5vh;
-    height: 5vh;
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
 @media (max-width: 400px) {
     /* Home page image text overlay */
     .banner-text {
@@ -211,6 +196,22 @@ footer {
     }
 
     .banner-text a {
-        size: 14px;
+        font-size: 14px;
     }
+}
+
+
+
+/* ------------ Profile ------- */
+
+/* Carousel */
+
+.carousel-control-next,
+.carousel-control-prev {
+    background-color: #e1e1e1;
+    width: 5vh;
+    height: 5vh;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
 }
