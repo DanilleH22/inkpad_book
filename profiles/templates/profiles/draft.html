@@ -5,24 +5,33 @@
         <div class="col d-flex justify-content-center">
             <div class="card" style="width: 30rem;">
                 <div class="card-body">
+                {% if draft_book %}
                     <img src="{{ draft_book.image.url }}" class="card-img-top" alt="{{ draft_book.title }}">
                   <h5 class="card-title">{{ draft_book.title | safe }}</h5>
                   <h6 class="card-subtitle mb-2 text-body-secondary">{{ draft_book.excerpt | safe }}</h6>
                   <p class="card-text">{{ draft_book.synopsis | safe }}</p>
                   <a href="{% url 'edit_book' slug=draft_book.slug pk=draft_book.pk %}" class="btn btn-secondary card-link">Edit book details</a>
                   <a href="{% url 'delete_book' slug=draft_book.slug %}" class="btn btn-secondary card-link" >Delete book</a>
+                {% endif %}  
                 </div>
+
                 <hr>
-                {% for chapters in draft_chapters %}
-                <h6><strong>Chapters:</strong></h6>
-                    <p class="card-text">{{ chapters.chapter | safe }} <a href="{% url 'edit_book_chapter' book_slug=chapters.book_slug pk=chapters.pk %}" class="btn btn-secondary card-link">
-                            Edit Chapter</a> -<a href="{% url 'delete_book_chapter' book_slug=chapters.book_slug pk=chapters.pk %}" class="btn btn-secondary card-link">Delete chapter</a></p>
-                <div class="row">
-                    <div class="col">
-                        <a href="{% url 'add_chapter' book_slug=chapters.book_slug %}" class="btn btn-secondary card-link">Add a chapter</a>
+                {% if draft_chapters %}
+                    <h6><strong>Chapters:</strong></h6>
+                    {% for chapter in draft_chapters %}
+                        <div class="card-text">{{ chapter.chapter | safe }}
+                            <a href="{% url 'edit_book_chapter' book_slug=draft_book.slug pk=chapter.pk %}" class="btn btn-light card-link">Edit Chapter</a>
+                            <a href="{% url 'delete_book_chapter' book_slug=draft_book.slug pk=chapter.pk %}" class="btn btn-light card-link">Delete chapter</a>
+                        </div>
+                    {% endfor %}
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-6">
+                            <a href="{% url 'add_chapter' book_slug=draft_book.slug %}" class="btn btn-secondary card-link">Add a chapter</a>
+                        </div>
                     </div>
-                </div>
-                {% endfor %}
+                    
+                {% endif %}
+
                 
             </div>
         </div>
