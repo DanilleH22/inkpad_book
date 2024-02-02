@@ -194,3 +194,22 @@ footer {
     top: 50%;
     transform: translateY(-50%);
 }
+
+@media (max-width: 400px) {
+    .banner-text {
+        padding: 0px 0px 70px 60px;
+    }
+
+    .banner-text h3{
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    .banner-text p {
+        font-size: 14px;
+    }
+
+    .banner-text a {
+        size: 14px;
+    }
+}
