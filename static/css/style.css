@@ -196,8 +196,9 @@ footer {
 }
 
 @media (max-width: 400px) {
+    /* Home page image text overlay */
     .banner-text {
-        padding: 0px 0px 70px 60px;
+        padding: 0px 12px 70px 55px;
     }
 
     .banner-text h3{
