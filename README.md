@@ -362,14 +362,15 @@ To stop the fields sitting next to each other i had installed crispy forms and u
 This was because I had tried to add book.urls to add to another app, they had cauused an error and was removed and the url pattern was re-adjusted to reflect this
 
 5. Jest was not installing:
-A manual test had to be completed to test that Javascript had to b created which is listed below.
+A manual test had to be completed to test that Javascript had to be created which is listed below. I hhad used a BDD approach to test the Javascript buttons.
   Javascript Manual Test -
     Test Case 1: Verify that the 'Next' button in the chapter navigation displays the next chapter.
     Steps to Reproduce:
     - Open the website.
     - Go to browse and choose a book
     - Click read now
-    - Press next chapter, previous chapter should appear
+    - Press next chapter, previous chapter button should appear
+    - User should see the next chapter 
     - When on last chapter next button disappears
     Expected Results: Buttons are only, displayed when needed
     Actual Result: As expected buttons only appear when needed
@@ -382,9 +383,23 @@ A manual test had to be completed to test that Javascript had to b created which
     - Open the website.
     - Go to browse and choose a book
     - Click read now
-    - Only first chapter should. be shown
+    - Only first chapter should be shown
     Expected Result: The current chapter should be hidden, and the next chapter should be displayed.
     Actual Result: As expected, the next chapter is displayed when the 'Next' button is clicked.
+    Pass/Fail: Pass
+    Date: 28th January, 2024
+    Tester's Name: Danille Hamilton
+  
+  Test Case 3: Verify that the 'Previous' button in the chapter navigation displays the previous chapter.
+    Steps to Reproduce:
+    - Open the website.
+    - Go to browse and choose a book
+    - Click read now
+    - Press next chapter, users should be on second chapter
+    - Click previous chapter button
+    - USer should be navigated back to the previous chapter
+    Expected Results: Previous button only displays the previous chapter
+    Actual Result: As expected previous button only appear when needed
     Pass/Fail: Pass
     Date: 28th January, 2024
     Tester's Name: Danille Hamilton
