@@ -98,7 +98,7 @@ Not all stories have been implemented. Some have been left for future implementa
 The colour palette used: 
 - Navbar & footer : #f1e7c1ea
 - Buttons : #484747
-- Along with various shades of gre
+- Along with various shades of grey
 
 ### Typography:
 All fonts were obtained from the Google Fonts library. I chose to stick with one font, Monsteratt.
@@ -245,8 +245,6 @@ All fonts were obtained from the Google Fonts library. I chose to stick with one
 ### Validator Testing
 | **TEST** | **ACTION** | **EXPECTATION** | **RESULT** |
 | ----------------------------- | ----------------------- | --------------------------- | ---------- |
-| printstatements - settings.py | PEP8 validator | [No issues found] | ✅ |
-| printstatements - urls.py | PEP8 validator | No issues found | ✅ |
 | book app - forms.py | PEP8 validator | No issues found | ✅ |
 | book app - models.py | PEP8 validator | No issues found | ✅ |
 | book app - views.py | PEP8 validator | No issues found | ✅ |
@@ -257,12 +255,24 @@ All fonts were obtained from the Google Fonts library. I chose to stick with one
 | browse app - views.py | PEP8 validator | No issues found | ✅ |
 | browse app - urls.py | PEP8 validator | No issues found | ✅ |
 | browse app - admin.py | PEP8 validator | No issues found | ✅ |
+| homepage app - forms.py | PEP8 validator | No issues found | ✅ |
+| homepage app - models.py | PEP8 validator | No issues found | ✅ |
+| homepage app - views.py | PEP8 validator | No issues found | ✅ |
+| homepage app - urls.py | PEP8 validator | No issues found | ✅ |
+| homepage app - admin.py | PEP8 validator | No issues found | ✅ |
+| profiles app - forms.py | PEP8 validator | No issues found | ✅ |
+| profiles app - models.py | PEP8 validator | No issues found | ✅ |
+| profiles app - views.py | PEP8 validator | No issues found | ✅ |
+| profiles app - urls.py | PEP8 validator | No issues found | ✅ |
+| profiles app - admin.py | PEP8 validator | No issues found | ✅ |
 | style.css | [W3C - Jigsaw](https://jigsaw.w3.org/css-validator/) validator | [No issues found](static/images-readme/w3c-css.png) | ✅ |
 | Home page - html | [W3C](https://validator.w3.org/) validator - source code | No issues found | ✅ |
-| About page - html | W3C validator - source code | No issues found | ✅ |
-| Blog page - html | W3C validator - source code | No issues found | ✅ |
-| Prints page - html | W3C validator - source code | No issues found | ✅ |
-| Sign-in page - html | W3C validator - source code | No issues found | ✅ |
+| All pages in book - html | W3C validator - source code | No issues found | ✅ |
+| All pages in browse - html | W3C validator - source code | No issues found | ✅ |
+| All pages in profiles - html | W3C validator - source code | No issues found | ✅ |
+| Log-in page - html | W3C validator - source code | No issues found | ✅ |
+| Log-out page - html | W3C validator - source code | No issues found | ✅ |
+| Sign-up page - html | W3C validator - source code | No issues found | ✅ |
 | Home page - html | lighthouse | [Acceptable scores]| ✅ |
 | script.js- js | JS Lint | No issues found | ✅ |
 | Chrome browser | Launch site | Site opens without issue | ✅ |
@@ -470,6 +480,7 @@ The site was deployed to Heroku. The steps to deploy are as follows:
 - [Bootstrap](https://getbootstrap.com/docs/5.2/components/card/): dropdown nav menu.
 - Django for beginners by William S. Vincent for setting up test for editing book and editing chapter in the book model.
 - [Lauren-Nicole](https://github.com/CluelessBiker): For giving me notes on my project and helping me fix html showing up in form when editing. 
+- From the 'Developing with Django' module I have used the pagination code for my bowse page
 
 
 ### Media
