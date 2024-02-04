@@ -35,6 +35,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     '8000-danilleh22-inkpadbook-tdxhkgcyxg4.ws-eu107.gitpod.io', '.herokuapp.com']
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
