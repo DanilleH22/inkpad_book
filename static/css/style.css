@@ -164,6 +164,10 @@ footer {
     position: relative;
 }
 
+/* Login page */
+.form-check .form-check-input {
+    float: none;
+}
 
 /* ---------- -------- Media queries  */
 
