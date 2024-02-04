@@ -32,8 +32,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    '8000-danilleh22-inkpadbook-tdxhkgcyxg4.ws-eu107.gitpod.io', '.herokuapp.com']
+ALLOWED_HOSTS = ['8000-danilleh22-inkpadbook-tdxhkgcyxg4.ws-eu108.gitpod.io', '.herokuapp.com']
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
