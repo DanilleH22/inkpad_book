@@ -82,7 +82,14 @@ Not all stories have been implemented. Some have been left for future implementa
 
 ## Design
 
-### Figma
+### Figma Wireframes
+
+![Creating or editing book details page](static/images-readme/figma-book-details.png)
+![Creating or editing chapter page](static/images-readme/figma-chapter.png)
+![Deleting book or chapter page](static/images-readme/figma-delete.png)
+![Homepage](static/images-readme/figma-home.png)
+![Reading chapter page](static/images-readme/figma-reading.png)
+![Other pages](static/images-readme/figma-wireframe.png)
 
 
 ### Database Schema
