@@ -1,5 +1,5 @@
 # Inkpad
-Inkpad is a book that allows users to become their own author. It helps people who want to publish a book, put their writing to action and share their talent with the world. But it's not just for the future authors, it's also for those who love to read. This website allowsusers to dive deeper into their passion to write, or just their passion to read.
+Inkpad is a book that allows users to become their own author. It helps people who want to publish a book, put their writing to action and share their talent with the world. But it's not just for the future authors, it's also for those who love to read. This website allows users to dive deeper into their passion to write, or just their passion to read.
 
 ![Inkpad](static/images-readme/amiresp.png)
 
@@ -14,9 +14,8 @@ The live link for "Inkpad" can be found [HERE](https://p4-inkpad-f8f405fd38c0.he
   + [Current User Goals](#current-user-goals "Current User Goals")
   + [New User Goals](#new-user-goals "New User Goals")
 + [User Stories](#user-stories "User Stories")
-  + [Admin stories](#admin-stories "Admin stories")
-  + [Artist stories](#author-stories "Artist stories")
-  + [Visitor stories](#visitor-stories "Visitor stories")
+  + [Author stories](#author-stories "Author stories")
+  + [User stories](#user-stories "User stories")
 + [Design](#design "Design")
   + [Colour Scheme](#colour-scheme "Colour Scheme")
   + [Typography](#typography "Typography")
@@ -39,10 +38,10 @@ The live link for "Inkpad" can be found [HERE](https://p4-inkpad-f8f405fd38c0.he
 
 ### Site Purpose:
 
-There is two purposes for this website, the first is for helping people publish their book. This gives them the chance to post books they are curently writing, especially if they aren't confident in their work or writing. The second purpose is for those who love to read but are not always able to pay Amazon prices for books, and don't mind unedited books. The user also doesn't get the worlds input on a book, they just go into it with only a synopsis and their imagination. In this generation of BookTok where people are always commenting what book is good and not, this website prevents this.
+There is two purposes for this website, the first is for helping people publish their book. This gives them the chance to post books they are curently writing, especially if they aren't confident in their work or writing. The second purpose is for those who love to read but are not always able to pay Amazon prices for books, and don't mind unedited books. The user also doesn't get the worlds input on a book, they just go into it with only a synopsis and their imagination. In this generation of BookTok where people are always commenting what book is good and not, this website prevents this. USers don't see other reviews or comments on the book just the excerpt, allowing them to decide if they want to read.
 
 ### Site Goal:
-The goal is to help authors publish their book, without having to worry about who likes it. The site purposely doesn't show you who's liked it or who bookmarked it, because the goal is to develop your writing skills and confidence in yourself. 
+The goal is to help authors publish their book, without having to worry about who likes it. The site purposely doesn't show you who's liked it or who bookmarked it, because the goal is to develop your writing skills and confidence in yourself. And no to worry about what others think about it.
 
 ### Audience:
 This website is for those who love to read or those who love to write, or both! Whether users are a seasoned reader, or just getting back into reading, this website is perfect. This website is for the confident authors, to the not so confident, for the published and the unpublished. There is no specific age for this website, as there is no age limit on pursuing something you like.
@@ -67,22 +66,19 @@ To become instantly engaged with the design of the site, and feel intrigued to e
 ## User Stories
 Not all stories have been implemented. Some have been left for future implementations as the site grows and expands.
 
-### Admin stories:
-#### As an admin:
-1. I can **submit new chapter** so that **I can inform site visitors & artists of new events, artists, and more**.
-2. I can **moderate blog comments** so that **the feedback provided is appropriate**.
-3. I can **create a log in / sign up page** so that **artists and visitors can sign up to the site**.
+### Author stories:
+#### As an author:
+1. I can **submit new chapter** so that **I can update book for users to read**.
+2. I can **create a book** so that **I can publish my writing to the world**.
+3. I can **log in / sign up** so that **I can write chapters and a book**.
+4. I can **edit or delete a book** so that **I can change my work to suit me**.
+5. I can **edit or delete a chapter** so that **I can update of details of my chapter**.
 
-### Book stories:
-#### As an User:
-1. I can **create a user profile** so that **I can create books, for publish and draft**.
-2. I can **create a book** so that **I can publish it or put in drafts**.
-3. I can **create a chapter** so that **I can publish it to my book or put in drafts**.
-4. I can **bookmark a book** so that **I can hsave books I like**.
-5. I can **read a book** so that **I can enjoy a book**.
-6. I can **edit or delete a book** so that **I can change my work to suit me**.
-7. I can **edit or delete a chapter** so that **I can update of details of my chapter**.
-
+### Reader stories:
+#### As an Reader:
+1. I can **bookmark a book** so that **I can hsave books I like**.
+2. I can **read a book** so that **I can enjoy a book**.
+3. I can **browse books** so that **I can find a book that I want to read**.
 
 ## Design
 
@@ -283,35 +279,35 @@ All fonts were obtained from the Google Fonts library. I chose to stick with one
 | **TEST**                      | **ACTION**              | **EXPECTATION**             | **RESULT** |
 | ----------------------------- | ----------------------- | --------------------------- | ---------- |
 | Home page - responsiveness    | Size site down to 320px | all elements stay on screen | ✅         |
-| Home page - responsiveness    | Size site up to 1300px  | all elements stay on screen | ✅         |
+| Home page - responsiveness    | Size site up to 1600px  | all elements stay on screen | ✅         |
 | Edit pages - responsiveness   | Size site down to 320px | all elements stay on screen | ✅         |
-| Edit pages - responsiveness   | Size site up to 1300px  | all elements stay on screen | ✅         |
+| Edit pages - responsiveness   | Size site up to 1600px  | all elements stay on screen | ✅         |
 | Delete pages - responsiveness  | Size site down to 320px | all elements stay on screen | ✅         |
-| Delete pages - responsiveness  | Size site up to 1300px  | all elements stay on screen | ✅         |
+| Delete pages - responsiveness  | Size site up to 1600px  | all elements stay on screen | ✅         |
 | Read book page - responsiveness    | Size site down to 320px | all elements stay on screen | ✅         |
-| Read book page - responsiveness    | Size site up to 1300px  | all elements stay on screen | ✅         |
+| Read book page - responsiveness    | Size site up to 1600px  | all elements stay on screen | ✅         |
 | Sign-in page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| Sign-in page - responsiveness | Size site up to 1300px  | all elements stay on screen | ✅         |
+| Sign-in page - responsiveness | Size site up to 1600px  | all elements stay on screen | ✅         |
 | Sign-up page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| Sign-up page - responsiveness | Size site up to 1300px  | all elements stay on screen | ✅         |
+| Sign-up page - responsiveness | Size site up to 1600px  | all elements stay on screen | ✅         |
 | Log-in page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| Log-in page - responsiveness | Size site up to 1300px  | all elements stay on screen | ✅         |
+| Log-in page - responsiveness | Size site up to 1600px  | all elements stay on screen | ✅         |
 | Create pages - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| Create pages - responsiveness | Size site up to 1300px  | all elements stay on screen | ✅         |
+| Create pages - responsiveness | Size site up to 1600px  | all elements stay on screen | ✅         |
 | View chapters page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| View chapters page - responsiveness | Size site up to 130px  | all elements stay on screen | ✅         |
+| View chapters page - responsiveness | Size site up to 1600px  | all elements stay on screen | ✅         |
 | Draft page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| Draft page - responsiveness | Size site up to 1300px  | all elements stay on screen | ✅         |
+| Draft page - responsiveness | Size site up to 1600px  | all elements stay on screen | ✅         |
 | Bookmark page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| Bookmark page - responsiveness | Size site up to 1300px  | all elements stay on screen | ✅         |
+| Bookmark page - responsiveness | Size site up to 1600px  | all elements stay on screen | ✅         |
 | Browse page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| Browse page - responsiveness | Size site up to 1300ox  | all elements stay on screen | ✅         |
+| Browse page - responsiveness | Size site up to 1600px  | all elements stay on screen | ✅         |
 | Book view page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| Book view page - responsiveness | Size site up to 1300ox  | all elements stay on screen | ✅         |
+| Book view page - responsiveness | Size site up to 1600px  | all elements stay on screen | ✅         |
 | List of published books page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| List of published books page - responsiveness | Size site up to 1300ox  | all elements stay on screen | ✅         |
+| List of published books page - responsiveness | Size site up to 1600px  | all elements stay on screen | ✅         |
 | List of draft books - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| List of draft books - responsiveness | Size site up to 1300ox  | all elements stay on screen | ✅         |
+| List of draft books - responsiveness | Size site up to 1600px  | all elements stay on screen | ✅         |
 
 ### C.R.U.D. testing
 
@@ -345,25 +341,11 @@ All fonts were obtained from the Google Fonts library. I chose to stick with one
 | Logout                        | User clicks logout     | UI updates, user is logged out, user cannot create a book or read a book | ✅         |
 | Read book                     | User clicks next Button or Prev button    | Next chapter given                          | ✅         |
 
-### BUG TESTING:
+### Manual Testing
 
-1. Testing CRUD functionality:
-- Each of the features were tested multiple times to ensure that numerous new posts could be submitted, and that each post had the ability to be updated and edited by the user that submitted it.
-- If a post is submitted by another user, the edit/delete buttons do not appear on the page.
+A manual test had been used for the Javascript. I have used a BDD approach as the javascript was used for the buttons in reading the chapter. It won't return anything but is based of users behaviour. 
 
-2. CSS styles not loading on app :
-The CCS was not loading on the server, I had missed the S of the STACTIC_DIRS in settings.
-
-3. Forms text had html text and fields were next to each other:
-I had used {{ form.as_p }}, so i had changed it to {{ form }}, for the edit forms i had made it {{ form | safe }}.
-To stop the fields sitting next to each other i had installed crispy forms and used in templates wiht the form.
-
-4. Admin panel not showing duee to TypeError
-This was because I had tried to add book.urls to add to another app, they had cauused an error and was removed and the url pattern was re-adjusted to reflect this
-
-5. Jest was not installing:
-A manual test had to be completed to test that Javascript had to be created which is listed below. I hhad used a BDD approach to test the Javascript buttons.
-  Javascript Manual Test -
+Javascript Manual Test -
     Test Case 1: Verify that the 'Next' button in the chapter navigation displays the next chapter.
     Steps to Reproduce:
     - Open the website.
@@ -384,6 +366,7 @@ A manual test had to be completed to test that Javascript had to be created whic
     - Go to browse and choose a book
     - Click read now
     - Only first chapter should be shown
+    - Press next button and next chapter should be shown.
     Expected Result: The current chapter should be hidden, and the next chapter should be displayed.
     Actual Result: As expected, the next chapter is displayed when the 'Next' button is clicked.
     Pass/Fail: Pass
@@ -404,10 +387,26 @@ A manual test had to be completed to test that Javascript had to be created whic
     Date: 28th January, 2024
     Tester's Name: Danille Hamilton
 
+### BUG TESTING:
+
+1. Testing CRUD functionality:
+- Each of the features were tested multiple times to ensure that numerous new posts could be submitted, and that each post had the ability to be updated and edited by the user that submitted it.
+- If a post is submitted by another user, the edit/delete buttons do not appear on the page.
+
+2. CSS styles not loading on app :
+The CCS was not loading on the server, I had missed the S of the STACTIC_DIRS in settings.
+
+3. Forms text had html text and fields were next to each other:
+I had used {{ form.as_p }}, so i had changed it to {{ form }}, for the edit forms I had made it {{ form | safe }}.
+To stop the fields sitting next to each other i had installed crispy forms and used in templates wiht the form.
+
+4. Admin panel not showing duee to TypeError
+This was because I had tried to add book.urls to add to another app, they had cauused an error and was removed and the url pattern was re-adjusted to reflect this
+
 6. Originally the profile dropdown had a profile section to see published and draft books in a carousel format, however the cards would not be responsive. To fix this I have created a simple layout for each on seperate pages.
 
 ### Unfixed Bugs
-There are no unfixed bugs to my knowledge
+There are no unfixed bugs to my knowledge.
 
 
 ## Technologies Used
@@ -495,7 +494,7 @@ The site was deployed to Heroku. The steps to deploy are as follows:
 - [Bootstrap](https://getbootstrap.com/docs/5.2/components/card/): dropdown nav menu.
 - Django for beginners by William S. Vincent for setting up test for editing book and editing chapter in the book model.
 - [Lauren-Nicole](https://github.com/CluelessBiker): For giving me notes on my project and helping me fix html showing up in form when editing. 
-- From the 'Developing with Django' module I have used the pagination code for my bowse page
+- From the 'Developing with Django' module I have used the pagination code for my bowse page, to go on the next page as only 6 books can be shown per page.
 
 
 ### Media
